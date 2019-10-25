@@ -1,0 +1,23 @@
+<header class="row navbar-light bg-light">
+  <div class="col-2 align-self-center">
+    <a class="navbar-brand" href="/">Calendarize</a>
+  </div>
+  <div class="col-10">
+    <div class="row">
+      <nav class="col-10" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+      </nav>
+      <div class="col-2 align-self-center text-right">
+        {% if user.is_authenticated %}
+          {{ user.username }}
+          <a href="{% url 'logout' %}">logout</a>
+        {% else %}
+          <p>You are not logged in</p>
+          <a href="{% url 'login' %}">login</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>

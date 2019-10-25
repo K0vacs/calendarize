@@ -8,3 +8,7 @@ def home(request):
 @login_required(login_url='/accounts/login/')
 def overview(request):
     return render(request, 'overview.html')
+
+@login_required(login_url='/accounts/login/')
+def services(request):
+    return render(request, 'pages/services.html')

@@ -1,13 +1,14 @@
 <!-- templates/registration/login.html -->
-{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
-{% block title %}Login{% endblock %}
-
-{% block content %}
 <h2>Login</h2>
-<form method="post">
+<form method="post" class="form">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
+  {% bootstrap_form form %}
+
+  {% buttons %}
+      <button type="submit" class="btn btn-primary">Submit</button>
+  {% endbuttons %}
 </form>
-{% endblock %}
