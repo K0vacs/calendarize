@@ -12,6 +12,7 @@
       <div class="col-2 align-self-center text-right">
         {% if user.is_authenticated %}
           {{ user.username }}
+          {{ user.email }}
           <a href="{% url 'logout' %}">logout</a>
         {% else %}
           <p>You are not logged in</p>

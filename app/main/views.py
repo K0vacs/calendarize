@@ -11,4 +11,5 @@ def overview(request):
 
 @login_required(login_url='/accounts/login/')
 def services(request):
-    return render(request, 'pages/services.html')
+    test = {'boo': 'yay'}
+    return render(request, 'pages/services.html', test)
