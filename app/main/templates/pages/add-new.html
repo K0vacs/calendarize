@@ -1,0 +1,21 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  <p>Services Content Here!</p>
+
+<form method="post" class="form" action="#">
+  {% csrf_token %}
+  {% bootstrap_form boo %}
+  {% buttons %}
+      <button type="submit" class="btn btn-primary">Save</button>
+  {% endbuttons %}
+</form>
+
+{% endblock %}

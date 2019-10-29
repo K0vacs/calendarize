@@ -1,8 +1,50 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 
-{% block title %}{{ boo }}{% endblock %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block title %}{% endblock %}
 
 {% block content %}
-  <p>Services Content Here!</p>
+  <table class="table">
+    {{ test }}
+    {% for item in test %}
+      {{ item }}
+    {% endfor %}
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        {% for item in metas %}
+          {% if item.name != 'id' %}
+            <th scope="col">{{item.name.upper}}</th>
+          {% endif %}
+        {% endfor %}
+        <th scope="col">EDIT</th>
+        <th scope="col">DELETE</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for item in results %}
+      <tr>
+        <th scope="row">{{ item.id }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.capacity }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <a href="#">
+            <i class="fas fa-pen"></i>
+          </a>
+        </td>
+        <td>
+          <a href="#">
+            <i class="fas fa-trash"></i>
+          </a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
