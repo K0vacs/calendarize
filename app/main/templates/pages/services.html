@@ -1,12 +1,12 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 
   <a class="btn btn-primary" href="{{ request.path }}add-new/" role="button">Add New</a>
-  
+
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -28,7 +28,7 @@
             <td>{{ item }}</td>
           {% endfor %}
           <td>
-            <a href="http://localhost:8000/services/add-new">
+            <a href="{% url 'update' model=title.lower pk=items.0 %}">
               <i class="fas fa-pen"></i>
             </a>
           </td>

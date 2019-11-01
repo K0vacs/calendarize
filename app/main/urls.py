@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic.base import TemplateView
 from . import views
 
@@ -25,6 +26,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('overview/', views.overview, name='overview'),
     path('services/', views.services, name='services'),
-    path('<model>/add-new/', views.AddNew.as_view(), name='add_new'),
-    path('<model>/add-new/<pk>', views.Update.as_view(), name='update'),
+    path('<model>/add-new/', login_required(views.AddNew.as_view()), name='add_new'),
+    path('<model>/add-new/<pk>', permission_required('services.can_add')(views.Update.as_view()), name='update'),
 ]
