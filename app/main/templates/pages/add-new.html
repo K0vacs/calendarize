@@ -5,15 +5,25 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
 
-{% block title %}{% endblock %}
+{% block title %}Add New {{ title }}{% endblock %}
 
 {% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+
+<a class="btn btn-primary" href="{% url 'add_new' model=title.lower %}" role="button">Add New</a>
 
 <form action="" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     {% endbuttons %}
 </form>
 

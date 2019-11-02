@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView, UpdateView
 from .models import Services
-from main.utils import table
+from .utils import ReadClass, CreateClass, UpdateClass, DeleteClass
 
 
 @login_required(login_url='/accounts/login/')
@@ -13,17 +12,14 @@ def home(request):
 def overview(request):
     return render(request, 'overview.html')
 
-@login_required(login_url='/accounts/login/')
-def services(request):
-    context = table(request, Services)
-    return render(request, 'pages/services.html', context)
-
-class AddNew(CreateView):
+class ServicesRead(ReadClass):
     model = Services
-    fields = '__all__'
-    template_name = 'pages/add-new.html'
 
-class Update(UpdateView):
+class ServicesCreate(CreateClass):
     model = Services
-    fields = '__all__'
-    template_name = 'pages/add-new.html'
+
+class ServicesUpdate(UpdateClass):
+    model = Services
+
+class ServicesDelete(DeleteClass):
+    model = Services
