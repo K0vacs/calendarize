@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'bootstrap4',
-    'fontawesome',
+    'services',
+    'customers',
 ]
 
 MIDDLEWARE = [

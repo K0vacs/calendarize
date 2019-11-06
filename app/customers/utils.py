@@ -3,15 +3,17 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import CustomersForm, CustomersPriceForm
 
 class ReadClass(ListView):
-    template_name = 'pages/services.html'
+    template_name = 'customers.html'
     context_object_name = 'pages'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = self.model._meta.object_name
         context['metas'] = self.model._meta.fields
+        context['form'] = AuthorFormset(self.request.POST)
         return context
 
     def get_paginate_by(self, queryset):
@@ -22,9 +24,10 @@ class ReadClass(ListView):
         return self.model.objects.all().values_list()
 
 class CreateClass(SuccessMessageMixin, CreateView):
-    fields = '__all__'
-    template_name = 'pages/add-new.html'
-    success_message = "%(name)s was created successfully"
+    # fields = '__all__'
+    template_name = 'add.html'
+    form_class = CustomersPriceForm
+    success_message = "%(price)s was created successfully"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,8 +36,8 @@ class CreateClass(SuccessMessageMixin, CreateView):
 
 class UpdateClass(SuccessMessageMixin, UpdateView):
     fields = '__all__'
-    template_name = 'pages/add-new.html'
-    success_message = "%(name)s was updated successfully"
+    template_name = 'add.html'
+    success_message = "%(price)s was updated successfully"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,7 +45,7 @@ class UpdateClass(SuccessMessageMixin, UpdateView):
         return context
 
 class DeleteClass(DeleteView):
-    success_url = reverse_lazy('services')
+    success_url = reverse_lazy('customers')
 
     def get(self, request, **kwargs):
         return self.post(request, **kwargs)

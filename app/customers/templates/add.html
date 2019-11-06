@@ -17,7 +17,7 @@
     {% endfor %}
 {% endif %}
 
-<a class="btn btn-primary" href="{% url 'add_new' model=title.lower %}" role="button">Add New</a>
+<a class="btn btn-primary" href="{% url 'customers_add' %}" role="button">Add New</a>
 
 <form action="" method="post" class="form">
     {% csrf_token %}
