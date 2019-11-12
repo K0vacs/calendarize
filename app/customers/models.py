@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from services.models import Services
+from services.models import *
 
 class Customers(models.Model):
     name    = models.CharField(max_length=100, default=None)
@@ -14,11 +14,12 @@ class Customers(models.Model):
         return reverse('customers_update', kwargs={'pk': self.pk})
 
 class CustomersPrice(models.Model):
-    services = models.ForeignKey(Services, on_delete=models.CASCADE)
-    price = models.IntegerField(default=None)
+    services    = models.ForeignKey(Services, on_delete=models.CASCADE)
+    price       = models.IntegerField(default=None)
+    customer_id = models.IntegerField(default=None)
 
     def __str__(self):
-        return self.name
+        return self.price
 
     def get_absolute_url(self):
         return reverse('customers_update', kwargs={'pk': self.pk})
@@ -26,8 +27,9 @@ class CustomersPrice(models.Model):
 
 
 
-class Book(models.Model):
+class Books(models.Model):
 
+    services = models.ForeignKey(Services, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     isbn_number = models.CharField(max_length=13)
 

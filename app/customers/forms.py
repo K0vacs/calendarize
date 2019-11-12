@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.forms.models import modelformset_factory
-from .models import Services, Customers, CustomersPrice, Book
+from .models import *
 
 class CustomersForm(ModelForm):
     class Meta:
@@ -16,21 +16,40 @@ class CustomersPriceForm(forms.ModelForm):
     services = forms.ModelChoiceField(queryset=Services.objects.all())
     price = forms.IntegerField()
 
+ServiceModelFormset = modelformset_factory(CustomersPrice, form=CustomersPriceForm, fields=('services', 'price'), extra=1,)
+
 class BookForm(forms.ModelForm):
     class Meta:
-        model = Book
-        fields = ['name', 'isbn_number']
+        model = Books
+        fields = ['name', 'services']
 
-BookModelFormset = modelformset_factory(Book, form=BookForm, fields=('name', 'isbn_number'), extra=2,)
+    services = forms.ModelChoiceField(queryset=Services.objects.all())
+
+BookModelFormset = modelformset_factory(Books, form=BookForm, fields=('name', 'services'), extra=1,)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # BookModelFormset = modelformset_factory(
-#     Book,
+#     Books,
 #     form=BookForm,
 #     fields=('name', ),
 #     extra=2,
-    # widgets={'name': forms.TextInput(attrs={
-    #         'class': 'form-control',
-    #         'placeholder': 'Enter Book Name here'
-    #     })
-    # }
+#     widgets={'name': forms.TextInput(attrs={
+#             'class': 'form-control',
+#             'placeholder': 'Enter Book Name here'
+#         })
+#     }
 # )

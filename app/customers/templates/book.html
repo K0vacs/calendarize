@@ -70,11 +70,18 @@ $(document).on('click', '.remove-form-row', function(e){
 });
 </script>
 
+{% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
 
 <form class="form-horizontal" method="POST" action="">
     {% csrf_token %}
 <div class="row spacer">
-
+  {% bootstrap_form customer_form %}
 <div class="col-2">
     <label>{{bookform.name.label}}</label>
 </div>
@@ -87,28 +94,36 @@ $(document).on('click', '.remove-form-row', function(e){
 {{ formset.management_form }}
 {% for form in formset %}
 <div class="row form-row spacer">
-    <div class="col-2">
-        <label>{{form.name.label}}</label>
-    </div>
-    <div class="col-4">
-        <div class="input-group">
-            {{form.name}}
-            <div class="input-group-append">
-                <button class="btn btn-success add-form-row">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="col-2">
-        <label>{{form.isbn_number.label}}</label>
-    </div>
-    <div class="col-4">
-        <div class="input-group">
-            {{form.isbn_number}}
-            <div class="input-group-append">
-                <button class="btn btn-success add-form-row">+</button>
-            </div>
-        </div>
-    </div>
+  <div class="col-2">
+      <label>{{form.services.label}}</label>
+  </div>
+  <div class="col-4">
+      <div class="input-group">
+          {{form.services}}
+          <div class="input-group-append">
+              <button class="btn btn-success add-form-row">+</button>
+          </div>
+      </div>
+  </div>
+  <div class="col-2">
+      <label>{{form.price.label}}</label>
+  </div>
+  <div class="col-4">
+      <div class="input-group">
+          {{form.price}}
+          <div class="input-group-append">
+              <button class="btn btn-success add-form-row">+</button>
+          </div>
+      </div>
+  </div>
+  <!-- <div class="col-4">
+      <div class="input-group">
+          {# form.customer_id #}
+          <div class="input-group-append">
+              <button class="btn btn-success add-form-row">+</button>
+          </div>
+      </div>
+  </div> -->
 </div>
 {% endfor %}
 <div class="row spacer">
@@ -117,5 +132,6 @@ $(document).on('click', '.remove-form-row', function(e){
     </div>
 </div>
 </form>
-
+{{title}}
+{% debug %}
 {% endblock %}

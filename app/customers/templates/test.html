@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+
+<form class="form-horizontal" method="POST" action="">
+    {% csrf_token %}
+    {% bootstrap_form customer_form %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {% bootstrap_form form %}
+    {% endfor %}
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+</form>
+
+{% endblock %}
