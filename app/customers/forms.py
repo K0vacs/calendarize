@@ -16,16 +16,7 @@ class CustomersPriceForm(forms.ModelForm):
     services = forms.ModelChoiceField(queryset=Services.objects.all())
     price = forms.IntegerField()
 
-ServiceModelFormset = modelformset_factory(CustomersPrice, form=CustomersPriceForm, fields=('services', 'price'), extra=1,)
-
-class BookForm(forms.ModelForm):
-    class Meta:
-        model = Books
-        fields = ['name', 'services']
-
-    services = forms.ModelChoiceField(queryset=Services.objects.all())
-
-BookModelFormset = modelformset_factory(Books, form=BookForm, fields=('name', 'services'), extra=1,)
+ServiceModelFormset = modelformset_factory(CustomersPrice, form=CustomersPriceForm, fields=('services', 'price'), extra=1)
 
 
 

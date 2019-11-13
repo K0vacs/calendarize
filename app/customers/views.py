@@ -8,50 +8,36 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
-def test(request, pk):
-    if request.method == 'GET':
-        # obj = CustomersPrice.objects.filter(customer_id=pk)
-        customerform = CustomersForm(instance=Customers.objects.get(pk=pk))
-        formset = ServiceModelFormset(queryset=CustomersPrice.objects.filter(customer_id=pk))
-    elif request.method == 'POST':
-        formset = ServiceModelFormset(request.POST)
-        # obj= get_object_or_404(Customers, pk=pk)
-        customerform = CustomersForm(request.POST or None, instance=Customers.objects.get(pk=pk))
+class CustomerTable(ListView):
+    # This class reads from the Customers database records and displays the returned data in a table.
 
-        if formset.is_valid() and customerform.is_valid():
-            obj= customerform.save(commit= False)
-            obj.save()
+    model = Customers
+    template_name = 'customers.html'
+    context_object_name = 'pages'
 
-            for item in formset.save(commit=False):
-                item.customer_id = pk
-                item.save()
-            return redirect('bookid', pk=pk)
-    return render(request, 'test.html', {
-        'formset': formset,
-        'customer_form': customerform,
-        })
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.model._meta.object_name
+        context['metas'] = self.model._meta.fields
+        context['form'] = CustomersForm(self.request.POST)
+        return context
 
+    def get_paginate_by(self, queryset):
+        items_per_page = self.request.GET.get('results') or 10
+        return items_per_page
 
-# CRUD on Customer Price
-class CustomersRead(ReadClass):
-    model = CustomersPrice
+    def get_queryset(self):
+        return self.model.objects.all().values_list()
 
-class CustomersCreate(CreateClass):
-    model = CustomersPrice
+class CustomerCreate(CreateView):
+    # This class creates a Customers and CustomersPrice database record(s) when the form is submitted.
 
-class CustomersUpdate(UpdateClass):
-    model = CustomersPrice
-
-class CustomersDelete(DeleteClass):
-    model = CustomersPrice
-
-class CreateServiceClass(SuccessMessageMixin, CreateView):
-    template_name = 'book.html'
+    template_name = 'customers/add.html'
     form_class = CustomersPriceForm
     success_message = "%(name)s was created successfully"
 
     def get_context_data(self, **kwargs):
-        context = super(CreateServiceClass, self).get_context_data(**kwargs)
+        context = super(CustomerCreate, self).get_context_data(**kwargs)
         customerprice = ServiceModelFormset(queryset=CustomersPrice.objects.none())
         context['formset'] = customerprice
         context['customer_form'] = CustomersForm()
@@ -68,64 +54,47 @@ class CreateServiceClass(SuccessMessageMixin, CreateView):
         for item in formset.save(commit=False):
             item.customer_id = response.pk
             item.save()
-        return HttpResponseRedirect(reverse('bookid', kwargs={'pk': response.pk}))
+        return HttpResponseRedirect(reverse('customers:customer_add', kwargs={'pk': response.pk}))
 
+def customerupdate(request, pk):
+    # Read and Update individual Customer records in a form
 
-# class UpdateServiceClass(SuccessMessageMixin, UpdateView):
-#         template_name = 'add.html'
-#         form_class = CustomersPriceForm
-#         success_message = "%(price)s was updated successfully"
-#         # get_queryset = CustomersPrice.objects.none()
+    if request.method == 'GET':
+        customerform = CustomersForm(instance=Customers.objects.get(pk=pk))
+        formset = ServiceModelFormset(queryset=CustomersPrice.objects.filter(customer_id=pk))
+    elif request.method == 'POST':
+        formset = ServiceModelFormset(request.POST)
+        customerform = CustomersForm(request.POST or None, instance=Customers.objects.get(pk=pk))
 
-#         def get_queryset(self):
-#             self.customer_form = get_object_or_404(Publisher, name=self.kwargs['publisher'])
-#         return Book.objects.filter(publisher=self.publisher)
-#             # return CustomersPrice.objects.all()
+        if formset.is_valid() and customerform.is_valid():
+            obj= customerform.save(commit= False)
+            obj.save()
 
-#         def get_context_data(self, **kwargs):
-#             context = super(UpdateServiceClass, self).get_context_data(**kwargs)
-#             customer = Customers.objects.get(pk=self.kwargs['pk'])
-#             customerprice = ServiceModelFormset(queryset=CustomersPrice.objects.filter(customer_id=self.kwargs['pk']))
-#             context['formset'] = customerprice
-#             context['customer_form'] = CustomersForm(instance=customer)
-#             # return self.get_queryset(context)
-#             return context
+            for item in formset.save(commit=False):
+                item.customer_id = pk
+                item.save()
+            return redirect('customers:customer_update', pk=pk)
+    return render(request, 'customers/add.html', {
+        'formset': formset,
+        'customer_form': customerform,
+        })
 
+class CustomerDelete(DeleteView):
+    # Delete individual Customer records in a modal
 
+    model = Customers
+    success_url = reverse_lazy('customers:customers')
 
+    def get(self, request, **kwargs):
+        return self.post(request, **kwargs)
 
-#         def post(self, request, *args, **kwargs):
-#             super(UpdateServiceClass, self).post(request, *args, **kwargs)
-#             formset = ServiceModelFormset(request.POST)
-#             customerform = CustomersForm(request.POST)
-#             if formset.is_valid() and customerform.is_valid():
-#                 # return super(UpdateServiceClass, self).form_valid(formset, customerform)
-#                 return self.form_valid(formset, customerform)
+class CustomerPriceDelete(DeleteView):
+    # Delete individual Customer Price records in the repeater field
 
-#         def form_valid(self, formset, customerform):
-#             response = customerform.save()
-#             for form in formset.save(commit=False):
-#                 form.customer_id = response.pk
-#                 form.save()
-#             return HttpResponseRedirect(reverse_lazy('bookid', kwargs={'pk': response.pk}))
+    model = CustomersPrice
 
+    def get(self, request, **kwargs):
+        return self.post(request, **kwargs)
 
-class CreateBookClass(SuccessMessageMixin, CreateView):
-    # fields = '__all__'
-    template_name = 'book.html'
-    form_class = BookForm
-    success_message = "%(name)s was created successfully"
-
-    def get_context_data(self, **kwargs):
-        context = super(CreateBookClass, self).get_context_data(**kwargs)
-        context['formset'] = BookModelFormset(queryset=Books.objects.none())
-        return context
-
-    def post(self, request, *args, **kwargs):
-        formset = BookModelFormset(request.POST)
-        if formset.is_valid():
-            return self.form_valid(formset)
-
-    def form_valid(self, formset):
-        formset.save()
-        return HttpResponseRedirect(reverse('book'))
+    def get_success_url(self):
+        return reverse_lazy('customers:customer_update', kwargs={'pk': self.object.customer_id})

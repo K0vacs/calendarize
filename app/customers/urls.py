@@ -2,14 +2,13 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+app_name = 'customers'
 
 urlpatterns = [
-    path('customers/', views.CustomersRead.as_view(), name='customers'),
-    path('customers/add/', views.CustomersCreate.as_view(), name='customers_add'),
-    path('customers/add/<int:pk>/', views.CustomersUpdate.as_view(), name='customers_update'),
-    path('customers/delete/<int:pk>/', views.CustomersDelete.as_view(), name='customers_delete'),
+    path('customers/', views.CustomerTable.as_view(), name='customers'),
+    path('customers/add/', views.CustomerCreate.as_view(), name='customer_add'),
+    path('customers/add/<int:pk>/', views.customerupdate, name='customer_update'),
+    path('customers/delete/<int:pk>/', views.CustomerDelete.as_view(), name='customer_delete'),
 
-
-    path('test/', views.CreateServiceClass.as_view(), name='book'),
-    path('test/<pk>/', views.test, name='bookid'),
+    path('customerprice/delete/<int:pk>/', views.CustomerPriceDelete.as_view(), name='customerprice_delete'),
 ]

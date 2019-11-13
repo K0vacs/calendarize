@@ -5,7 +5,7 @@
 
 {% block content %}
 
-{% if pages is defined %}
+{% if pages %}
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -21,16 +21,16 @@
         <div class="modal-body">
           Are you sure you want to delete this item?
         </div>
-        <div class="modal-footer">
+        <div id="delete" class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a href="{% url 'customers_delete' pk=pages.0.0 %}" class="btn btn-danger" role="button">Delete</a>
+          <a href="{% url 'customers:customer_delete' pk=0 %}" class="btn btn-danger" role="button">Delete</a>
         </div>
       </div>
     </div>
   </div>
 {% endif %}
 
-  <a class="btn btn-primary" href="{% url 'customers_add' %}" role="button">Add New</a>
+  <a class="btn btn-primary" href="{% url 'customers:customer_add' %}" role="button">Add New</a>
 
   <table class="table">
     <thead class="thead-dark">
@@ -53,12 +53,12 @@
             <td>{{ item }}</td>
           {% endfor %}
           <td>
-            <a href="{% url 'customers_update' pk=items.0 %}">
+            <a href="{% url 'customers:customer_update' pk=items.0 %}">
               <i class="fas fa-pen"></i>
             </a>
           </td>
           <td>
-            <a href="" data-toggle="modal" data-target="#exampleModal">
+            <a href="" data-toggle="modal" data-target="#exampleModal" data-id="{{ items.0 }}">
               <i class="fas fa-trash"></i>
             </a>
           </td>

@@ -11,7 +11,7 @@ class Customers(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('customers_update', kwargs={'pk': self.pk})
+        return reverse('customers:customer_update', kwargs={'pk': self.pk})
 
 class CustomersPrice(models.Model):
     services    = models.ForeignKey(Services, on_delete=models.CASCADE)
@@ -22,22 +22,4 @@ class CustomersPrice(models.Model):
         return self.price
 
     def get_absolute_url(self):
-        return reverse('customers_update', kwargs={'pk': self.pk})
-
-
-
-
-class Books(models.Model):
-
-    services = models.ForeignKey(Services, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    isbn_number = models.CharField(max_length=13)
-
-    class Meta:
-        db_table = 'book'
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('book')
+        return reverse('customers:customer_update', kwargs={'pk': self.pk})
