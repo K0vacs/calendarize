@@ -64,7 +64,4 @@ $(document).ready(function(){
     return false;
   }
 
-  var pk = $('#id_form-0-id').val()
-  console.log(pk)
-
 })

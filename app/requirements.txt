@@ -2,3 +2,4 @@ Django
 mysqlclient
 python-dotenv
 django-bootstrap4
+Pillow

@@ -9,14 +9,12 @@
 
 {% block content %}
 <div class="container">
-
+    
 <div class="row">
   <div class="col-12">
     {% if messages %}
       {% for message in messages %}
-        <div class="alert alert-success" role="alert">
-          {{ message }}
-        </div>
+        {% bootstrap_alert message alert_type=message.tags %}
       {% endfor %}
     {% endif %}
   </div>
