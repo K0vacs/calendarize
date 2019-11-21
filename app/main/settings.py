@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'staff.apps.StaffConfig',
     'main',
     'bootstrap4',
     'services',
     'customers',
     'equipment',
+    # 'staff',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +140,6 @@ LOGOUT_REDIRECT_URL = 'home'
 # Folder uploads are saved
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+
+# Adds child class to user model
+AUTH_USER_MODEL = 'staff.Staff'

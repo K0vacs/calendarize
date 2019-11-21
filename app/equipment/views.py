@@ -17,7 +17,7 @@ import json
 class EquipmentTable(ListView):
     model = Equipment
     template_name = 'equipment.html'
-    # context_object_name = 'pages'
+    context_object_name = 'pages'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -85,7 +85,7 @@ class EquipmentUpdate(SuccessMessageMixin, UpdateView):
 
 class EquipmentDelete(DeleteView):
     model = Equipment
-    success_url = reverse_lazy('equipment')
+    success_url = reverse_lazy('equipment:equipment')
 
     def get(self, request, **kwargs):
         return self.post(request, **kwargs)

@@ -23,21 +23,21 @@
         </div>
         <div id="delete" class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a href="{% url 'equipment:equipment_delete' pk=0 %}" class="btn btn-danger" role="button">Delete</a>
+          <a href="{% url 'staff:staff_delete' pk=0 %}" class="btn btn-danger" role="button">Delete</a>
         </div>
       </div>
     </div>
   </div>
 {% endif %}
 
-  <a class="btn btn-primary" href="{% url 'equipment:equipment_add' %}" role="button">Add New</a>
+  <a class="btn btn-primary" href="{% url 'staff:staff_add' %}" role="button">Add New</a>
 
   <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
         {% for item in metas %}
-          {% if item.name != 'id' %}
+          {% if item.name not in exclude %}
             <th scope="col">{{item.name.upper}}</th>
           {% endif %}
         {% endfor %}
@@ -53,7 +53,7 @@
             <td>{{ item }}</td>
           {% endfor %}
           <td>
-            <a href="{% url 'equipment:equipment_update' pk=items.0 %}">
+            <a href="{% url 'staff:staff_update' pk=items.0 %}">
               <i class="fas fa-pen"></i>
             </a>
           </td>
