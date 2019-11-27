@@ -45,30 +45,69 @@ class StaffTable(ListView):
 class StaffCreate(SuccessMessageMixin, CreateView):
     form_class = StaffForm
     template_name = 'staff_add.html'
-    success_message = "%(name)s was created successfully"
+    success_message = "%(username)s was created successfully"
+
+    def get_success_url(self):
+        return reverse_lazy('staff:staff_update', kwargs = { 'pk': self.object.id })
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        form.url = "hello"
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(commit=False)
+            form.save()
+            return self.form_valid(form)
+        else:
+            return render(request, self.template_name, {'form': form})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['title'] = self.model._meta.object_name
         return context
 
-    def form_valid(self, form):
-        user = form.save(commit=False)
-        user.save()
-        return HttpResponseRedirect(reverse('staff:staff_update', kwargs={'pk': user.pk}))
+class StaffUpdate(UpdateView):
+    form_class = StaffUpdateForm
+    template_name = 'staff_add.html'
 
-def staffupdate(request, pk):
-    if request.method == 'GET':
-        staffform = StaffForm(instance=Staff.objects.get(pk=pk))
-    elif request.method == 'POST':
-        staffform = StaffForm(request.POST or None, instance=Staff.objects.get(pk=pk))
+    def get_queryset(self):
+        query = Staff.objects.filter(pk=self.kwargs['pk'])
+        return query
 
-        if staffform.is_valid():
-            obj= staffform.save(commit= False)
-            obj.save()      
-            return redirect('staff:staff_update', pk=pk)
-    return render(request, 'staff_add.html', {
-        'form': staffform,
-        })
+    def post(self, request, *args, **kwargs):
+        instance = Staff.objects.get(pk=self.kwargs['pk'])
+        form = self.form_class(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save(commit=False)
+            # form.set_password('secret')
+            form.save()
+            return self.form_valid(form)
+        else:
+            return render(request, self.template_name, {'form': form})
+
+
+
+
+
+
+
+
+# def staffupdate(request, pk):
+#     if request.method == 'GET':
+#         staffform = StaffForm(instance=Staff.objects.get(pk=pk))
+#     elif request.method == 'POST':
+#         staffform = StaffForm(request.POST or None, instance=Staff.objects.get(pk=pk))
+#         if staffform.is_valid():
+#             obj= staffform.save(commit= False)
+#             obj.image = request.FILES['image']
+#             obj.save()      
+#             return redirect('staff:staff_update', pk=pk)
+#     return render(request, 'staff_add.html', {
+#         'form': staffform,
+#         })
 
 class StaffDelete(DeleteView):
     model = Staff

@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -45,7 +44,7 @@ INSTALLED_APPS = [
     'services',
     'customers',
     'equipment',
-    # 'staff',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'main.processors.site'
             ],
         },
     },
@@ -138,8 +138,11 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Folder uploads are saved
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 
 # Adds child class to user model
 AUTH_USER_MODEL = 'staff.Staff'
+
+# Sets the website base URL
+SITE_URL = 'http://localhost:8000/'

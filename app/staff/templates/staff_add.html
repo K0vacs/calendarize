@@ -9,6 +9,8 @@
 
 {% block content %}
 
+{{ form.errors }}
+
 {% if messages %}
     {% for message in messages %}
       <div class="alert alert-success" role="alert">
@@ -19,9 +21,26 @@
 
 <a class="btn btn-primary" href="{% url 'staff:staff_add' %}" role="button">Add New</a>
 
-<form action="" method="post" class="form">
+<form action="" method="post" class="form" enctype="multipart/form-data">
     {% csrf_token %}
-    {% bootstrap_form form %}
+    {% for field in form %}
+      {% if field == form.image %}
+        <div class="form-group row">
+          <div class="col-1">
+            {% if form.instance.image %}
+              <img src="{{ SITE_URL }}{{ form.instance.image.url }}" alt="" width="50px">
+            {% endif %}
+          </div>
+          <div class="col">
+            {% if form.image %}
+              {{ form.image }}
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        {% bootstrap_field field %}
+      {% endif %}
+    {% endfor %}
     {% buttons %}
         <button type="submit" class="btn btn-primary">Save</button>
     {% endbuttons %}

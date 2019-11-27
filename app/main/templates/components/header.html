@@ -11,9 +11,15 @@
       </nav>
       <div class="col-2 align-self-center text-right">
         {% if user.is_authenticated %}
-          {{ user.username }}
-          {{ user.email }}
-          <a href="{% url 'logout' %}">logout</a>
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ MEDIA_PATH }}{{ user.image }}" alt="My image" width="50px">
+            </div>
+            <div class="col-8">
+              {{ user.username }}
+              <a href="{% url 'logout' %}">logout</a>
+            </div>
+        </div>
         {% else %}
           <p>You are not logged in</p>
           <a href="{% url 'login' %}">login</a>

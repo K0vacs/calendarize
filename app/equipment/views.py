@@ -33,16 +33,13 @@ class EquipmentTable(ListView):
         return self.model.objects.all().values_list()
 
 class EquipmentCreate(SuccessMessageMixin, CreateView):
-    # model = Equipment
     form_class = EquipmentForm
     fields = '__all__'
     template_name = 'equipment_add.html'
-    # success_url = reverse_lazy('equipment:equipment_update', kwargs = { 'pk': 2 })
     success_message = "%(name)s was created successfully"
 
     def get_success_url(self):
         return reverse_lazy('equipment:equipment_update', kwargs = { 'pk': self.object.id })
-        # reverse_lazy('customers:customer_update', kwargs={'pk': self.object.customer_id})
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -62,20 +59,13 @@ class EquipmentCreate(SuccessMessageMixin, CreateView):
         return context
 
 class EquipmentUpdate(SuccessMessageMixin, UpdateView):
-    # model = Equipment
     form_class = EquipmentForm
-    # fields = '__all__'
     template_name = 'equipment_add.html'
     success_message = "%(name)s was updated successfully"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['title'] = self.model._meta.object_name
-        # form.save(commit=False)
-        #     form.url = "request.FILES['icon']"
         test = Equipment.objects.filter(pk=self.kwargs['pk'])
-        #  jsson = serializers.serialize('json', context['form'])
-        # context['url'] = jsson
         context['test'] = test
         return context
 
