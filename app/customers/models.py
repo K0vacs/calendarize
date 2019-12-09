@@ -16,8 +16,8 @@ class Customers(models.Model):
 class CustomersPrice(models.Model):
     services    = models.ForeignKey(Services, on_delete=models.CASCADE)
     price       = models.IntegerField(default=None)
-    customer_id = models.IntegerField(default=None)
-    staff_id    = models.IntegerField(default=None)
+    customer_id = models.IntegerField(default=None, null=True)
+    staff_id    = models.IntegerField(default=None, null=True)
 
     def __str__(self):
         return self.price

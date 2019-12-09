@@ -25,11 +25,10 @@ class StaffTable(ListView):
             'password', 
             'last_login', 
             'is_superuser', 
-            'first_name', 
-            'last_name', 
             'is_staff', 
             'is_active', 
             'date_joined',
+            'image',
         ]
         context['metas'] = self.model._meta.fields
         context['form'] = StaffForm(self.request.POST)
@@ -40,7 +39,7 @@ class StaffTable(ListView):
         return items_per_page
 
     def get_queryset(self):
-        return self.model.objects.all().values_list('id', 'username', 'email', 'cell', 'image')
+        return self.model.objects.all().values_list('id', 'username', 'first_name', 'last_name', 'email', 'cell')
 
 class StaffCreate(SuccessMessageMixin, CreateView):
     form_class = StaffForm
@@ -81,8 +80,6 @@ class StaffUpdate(UpdateView):
         instance = Staff.objects.get(pk=self.kwargs['pk'])
         form = self.form_class(request.POST, request.FILES, instance=instance)
         if form.is_valid():
-            form.save(commit=False)
-            # form.set_password('secret')
             form.save()
             return self.form_valid(form)
         else:

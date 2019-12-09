@@ -1,0 +1,9 @@
+<div class="input-group time" id="{{ widget.datetimepicker_id }}" data-target-input="nearest"
+data-target="#{{ widget.datetimepicker_id }}" data-toggle="datetimepicker">
+    {% include "django/forms/widgets/input.html" %}
+    <div class="input-group-append" data-toggle="datetimepicker">
+        <div class="input-group-text">
+            <i class="far fa-clock"></i>
+        </div>
+    </div>
+</div>

@@ -13,8 +13,8 @@ class StaffForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'cell', 'image', 'password1', 'password2')
 
 class StaffUpdateForm(UserChangeForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-
+    password = None
+    
     class Meta:
         model = Staff
-        fields = ('username', 'first_name', 'last_name', 'email', 'cell', 'image', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email', 'cell', 'image')

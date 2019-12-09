@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('overview/', views.overview, name='overview'),
 
+    path('', include('bookings.urls')),
     path('', include('services.urls')),
     path('', include('customers.urls')),
     path('', include('equipment.urls')),

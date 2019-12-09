@@ -60,7 +60,7 @@ class CustomerCreate(SuccessMessageMixin, CreateView):
         for item in formset.save(commit=False):
             item.customer_id = response.pk
             item.save()
-        return HttpResponseRedirect(reverse('customers:customer_add', kwargs={'pk': response.pk}))
+        return HttpResponseRedirect(reverse('customers:customer_update', kwargs={'pk': response.pk}))
 
 def customerupdate(request, pk):
     # Read and Update individual Customer records in a form

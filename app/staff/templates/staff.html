@@ -1,5 +1,6 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -38,7 +39,7 @@
         <th scope="col">#</th>
         {% for item in metas %}
           {% if item.name not in exclude %}
-            <th scope="col">{{item.name.upper}}</th>
+            <th scope="col">{{ item.name.upper|humanize }}</th>
           {% endif %}
         {% endfor %}
         <th scope="col">EDIT</th>
@@ -50,7 +51,9 @@
       {% for items in pages %}
         <tr>
           {% for item in items %}
-            <td>{{ item }}</td>
+            {% if item not in exclude %}
+              <td>{{ item }}</td>
+            {% endif %}
           {% endfor %}
           <td>
             <a href="{% url 'staff:staff_update' pk=items.0 %}">

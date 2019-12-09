@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'services',
     'customers',
     'equipment',
+    'bookings',
     'django.contrib.admin',
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [

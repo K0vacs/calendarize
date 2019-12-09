@@ -64,4 +64,25 @@ $(document).ready(function(){
     return false;
   }
 
+  $('.date').datetimepicker({
+      format: 'YYYY-MM-DD'
+  });
+  $('.time').datetimepicker({
+    format: 'H:mm',
+    useCurrent: true,
+    disabled: true,
+  });
+
+  $("#id_starttime").on("change.datetimepicker", function (e) {
+      var time = moment(e.target.value, 'H:mm').add('1', 'hours').format('HH:mm');
+      $('#id_endtime').val(time);
+      console.log("change");
+  });
+
+  $("#id_starttime").on("input", function (e) {
+    var time = moment(e.target.value, 'H:mm').add('1', 'hours').format('HH:mm');
+    $('#id_endtime').val(time);
+    console.log("input");
+  });
+
 })
