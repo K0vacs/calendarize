@@ -1,4 +1,4 @@
-from django.forms import DateTimeInput, TimeField
+from django.forms import DateTimeInput, TimeField, CharField
 
 class DatePicker(DateTimeInput):
     template_name = 'widgets/datepicker.html'

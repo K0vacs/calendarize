@@ -22,7 +22,7 @@ class BookingsTable(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.model._meta.object_name
         context['metas'] = self.model._meta.fields
-        context['form'] = BookingsForm(self.request.POST)
+        context['form'] = BookingsStaticForm(self.request.POST)
         return context
 
     def get_paginate_by(self, queryset):
@@ -34,32 +34,50 @@ class BookingsTable(ListView):
 
 class BookingsCreate(SuccessMessageMixin, CreateView):
 
-    form_class = BookingsForm
+    form_class = BookingsStaticForm
     template_name = 'bookings_add.html'
     success_message = "%(id)s was created successfully"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        customerstatus = CustomerStatusModelFormset(queryset=CustomerStatus.objects.none())
+        bookingsdateformset = BookingsDateFormset(queryset=Bookings.objects.none(), prefix='bookings')
+        customerstatus = CustomerStatusModelFormset(queryset=CustomerStatus.objects.none(), prefix='customer')
+        context['bookingsdateformset'] = bookingsdateformset
         context['formset'] = customerstatus
         return context
 
     def post(self, request, *args, **kwargs):
-        bookingform = BookingsForm(request.POST)
-        formset = CustomerStatusModelFormset(request.POST)
+        bookingdateform     = BookingsDateFormset(request.POST)
+        formset             = CustomerStatusModelFormset(request.POST)
+        bookingstaticform   = BookingsStaticForm(request.POST)
         
-        if bookingform.is_valid() and formset.is_valid():
-            return self.form_valid(bookingform, formset)
+        if bookingdateform.is_valid():
+            return self.form_valid(bookingdateform)
     
-    def form_valid(self, bookingform, formset):
-        response = bookingform.save()
-        for item in formset.save(commit=False):
-            item.booking_id = response.pk
-            item.save()
-        return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': response.pk }))
+    def form_valid(self, bookingdateform):
+        bookingdateform.save()
+        # response = bookingstaticform.save()
+        # for b in bookingdateform.save(commit=False):
+        #     b.save()
+        # static = bookingstaticform.save(commit=False)
+
+        # for bookingform in bookingdateform.save(commit=False):
+        #     bookingform.save()
+        #     # bookingform.service    = static.service
+        #     # bookingform.equipment  = static.equipment
+        #     # bookingform.staff      = static.staff
+        # response               = bookingdateform.save()
+        # for customerform in bookingdateform.save(commit=False):
+            
+        #     customerform.save()
+        return HttpResponseRedirect(reverse('bookings:bookings'))
+        if(bookingdateform.length == 1):
+            return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': response.pk }))
+        else:
+            return HttpResponseRedirect(reverse('bookings:bookings'))
 
 class BookingsUpdate(SuccessMessageMixin, UpdateView):
-    form_class = BookingsForm
+    form_class = BookingsStaticForm
     template_name = 'bookings_add.html'
     success_message = "%(date)s was updated successfully"
 
@@ -67,7 +85,7 @@ class BookingsUpdate(SuccessMessageMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         t = Bookings.objects.filter(pk=self.kwargs['pk']).values_list()
         d = t[0][1]
-        booking        = BookingsForm(d)
+        booking        = BookingsStaticForm(d)
         customerstatus = CustomerStatusModelFormset(queryset=CustomerStatus.objects.filter(booking_id=self.kwargs['pk']))
         context['formset'] = customerstatus
         context['booking'] =  d

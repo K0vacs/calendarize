@@ -7,41 +7,34 @@ from services.models import *
 # from bootstrap_datepicker_plus import DatePickerInput
 
 
-class BookingsForm(ModelForm):
-    date = forms.DateField(
-        input_formats=['%Y-%m-%d'], 
+class BookingsDateForm(ModelForm):
+    date = forms.CharField( 
         widget=DatePicker(),
         required=False
     )
 
-    starttime = forms.DateField(
-        input_formats=['%H:%mm'], 
+    starttime = forms.CharField(
         widget=TimePicker(),
         required=False
     )
 
-    endtime = forms.DateField(
-        input_formats=['%H:%mm'], 
+    endtime = forms.CharField(
         widget=TimePicker(),
         required=False
     )
-    # starttime = forms.DateField(
-    #     widget=DatePickerInput(format='%m/%d/%Y'),
-    #     required=False
-    # )
-    # endtime = forms.TimeField(
-    #     input_formats=['%H:%M'], 
-    #     widget=TimePicker(),
-    #     required=False
-    # )
-    # date        = forms.CharField(required=False)
+
+    class Meta:
+        model = Bookings
+        fields = ('date', 'starttime', 'endtime')
+
+class BookingsStaticForm(ModelForm):
     service     = forms.ModelChoiceField(queryset=Services.objects.all(), required=False)
     equipment   = forms.ModelChoiceField(queryset=Equipment.objects.all(), required=False)
     staff       = forms.ModelChoiceField(queryset=Staff.objects.all(), required=False)
 
     class Meta:
         model = Bookings
-        fields = '__all__'
+        fields = ('service', 'equipment', 'staff')
 
 class CustomerStatusForm(ModelForm):
     CHOICES = [
@@ -63,19 +56,8 @@ CustomerStatusModelFormset = modelformset_factory(
     fields=('customer', 'status'), 
     extra=1)
 
-# class DateForm(forms.Form):
-#     date = forms.DateTimeField(
-#         input_formats=['%d/%m/%Y %H:%M'],
-#         widget=forms.DateTimeInput(attrs={
-#             'class': 'form-control datetimepicker-input',
-#             'data-target': '#datetimepicker1'
-#         })
-#     )
-
-
-
-# class DateForm(forms.Form):
-#     date = forms.DateTimeField(
-#         input_formats=['%d/%m/%Y %H:%M'], 
-#         widget=BootstrapDateTimePickerInput()
-#     )
+BookingsDateFormset = modelformset_factory(
+    Bookings, 
+    form=BookingsDateForm, 
+    fields=('date', 'starttime', 'endtime'), 
+    extra=1)

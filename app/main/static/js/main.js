@@ -8,22 +8,34 @@ $(document).ready(function(){
     modal.find('#delete a').attr('href', href)
   })
 
-  $(document).on('click', '.add-service-price', function(e){
+  $('.formset').on('click', '.add-form', function(e) {
     e.preventDefault();
-    cloneMore('.formset-form:last', 'form');
+    var self        = $(this);
+    var formset     = self.parents('.formset');
+    var lastForm    = formset.children('.formset-form:last');
+
+    cloneMore(lastForm, prefix(formset));
     return false;
   });
 
-  $(document).on('click', '.remove-service-price', function(e){
-    // e.preventDefault();
-    deleteForm('form', $(this));
+  $('.formset').on('click', '.remove-form', function(e) {
+    var self    = $(this);
+    var formset = self.parents('.formset');
+    
+    deleteForm(self, formset, prefix(formset));
     return false;
   });
+
+  function prefix(formset) {
+    var hiddenInput = formset.children('input:first');
+    var splitName   = hiddenInput[0].name.split('-');
+    var prefix      = splitName[0];
+
+    return prefix;
+  }
 
   function cloneMore(selector, prefix) {
     var newElement = $(selector).clone(true);
-    // $('.formset').find('.formset-form:last').after(newElement)
-    
     var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
     newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
       var name = $(this).attr('name').replace('-' + (total-1) + '-', '-' + total + '-');
@@ -41,27 +53,31 @@ $(document).ready(function(){
     total++;
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
     $(selector).after(newElement);
-    // var conditionRow = $('.form-row:not(:last)');
-    // conditionRow.find('.btn.add-form-row')
-    // .removeClass('btn-success').addClass('btn-danger')
-    // .removeClass('add-form-row').addClass('remove-form-row')
-    // .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>');
-    // return false;
   }
 
-  function deleteForm(prefix, btn) {
+  function deleteForm(self, formset, prefix) {
     var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+    
     if (total > 1) {
-        btn.parents('.formset-form').remove();
-        var forms = $('.formset-form');
+        self.parents('.formset-form').remove();
+        var forms = formset.children('.formset-form');
+        
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
         for (var i=0, formCount=forms.length; i<formCount; i++) {
             $(forms.get(i)).find(':input').each(function() {
-                updateElementIndex(this, prefix, i);
+              updateElementIndex(this, prefix, i);
             });
         }
     }
     return false;
+  }
+
+  function updateElementIndex(el, prefix, ndx) {
+    var id_regex = new RegExp('(' + prefix + '-\\d+)');
+    var replacement = prefix + '-' + ndx;
+    if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+    if (el.id) el.id = el.id.replace(id_regex, replacement);
+    if (el.name) el.name = el.name.replace(id_regex, replacement);
   }
 
   $('.date').datetimepicker({
@@ -72,6 +88,13 @@ $(document).ready(function(){
     useCurrent: true,
     disabled: true,
   });
+
+
+
+
+
+
+
 
   $("#id_starttime").on("change.datetimepicker", function (e) {
       var time = moment(e.target.value, 'H:mm').add('1', 'hours').format('HH:mm');
