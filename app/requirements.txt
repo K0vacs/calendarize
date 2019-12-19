@@ -4,3 +4,4 @@ python-dotenv
 django-bootstrap4
 Pillow
 django-bootstrap-datepicker-plus
+numpy

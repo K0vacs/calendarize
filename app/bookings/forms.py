@@ -1,26 +1,31 @@
 from django import forms
 from django.forms import ModelForm
-from django.forms.models import modelformset_factory
+from django.forms.models import modelformset_factory, inlineformset_factory
 from .models import *
 from .widgets import *
 from services.models import *
-# from bootstrap_datepicker_plus import DatePickerInput
-
+from .validators import *
 
 class BookingsDateForm(ModelForm):
     date = forms.CharField( 
-        widget=DatePicker(),
-        required=False
+        widget=forms.TextInput(attrs={'placeholder': 'DD/MM/YYYY', 'required': 'required'}),
+        validators=[date_validation],
+        label='',
+        required=True
     )
 
     starttime = forms.CharField(
-        widget=TimePicker(),
-        required=False
+        widget=forms.TextInput(attrs={'placeholder': 'HH:MM', 'required': 'required', 'class': 'start-time'}),
+        validators=[time_validation],
+        label='',
+        required=True
     )
 
     endtime = forms.CharField(
-        widget=TimePicker(),
-        required=False
+        widget=forms.TextInput(attrs={'placeholder': 'HH:MM', 'required': 'required'}),
+        validators=[time_validation],
+        label='',
+        required=True
     )
 
     class Meta:
@@ -28,9 +33,21 @@ class BookingsDateForm(ModelForm):
         fields = ('date', 'starttime', 'endtime')
 
 class BookingsStaticForm(ModelForm):
-    service     = forms.ModelChoiceField(queryset=Services.objects.all(), required=False)
-    equipment   = forms.ModelChoiceField(queryset=Equipment.objects.all(), required=False)
-    staff       = forms.ModelChoiceField(queryset=Staff.objects.all(), required=False)
+    service = forms.ModelChoiceField(
+        queryset=Services.objects.all(), 
+        label='',
+        required=True
+    )
+    equipment = forms.ModelChoiceField(
+        queryset=Equipment.objects.all(), 
+        label='',
+        required=True
+    )
+    staff = forms.ModelChoiceField(
+        queryset=Staff.objects.all(), 
+        label='',
+        required=True
+    )
 
     class Meta:
         model = Bookings
@@ -43,12 +60,27 @@ class CustomerStatusForm(ModelForm):
         ('3', 'Late Cancelation'),
     ]
 
-    customer    = forms.ModelChoiceField(queryset=Customers.objects.all())
-    status      = forms.ChoiceField(choices=CHOICES)
+    customer = forms.ModelChoiceField(
+        queryset=Customers.objects.all(), 
+        widget=forms.Select(attrs={
+            'required': 'required',
+            'placeholder': 'Customer',
+        }),
+        label='',
+        required=True)
+
+    status = forms.ChoiceField(
+        choices=CHOICES, 
+        widget=forms.Select(attrs={
+            'required': 'required',
+            'placeholder': 'Status',
+        }),
+        label='',
+        required=True)
 
     class Meta:
         model = CustomerStatus
-        fields = '__all__'
+        fields = ('customer', 'status')
 
 CustomerStatusModelFormset = modelformset_factory(
     CustomerStatus, 

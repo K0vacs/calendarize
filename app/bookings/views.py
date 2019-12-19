@@ -10,6 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.core import serializers
+import numpy as np
 
 class BookingsTable(ListView):
     # This class reads from the Customers database records and displays the returned data in a table.
@@ -39,42 +40,57 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
     success_message = "%(id)s was created successfully"
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        bookingsdateformset = BookingsDateFormset(queryset=Bookings.objects.none(), prefix='bookings')
-        customerstatus = CustomerStatusModelFormset(queryset=CustomerStatus.objects.none(), prefix='customer')
-        context['bookingsdateformset'] = bookingsdateformset
-        context['formset'] = customerstatus
+        context                   = super().get_context_data(**kwargs)
+        context['date_formset']   = BookingsDateFormset(
+            queryset=Bookings.objects.none(), 
+            prefix='bookings'
+        )
+        context['status_formset'] = CustomerStatusModelFormset(
+            queryset=CustomerStatus.objects.none(), 
+            prefix='customer'
+        )
         return context
 
     def post(self, request, *args, **kwargs):
-        bookingdateform     = BookingsDateFormset(request.POST)
-        formset             = CustomerStatusModelFormset(request.POST)
-        bookingstaticform   = BookingsStaticForm(request.POST)
+        date_formset   = BookingsDateFormset(request.POST or None, prefix='bookings')
+        status_formset = CustomerStatusModelFormset(request.POST, prefix='customer')
+        booking_form   = BookingsStaticForm(request.POST)
         
-        if bookingdateform.is_valid():
-            return self.form_valid(bookingdateform)
-    
-    def form_valid(self, bookingdateform):
-        bookingdateform.save()
-        # response = bookingstaticform.save()
-        # for b in bookingdateform.save(commit=False):
-        #     b.save()
-        # static = bookingstaticform.save(commit=False)
-
-        # for bookingform in bookingdateform.save(commit=False):
-        #     bookingform.save()
-        #     # bookingform.service    = static.service
-        #     # bookingform.equipment  = static.equipment
-        #     # bookingform.staff      = static.staff
-        # response               = bookingdateform.save()
-        # for customerform in bookingdateform.save(commit=False):
-            
-        #     customerform.save()
-        return HttpResponseRedirect(reverse('bookings:bookings'))
-        if(bookingdateform.length == 1):
-            return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': response.pk }))
+        if date_formset.is_valid() and status_formset.is_valid() and booking_form.is_valid():
+            return self.form_valid(date_formset, status_formset, booking_form)
         else:
-            return HttpResponseRedirect(reverse('bookings:bookings'))
+            return self.form_invalid(date_formset, status_formset, booking_form)
+    
+    def form_valid(self, date_formset, status_formset, booking_form):
+        booking = booking_form.save(commit=False)
+        ids = []
+        
+        for form in date_formset.save(commit=False):
+            form.service    = booking.service
+            form.equipment  = booking.equipment
+            form.staff      = booking.staff
+            response        = form.save()
+            ids.append(form.pk)
+
+        repeatedIds = np.tile(ids, len(ids))
+
+        for id, status in zip(repeatedIds, status_formset.save(commit=False)):
+                status.booking_id = id
+                status.save()
+
+        if(len(date_formset) == 1):
+            return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': str(repeatedIds) }))
+        return HttpResponseRedirect(reverse('bookings:bookings'))
+
+    def form_invalid(self, date_formset, status_formset, booking_form):
+        context = {
+            "date_formset": date_formset,
+            "status_formset": status_formset,
+            "form": booking_form,
+        }
+
+        return render(self.request, self.template_name, context)
+
 
 class BookingsUpdate(SuccessMessageMixin, UpdateView):
     form_class = BookingsStaticForm
@@ -104,5 +120,6 @@ class BookingsDelete(DeleteView):
         return self.post(request, **kwargs)
     
     def get_success_url(self):
-        CustomerStatus.objects.filter(customer_id=self.object.pk).delete()
+        # status = CustomerStatus.objects.get(customer_id=self.object.pk)
+        # status.delete()
         return reverse_lazy('bookings:bookings')

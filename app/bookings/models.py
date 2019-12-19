@@ -7,7 +7,7 @@ from staff.models import *
 from django.utils import timezone
 
 class Bookings(models.Model):
-    date            = models.CharField(max_length=100, default=None, null=True)
+    date            = models.CharField(max_length=100, default=None, null=False)
     starttime       = models.CharField(max_length=100, default=None, null=True)
     endtime         = models.CharField(max_length=100, default=None, null=True)
     service         = models.ForeignKey(Services, on_delete=models.SET_NULL, null=True)
@@ -21,7 +21,7 @@ class Bookings(models.Model):
         return reverse('bookings:bookings_update', kwargs={'pk': self.pk})
 
 class CustomerStatus(models.Model):
-    booking  = models.ForeignKey(Bookings, on_delete=models.SET_NULL, null=True)
+    booking  = models.ForeignKey(Bookings, on_delete=models.CASCADE, null=True)
     customer = models.ForeignKey(Customers, on_delete=models.SET_NULL, null=True)
     status   = models.CharField(max_length=3)
 
