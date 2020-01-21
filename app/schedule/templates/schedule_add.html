@@ -1,0 +1,42 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block title %}Add New {{ title }}{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
+
+<a class="btn btn-primary" href="{% url 'equipment:equipment_add' %}" role="button">Add New</a>
+
+<form action="" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+      {% bootstrap_field form.name %}
+      <div class="form-group row">
+          <div class="col-1">
+            {% if form.instance.icon %}
+              <img src="http://localhost:8000{{form.instance.icon.url}}" alt="" width="50px"> 
+            {% endif %}
+          </div>
+          <div class="col-11">
+              {{ form.icon }}
+          </div>
+      </div>
+      
+      {% bootstrap_field form.price %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Save</button>
+    {% endbuttons %}
+</form>
+
+{% endblock %}

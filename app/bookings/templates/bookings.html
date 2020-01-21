@@ -1,5 +1,6 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -38,7 +39,7 @@
         <th scope="col">#</th>
         {% for item in metas %}
           {% if item.name != 'id' %}
-            <th scope="col">{{item.name.upper}}</th>
+            <th scope="col">{{item.name.upper | humanize}}</th>
           {% endif %}
         {% endfor %}
         <th scope="col">EDIT</th>

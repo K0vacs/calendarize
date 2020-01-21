@@ -23,7 +23,6 @@ class BookingsTable(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.model._meta.object_name
         context['metas'] = self.model._meta.fields
-        context['form'] = BookingsStaticForm(self.request.POST)
         return context
 
     def get_paginate_by(self, queryset):
@@ -31,7 +30,15 @@ class BookingsTable(ListView):
         return items_per_page
 
     def get_queryset(self):
-        return self.model.objects.all().values_list()
+        return self.model.objects.all().values_list(
+            'id',
+            'date',
+            'start_time',
+            'end_time',
+            'service_id__name',
+            'equipment_id__name',
+            'staff_id__username',
+        )
 
 class BookingsCreate(SuccessMessageMixin, CreateView):
 

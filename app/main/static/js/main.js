@@ -3,6 +3,10 @@ $(document).ready(function() {
 
   // EVENTS
 
+  $('.chevron').on('click', function (event) {
+      $(this).children('.fas').toggleClass('fa-chevron-down fa-chevron-up');
+  })
+
   $('#deleteModal').on('show.bs.modal', function (event) {
     var self  = $(this);
     var pk    = $(event.relatedTarget).data('id');
