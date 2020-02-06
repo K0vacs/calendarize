@@ -10,6 +10,7 @@ class Bookings(models.Model):
     date            = models.CharField(max_length=100, default=None, null=False)
     start_time       = models.CharField(max_length=100, default=None, null=True)
     end_time         = models.CharField(max_length=100, default=None, null=True)
+    field           = models.CharField(max_length=100, default=None, null=True) 
     service         = models.ForeignKey(Services, on_delete=models.SET_NULL, null=True)
     equipment       = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True)
     staff           = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True)

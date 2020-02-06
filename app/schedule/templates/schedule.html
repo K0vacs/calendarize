@@ -1,5 +1,10 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
+{% load slashed_date %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %} 
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -12,18 +17,18 @@
                 <div class="row">
                 <div class="col-4">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-dark">Today</button>
-                        <button type="button" class="btn btn-outline-dark">Back</button>
-                        <button type="button" class="btn btn-outline-dark">Next</button>
+                        <a href="{% url 'schedule:schedule_date' date=date|text_date %}" class="btn btn-outline-dark">Today</a>
+                        <a href="{% url 'schedule:schedule_date' date=date|minus_date %}" class="btn btn-outline-dark">Back</a>
+                        <a href="{% url 'schedule:schedule_date' date=date|plus_date %}" class="btn btn-outline-dark">Next</a>
                     </div>
                 </div>
-                <div class="col-4">{{ today }}</div>
+                <div class="col-4">{{ date }}</div>
                 <div class="col-4">
-                    <form method="get">
-                        <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="date" aria-describedby="select date">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form test %}
                         <button type="submit">Submit</button>
                     </form>
-                    
                 </div>
             </div>
             </div>
@@ -31,9 +36,9 @@
     </div>
 </div>
 
-
-{% for person in staff %}
+{% if staff %}
 <div class="row">
+  {% for person in staff %}
     <div class="col-6">
     <div class="card">
         <div class="card-header">
@@ -57,11 +62,10 @@
                         {% for items in pages %}
                     {% if person.username == items.6 %}
                       
-                        <tr>
+                        <tr class="clickable-row" data-href="{% url 'bookings:bookings_update' pk=items.0 %}">
                             <td>{{ items.2 }} - {{ items.3 }}</td>
                             <td>{{ items.4 }}</td>
                             <td>
-                                
                                 {% for item in equipment %}
                                     {% if item.name == items.5 %}
                                     <span class="badge badge-pill badge-primary badge-{{ item.name.lower }}">
@@ -81,8 +85,17 @@
         </div>
       </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
+{% else %}
+<div class="row">
+  <div class="col-12">
+  <div class="card text-center">
+  <h1>No Data to Display</h1>
+  </div>
+</div>
+</div>
+{% endif %}
 
 {% if pages %}
   <!-- Modal -->

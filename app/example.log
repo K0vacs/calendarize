@@ -1,0 +1,550 @@
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 84, in form_valid
+    logging.debug(formset_dates + "Hello World!")
+TypeError: can only concatenate list (not "str") to list
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:formset_dates[0]
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:<input type="hidden" name="bookings-TOTAL_FORMS" value="1" id="id_bookings-TOTAL_FORMS"><input type="hidden" name="bookings-INITIAL_FORMS" value="0" id="id_bookings-INITIAL_FORMS"><input type="hidden" name="bookings-MIN_NUM_FORMS" value="0" id="id_bookings-MIN_NUM_FORMS"><input type="hidden" name="bookings-MAX_NUM_FORMS" value="1000" id="id_bookings-MAX_NUM_FORMS">
+<tr><th></th><td><input type="text" name="bookings-0-date" value="22/12/2019" placeholder="DD/MM/YYYY" required="required" id="id_bookings-0-date"></td></tr>
+<tr><th></th><td><input type="text" name="bookings-0-starttime" value="15:40" placeholder="HH:MM" required="required" class="start-time" id="id_bookings-0-starttime"></td></tr>
+<tr><th></th><td><input type="text" name="bookings-0-endtime" value="16:40" placeholder="HH:MM" required="required" id="id_bookings-0-endtime"><input type="hidden" name="bookings-0-id" id="id_bookings-0-id"></td></tr>
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:22/12/2019
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 95, in form_valid
+    logging.debug(form.endtime)
+AttributeError: 'Bookings' object has no attribute 'endtime'
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+DEBUG:root:None
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1048, "Column 'start_time' cannot be null")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 93, in form_valid
+    form.save()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 745, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 782, in save_base
+    updated = self._save_table(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 923, in _do_insert
+    return manager._insert(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 79, in execute
+    raise utils.IntegrityError(*tuple(e.args))
+django.db.utils.IntegrityError: (1048, "Column 'start_time' cannot be null")
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1048, "Column 'start_time' cannot be null")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 93, in form_valid
+    form.save()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 745, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 782, in save_base
+    updated = self._save_table(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 923, in _do_insert
+    return manager._insert(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 79, in execute
+    raise utils.IntegrityError(*tuple(e.args))
+django.db.utils.IntegrityError: (1048, "Column 'start_time' cannot be null")
+INFO:django.utils.autoreload:/code/bookings/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 95, in form_valid
+    logging.debug(form.time)
+AttributeError: 'Bookings' object has no attribute 'time'
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1048, "Column 'dates' cannot be null")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 93, in form_valid
+    form.save()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 745, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 782, in save_base
+    updated = self._save_table(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 923, in _do_insert
+    return manager._insert(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 79, in execute
+    raise utils.IntegrityError(*tuple(e.args))
+django.db.utils.IntegrityError: (1048, "Column 'dates' cannot be null")
+INFO:django.utils.autoreload:/code/bookings/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 209, in execute
+    res = self._query(query)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/cursors.py", line 315, in _query
+    db.query(q)
+  File "/usr/local/lib/python3.8/site-packages/MySQLdb/connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1048, "Column 'date' cannot be null")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 93, in form_valid
+    form.save()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 745, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 782, in save_base
+    updated = self._save_table(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 923, in _do_insert
+    return manager._insert(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py", line 79, in execute
+    raise utils.IntegrityError(*tuple(e.args))
+django.db.utils.IntegrityError: (1048, "Column 'date' cannot be null")
+INFO:django.utils.autoreload:/code/bookings/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 89, in form_valid
+    for form in formset_dates:
+NameError: name 'formset_dates' is not defined
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: '192.168.88.44:8000'. You may need to add '192.168.88.44' to ALLOWED_HOSTS.
+WARNING:django.request:Bad Request: /
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 89, in form_valid
+    for form in formset_dates:
+NameError: name 'formset_dates' is not defined
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 89, in form_valid
+    for form in formset_dates:
+NameError: name 'formset_dates' is not defined
+ERROR:django.request:Internal Server Error: /bookings/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1865, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1566, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1482, in names_to_path
+    raise FieldError("Cannot resolve keyword '%s' into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time' into field. Choices are: customerstatus, date, equipment, equipment_id, id, service, service_id, staff, staff_id, timeEnd, timeStart
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/list.py", line 142, in get
+    self.object_list = self.get_queryset()
+  File "/code/bookings/views.py", line 36, in get_queryset
+    return self.model.objects.all().values_list(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 836, in values_list
+    clone = self._values(*_fields, **expressions)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 804, in _values
+    clone.query.set_values(fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 2129, in set_values
+    self.add_fields(field_names, True)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1887, in add_fields
+    raise FieldError("Cannot resolve keyword %r into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time' into field. Choices are: customerstatus, date, equipment, equipment_id, id, service, service_id, staff, staff_id, timeEnd, timeStart
+ERROR:django.request:Internal Server Error: /bookings/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1865, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1566, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1482, in names_to_path
+    raise FieldError("Cannot resolve keyword '%s' into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time' into field. Choices are: customerstatus, date, equipment, equipment_id, id, service, service_id, staff, staff_id, timeEnd, timeStart
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/list.py", line 142, in get
+    self.object_list = self.get_queryset()
+  File "/code/bookings/views.py", line 36, in get_queryset
+    return self.model.objects.all().values_list(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 836, in values_list
+    clone = self._values(*_fields, **expressions)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 804, in _values
+    clone.query.set_values(fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 2129, in set_values
+    self.add_fields(field_names, True)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1887, in add_fields
+    raise FieldError("Cannot resolve keyword %r into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'start_time' into field. Choices are: customerstatus, date, equipment, equipment_id, id, service, service_id, staff, staff_id, timeEnd, timeStart
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 96, in form_valid
+    logging.debug(form.start_time)
+AttributeError: 'Bookings' object has no attribute 'start_time'
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:None
+INFO:django.utils.autoreload:/code/bookings/forms.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+ERROR:django.request:Internal Server Error: /bookings/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/code/bookings/views.py", line 70, in post
+    return self.form_valid(date_formset, status_formset, booking_form)
+  File "/code/bookings/views.py", line 96, in form_valid
+    logging.debug(form.startTime)
+AttributeError: 'Bookings' object has no attribute 'startTime'
+ERROR:django.request:Internal Server Error: /bookings/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1865, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1566, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1482, in names_to_path
+    raise FieldError("Cannot resolve keyword '%s' into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'startTime' into field. Choices are: customerstatus, date, equipment, equipment_id, field, id, service, service_id, staff, staff_id
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/views/generic/list.py", line 142, in get
+    self.object_list = self.get_queryset()
+  File "/code/bookings/views.py", line 36, in get_queryset
+    return self.model.objects.all().values_list(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 836, in values_list
+    clone = self._values(*_fields, **expressions)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 804, in _values
+    clone.query.set_values(fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 2129, in set_values
+    self.add_fields(field_names, True)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1887, in add_fields
+    raise FieldError("Cannot resolve keyword %r into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'startTime' into field. Choices are: customerstatus, date, equipment, equipment_id, field, id, service, service_id, staff, staff_id
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:19:00
+INFO:django.utils.autoreload:/code/bookings/models.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:19:00
+DEBUG:root:13:00
+DEBUG:root:19:00
+INFO:django.utils.autoreload:/code/bookings/validators.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:19:00
+WARNING:django.request:Not Found: /favicon.ico
+INFO:django.utils.autoreload:/code/schedule/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:root:19:00
+DEBUG:root:08:00
+INFO:django.utils.autoreload:/code/schedule/views.py changed, reloading.
+DEBUG:asyncio:Using selector: EpollSelector

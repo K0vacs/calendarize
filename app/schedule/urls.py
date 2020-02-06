@@ -9,6 +9,7 @@ app_name = 'schedule'
 
 urlpatterns = [
     path('schedule/', views.ScheduleTable.as_view(), name='schedule'),
+    path('schedule/<date>', views.ScheduleTable.as_view(), name='schedule_date'),
     # path('equipment/add/', views.EquipmentCreate.as_view(), name='equipment_add'),
     # path('equipment/add/<int:pk>/', views.EquipmentUpdate.as_view(), name='equipment_update'),
     # path('equipment/delete/<int:pk>/', views.EquipmentDelete.as_view(), name='equipment_delete'),

@@ -14,14 +14,14 @@ class BookingsDateForm(ModelForm):
         required=True
     )
 
-    starttime = forms.CharField(
+    start_time = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'HH:MM', 'required': 'required', 'class': 'start-time'}),
         validators=[time_validation],
         label='',
         required=True
     )
 
-    endtime = forms.CharField(
+    end_time = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'HH:MM', 'required': 'required'}),
         validators=[time_validation],
         label='',
@@ -30,7 +30,7 @@ class BookingsDateForm(ModelForm):
 
     class Meta:
         model = Bookings
-        fields = ('date', 'starttime', 'endtime')
+        fields = ('date', 'start_time', 'end_time')
 
 class BookingsStaticForm(ModelForm):
     service = forms.ModelChoiceField(
@@ -91,5 +91,5 @@ CustomerStatusModelFormset = modelformset_factory(
 BookingsDateFormset = modelformset_factory(
     Bookings, 
     form=BookingsDateForm, 
-    fields=('date', 'starttime', 'endtime'), 
+    fields=('date', 'start_time', 'end_time'), 
     extra=1)

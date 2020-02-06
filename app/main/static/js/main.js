@@ -2,6 +2,10 @@ $(document).ready(function() {
 
 
   // EVENTS
+  
+  $(".clickable-row").click(function() {
+    window.location = $(this).data("href");
+  });
 
   $('.chevron').on('click', function (event) {
       $(this).children('.fas').toggleClass('fa-chevron-down fa-chevron-up');
@@ -43,7 +47,7 @@ $(document).ready(function() {
     var time  = moment(event.target.value, 'H:mm').add('1', 'hours').format('HH:mm');
 
     if(time != "Invalid date") {
-      id = '#' + id.replace('starttime', 'endtime');
+      id = '#' + id.replace('start_time', 'end_time');
       $(id).val(time);
     }
   });

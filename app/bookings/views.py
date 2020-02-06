@@ -12,6 +12,9 @@ from django.utils import timezone
 from django.core import serializers
 import numpy as np
 
+import logging
+import json
+
 class BookingsTable(ListView):
     # This class reads from the Customers database records and displays the returned data in a table.
 
@@ -71,13 +74,26 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
     def form_valid(self, date_formset, status_formset, booking_form):
         booking = booking_form.save(commit=False)
         ids = []
+
+
+
         
+
+        logging.basicConfig(filename='example.log',level=logging.DEBUG)
+        # logging.debug(date_formset.save(commit=False))
+
+        date_formset.save()
+        # formset_dates = date_formset.save(commit=False)
+
+
         for form in date_formset.save(commit=False):
             form.service    = booking.service
             form.equipment  = booking.equipment
             form.staff      = booking.staff
-            response        = form.save()
+            # response        = 
+            form.save()
             ids.append(form.pk)
+            logging.debug(form.start_time)
 
         repeatedIds = np.tile(ids, len(ids))
 
@@ -86,7 +102,7 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
                 status.save()
 
         if(len(date_formset) == 1):
-            return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': str(repeatedIds) }))
+            return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': repeatedIds[0] }))
         return HttpResponseRedirect(reverse('bookings:bookings'))
 
     def form_invalid(self, date_formset, status_formset, booking_form):
