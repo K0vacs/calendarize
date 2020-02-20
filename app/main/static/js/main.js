@@ -33,10 +33,14 @@ $(document).ready(function() {
     });
 
     if(self.hasClass('add-form')) {
+
       var lastForm = formset.children('.formset-form:last');
       cloneMore(lastForm, prefix(formset), false);
+
     } else if(self.hasClass('remove-form')) {
+
       deleteForm(self, formset, prefix(formset));
+
     }
     
     return false;
@@ -105,6 +109,8 @@ $(document).ready(function() {
       self.attr({'name': name, 'id': id});
     });
 
+    newElement.find('.remove-form').attr('href', '').attr('data-csrf', '');
+
     total++;
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
     
@@ -117,20 +123,31 @@ $(document).ready(function() {
     
   }
 
-
   function deleteForm(self, formset, prefix) {
     var total = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
     
     if (total > 1) {
-        self.parents('.formset-form').remove();
-        var forms = formset.children('.formset-form');
+
+      if (self.attr("href") && self.data("csrf")) {
         
-        $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
-        for (var i=0, formCount=forms.length; i<formCount; i++) {
-            $(forms.get(i)).find(':input').each(function() {
-              updateElementIndex(this, prefix, i);
-            });
-        }
+        ajaxDeleteCustomerStatus(self);
+
+      }
+
+      self.parents('.formset-form').remove();
+      var forms = formset.children('.formset-form');
+      $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+
+      for (var i=0, formCount=forms.length; i<formCount; i++) {
+          
+        $(forms.get(i)).find(':input').each(function() {
+            
+          updateElementIndex(this, prefix, i);
+        
+        });
+
+      }
+
     }
     return false;
   }
@@ -141,6 +158,22 @@ $(document).ready(function() {
     if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
     if (el.id) el.id = el.id.replace(id_regex, replacement);
     if (el.name) el.name = el.name.replace(id_regex, replacement);
+  }
+
+  // This Ajax call posts to the customer status delete url
+  function ajaxDeleteCustomerStatus(self) {
+
+    $.ajax({
+      url: `${self.attr("href")}`,
+      type: "POST",
+      data: {
+        csrfmiddlewaretoken: self.data("csrf"),
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+
   }
 
 });

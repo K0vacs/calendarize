@@ -51,19 +51,19 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context                   = super().get_context_data(**kwargs)
-        context['date_formset']   = BookingsDateFormset(
+        context['date_formset']   = bookings_date_formset(1)(
             queryset=Bookings.objects.none(), 
             prefix='bookings'
         )
-        context['status_formset'] = CustomerStatusModelFormset(
+        context['status_formset'] = customer_status_formset(1)(
             queryset=CustomerStatus.objects.none(), 
             prefix='customer'
         )
         return context
 
     def post(self, request, *args, **kwargs):
-        date_formset   = BookingsDateFormset(request.POST or None, prefix='bookings')
-        status_formset = CustomerStatusModelFormset(request.POST, prefix='customer')
+        date_formset   = bookings_date_formset(0)(request.POST or None, prefix='bookings')
+        status_formset = customer_status_formset(1)(request.POST, prefix='customer')
         booking_form   = BookingsStaticForm(request.POST)
         
         if date_formset.is_valid() and status_formset.is_valid() and booking_form.is_valid():
@@ -75,25 +75,12 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
         booking = booking_form.save(commit=False)
         ids = []
 
-
-
-        
-
-        logging.basicConfig(filename='example.log',level=logging.DEBUG)
-        # logging.debug(date_formset.save(commit=False))
-
-        date_formset.save()
-        # formset_dates = date_formset.save(commit=False)
-
-
         for form in date_formset.save(commit=False):
             form.service    = booking.service
             form.equipment  = booking.equipment
             form.staff      = booking.staff
-            # response        = 
             form.save()
             ids.append(form.pk)
-            logging.debug(form.start_time)
 
         repeatedIds = np.tile(ids, len(ids))
 
@@ -118,21 +105,70 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
 class BookingsUpdate(SuccessMessageMixin, UpdateView):
     form_class = BookingsStaticForm
     template_name = 'bookings_add.html'
-    success_message = "%(date)s was updated successfully"
+    success_message = "Your booking was updated successfully"
+    # context_object_name = 'booking'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        t = Bookings.objects.filter(pk=self.kwargs['pk']).values_list()
-        d = t[0][1]
-        booking        = BookingsStaticForm(d)
-        customerstatus = CustomerStatusModelFormset(queryset=CustomerStatus.objects.filter(booking_id=self.kwargs['pk']))
-        context['formset'] = customerstatus
-        context['booking'] =  d
+        context             = super().get_context_data(**kwargs)
+        booking             = bookings_date_formset(0)(
+                                queryset=Bookings.objects.filter(
+                                    pk=self.kwargs['pk']
+                                ),
+                                prefix='bookings'
+                            )
+        customerstatus      = customer_status_formset(1)(
+                                queryset=CustomerStatus.objects.filter(
+                                    booking_id=self.kwargs['pk']
+                                ),
+                                prefix='customer'
+                            )
+        context['status_formset']  = customerstatus
+        context['date_formset']  =  booking
+        context['field_status'] = 'disabled'
         return context
 
     def get_queryset(self):
         query = Bookings.objects.filter(pk=self.kwargs['pk'])
         return query
+
+    def post(self, request, *args, **kwargs):
+        date_formset   = bookings_date_formset(1)(request.POST or None, prefix='bookings')
+        status_formset = customer_status_formset(1)(request.POST, prefix='customer')
+        booking_form   = BookingsStaticForm(request.POST)
+        
+        if date_formset.is_valid() and status_formset.is_valid() and booking_form.is_valid():
+            return self.form_valid(date_formset, status_formset, booking_form)
+        else:
+            return self.form_invalid(date_formset, status_formset, booking_form)
+    
+    def form_valid(self, date_formset, status_formset, booking_form):      
+
+        if date_formset:
+            booking = booking_form.save(commit=False)
+            for form in date_formset.save(commit=False):
+                form.service    = booking.service
+                # form.equipment  = booking.equipment
+                form.staff      = booking.staff
+                form.save()
+        else:
+            booking.save()
+
+        for status in status_formset.save(commit=False):
+                status.booking_id = self.kwargs['pk']
+                status.save()
+
+        if(len(date_formset) == 1):
+            return HttpResponseRedirect(reverse('bookings:bookings_update', kwargs = { 'pk': self.kwargs['pk'] }))
+        return HttpResponseRedirect(reverse('bookings:bookings'))
+
+    def form_invalid(self, date_formset, status_formset, booking_form):
+        context = {
+            "date_formset": date_formset,
+            "status_formset": status_formset,
+            "form": booking_form,
+        }
+
+        return render(self.request, self.template_name, context)
 
 class BookingsDelete(DeleteView):
     # Delete individual Booking records in a modal
@@ -143,6 +179,15 @@ class BookingsDelete(DeleteView):
         return self.post(request, **kwargs)
     
     def get_success_url(self):
-        # status = CustomerStatus.objects.get(customer_id=self.object.pk)
-        # status.delete()
         return reverse_lazy('bookings:bookings')
+
+class CustomerStatusDelete(DeleteView):
+    # Delete individual Customer Status records through an Ajax request
+
+    model = CustomerStatus
+
+    def get(self, request, **kwargs):
+        return self.post(request, **kwargs)
+    
+    def get_success_url(self):
+        return reverse('bookings:bookings')

@@ -36,7 +36,6 @@
   </div>
 </div>
 
-
 <div class="row">
   <form action="" method="post" class="form col-12">
     {% csrf_token %}
@@ -44,8 +43,11 @@
       {{ date_formset.management_form }}
       {% for form in date_formset %}
         <div class="row align-items-end formset-form">
-          {% bootstrap_form form form_group_class='form-group col-3' %}
-          <div class="form-group col-3">
+          {% bootstrap_form form form_group_class='form-group col' %}
+          <div class="form-group col">
+            <!-- <a href="{% url 'bookings:customerstatus_delete' pk=form.instance.id %}" class="btn btn-danger">
+              <i class="fas fa-trash"></i> Test
+            </a> -->
             {% if form.instance.id is not None %}
             <a href="{% url 'bookings:bookings_delete' pk=form.instance.id %}" class="btn btn-danger remove-form" role="button">
                 <i class="fas fa-trash"></i> Delete
@@ -60,7 +62,7 @@
       {% endfor %}
       <div class="row">
         <div class="form-group col-12">
-          <button type="button" class="btn btn-success add-form"><i class="fas fa-plus"></i> Add</button>
+          <button type="button" class="btn btn-success add-form" {{ field_status }}><i class="fas fa-plus"></i> Add</button>
         </div>
       </div>
     </div>
@@ -72,7 +74,7 @@
           {% bootstrap_form form form_group_class='form-group col-3' %}
           <div class="form-group col-3">
             {% if form.instance.id is not None %}
-            <a href="{% url 'bookings:bookings_delete' pk=form.instance.id %}" class="btn btn-danger remove-form" role="button">
+            <a href="{% url 'bookings:customerstatus_delete' pk=form.instance.id %}" data-csrf="{{ csrf_token }}" class="btn btn-danger remove-form" role="button">
                 <i class="fas fa-trash"></i> Delete
             </a>
             {% else %}

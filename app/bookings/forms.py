@@ -28,9 +28,15 @@ class BookingsDateForm(ModelForm):
         required=True
     )
 
+    equipment = forms.ModelChoiceField(
+        queryset=Equipment.objects.all(), 
+        label='',
+        required=True
+    )
+
     class Meta:
         model = Bookings
-        fields = ('date', 'start_time', 'end_time')
+        fields = ('date', 'start_time', 'end_time', 'equipment')
 
 class BookingsStaticForm(ModelForm):
     service = forms.ModelChoiceField(
@@ -38,11 +44,7 @@ class BookingsStaticForm(ModelForm):
         label='',
         required=True
     )
-    equipment = forms.ModelChoiceField(
-        queryset=Equipment.objects.all(), 
-        label='',
-        required=True
-    )
+
     staff = forms.ModelChoiceField(
         queryset=Staff.objects.all(), 
         label='',
@@ -51,7 +53,7 @@ class BookingsStaticForm(ModelForm):
 
     class Meta:
         model = Bookings
-        fields = ('service', 'equipment', 'staff')
+        fields = ('service', 'staff')
 
 class CustomerStatusForm(ModelForm):
     CHOICES = [
@@ -82,14 +84,29 @@ class CustomerStatusForm(ModelForm):
         model = CustomerStatus
         fields = ('customer', 'status')
 
-CustomerStatusModelFormset = modelformset_factory(
-    CustomerStatus, 
-    form=CustomerStatusForm, 
-    fields=('customer', 'status'), 
-    extra=1)
+def customer_status_formset(number):
+    CustomerStatusModelFormset = modelformset_factory(
+        CustomerStatus, 
+        form=CustomerStatusForm, 
+        fields=('customer', 'status'), 
+        extra=number
+    )
+    return CustomerStatusModelFormset
 
-BookingsDateFormset = modelformset_factory(
-    Bookings, 
-    form=BookingsDateForm, 
-    fields=('date', 'start_time', 'end_time'), 
-    extra=1)
+# def bookings_date_formset(number):
+# BookingsDateFormset = modelformset_factory(
+#     Bookings, 
+#     form=BookingsDateForm, 
+#     fields=('date', 'start_time', 'end_time'), 
+#     extra=1
+# )
+    # return BookingsDateFormset
+
+def bookings_date_formset(number):
+    BookingsDateFormset = modelformset_factory(
+        Bookings, 
+        form=BookingsDateForm, 
+        fields=('date', 'start_time', 'end_time', 'equipment'), 
+        extra=number
+    )
+    return BookingsDateFormset
