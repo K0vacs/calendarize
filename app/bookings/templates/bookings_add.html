@@ -45,9 +45,6 @@
         <div class="row align-items-end formset-form">
           {% bootstrap_form form form_group_class='form-group col' %}
           <div class="form-group col">
-            <!-- <a href="{% url 'bookings:customerstatus_delete' pk=form.instance.id %}" class="btn btn-danger">
-              <i class="fas fa-trash"></i> Test
-            </a> -->
             {% if form.instance.id is not None %}
             <a href="{% url 'bookings:bookings_delete' pk=form.instance.id %}" class="btn btn-danger remove-form" role="button">
                 <i class="fas fa-trash"></i> Delete

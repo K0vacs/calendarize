@@ -1,32 +1,25 @@
-<header class="row navbar-light bg-light">
+<header class="row navbar-light">
   <div class="col-2 align-self-center">
     <a class="navbar-brand" href="/">Calendarize</a>
   </div>
   <div class="col-10">
     <div class="row">
-      <nav class="col-10" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page">Home</li>
-        </ol>
-      </nav>
+      <div class="col-10 align-self-center">
+        <h4 class="mb-0">Welcome to Calendarize, your one stop shop for scheduling your time.</h4>
+      </div>
       <div class="col-2 align-self-center text-right">
         {% if user.is_authenticated %}
         <div class="row">
-            <div class="col-4">
-                <img src="{{ MEDIA_PATH }}{{ user.image }}" alt="My image" width="50px">
-            </div>
-            <div class="col-8">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="col-12 align-self-center mt-2 mb-2">
+                <div class="dropdown text-left">
+                    <button class="btn dropdown-toggle pt-0 pb-0 profile-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ user.username }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="{% url 'staff:staff_update' pk=user.id %}">Profile</a>
-                      <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
                       <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     </div>
-                  </div>
-              
+                    <img src="{{ MEDIA_PATH }}{{ user.image }}" alt="My image" width="40px" class="profile-img">
+                </div>
             </div>
         </div>
         {% else %}

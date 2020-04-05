@@ -1,3 +1,17 @@
 .hidden {
     display: none;
 }
+
+.profile-btn {
+    border-left: 1px solid #4D4F5C;
+    border-radius: 0px;
+}
+
+.profile-img {
+    border-radius: 500px;
+}
+
+.btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(30,31,36,.25);
+}

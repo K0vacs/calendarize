@@ -5,7 +5,7 @@ from django.urls import reverse
 class Staff(AbstractUser):
     email   = models.EmailField(max_length=100)
     cell    = models.CharField(max_length=30)
-    image   = models.ImageField(upload_to='./', default='profile_placeholder.jpg')
+    image   = models.ImageField(upload_to='./', default='user.svg')
 
     def __str__(self):
         return self.username
