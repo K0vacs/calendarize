@@ -2,7 +2,6 @@ $(document).ready(function() {
 
 
   // EVENTS
-  
   $(".clickable-row").click(function() {
     window.location = $(this).data("href");
   });

@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
+BREADCRUMBS_HOME_LABEL = 'Home'
 
 # Application definition
 
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
     'schedule',
     'django.contrib.admin',
     'bootstrap_datepicker_plus',
+    'django_bootstrap_breadcrumbs',
+    'view_breadcrumbs',
 ]
 
 MIDDLEWARE = [

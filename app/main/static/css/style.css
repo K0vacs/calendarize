@@ -1,5 +1,50 @@
+body, h1, h2, h3, h4, h5, h6, p, a, span, button {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+nav i {
+    color: #A5A4BF;
+}
+
+.mh-100{
+    min-height: 100vh;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
 .hidden {
     display: none;
+}
+
+.bg-purple {
+    background-color: #43425D;
+}
+
+.bg-dark-purple {
+    background-color: #35344a;
+}
+
+.bg-med-purple {
+ background-color: #A5A4BF;
+}
+
+.bg-light-purple {
+    background-color: #F0F0F7;
+}
+
+.bg-bright-purple {
+    background-color: #A3A0FB;
+}
+
+.nav-block {
+    border-left: 5px solid #43425D;
+}
+
+.brand-block {
+    border-bottom: 5px solid rgb(0,0,0,0);
 }
 
 .profile-btn {
@@ -14,4 +59,13 @@
 .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(30,31,36,.25);
+}
+
+.active {
+    border-left: 5px solid #A3A0FB;
+    background-color: #35344a;
+}
+
+.active i {
+    color: #A3A0FB;
 }

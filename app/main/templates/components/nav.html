@@ -1,28 +1,71 @@
-<nav class="col-2 bg-dark">
-	<ul class="nav flex-column">
-	  <li class="nav-item">
-			<i class="far fa-calendar-alt"></i>
-	    <a class="nav-link" href="{% url 'schedule:schedule' %}">Schedule</a>
-	  </li>
-	  <li class="nav-item">
-			<i class="fas fa-hourglass-start"></i>
-	    <a class="nav-link" href="{% url 'bookings:bookings' %}">Bookings</a>
-	  </li>
-	  <li class="nav-item">
-			<i class="fas fa-star"></i>
-	    <a class="nav-link" href="{% url 'services:services' %}">Services</a>
-	  </li>
-		<li class="nav-item">
-			<i class="fas fa-dumbbell"></i>
-	    <a class="nav-link" href="{% url 'equipment:equipment' %}">Equipment</a>
-	  </li>
-		<li class="nav-item">
-			<i class="fas fa-address-book"></i>
-	    <a class="nav-link" href="{% url 'customers:customers' %}">Customers</a>
-	  </li>
-		<li class="nav-item">
-			<i class="fas fa-user"></i>
-	    <a class="nav-link" href="{% url 'staff:staff' %}">Staff</a>
-	  </li>
-	</ul>
+<nav class="col-2 bg-purple pl-0 pr-0 mh-100">
+	<div class="row brand-block">
+		<div class="col-12">
+			<div class="align-self-center text-white bg-dark-purple pr-3 pl-3">
+				<h1 class="navbar-brand text-uppercase mt-2 mb-2">Calendarize</h1>
+			</div>
+		</div>
+	</div>
+	{% with url_name=request.resolver_match.url_name %}
+	<div class="nav-block {% if url_name == 'schedule' or url_name == 'schedule_date' %}active{% endif %}">
+		<div class="row pr-4 pl-3 pt-2 pb-2">
+			<div class="col-2 align-self-center pl-3 pr-0 text-center">
+				<i class="far fa-calendar-alt"></i>
+			</div>
+			<div class="col-10 pl-0 pr-0">
+				<a class="nav-link text-white" href="{% url 'schedule:schedule' %}">Schedule</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-block {% if url_name == 'bookings' or url_name == 'bookings_add' or url_name == 'bookings_update' %}active{% endif %}">
+		<div class="row pr-4 pl-3 pt-2 pb-2">
+			<div class="col-2 align-self-center pl-3 pr-0 text-center">
+				<i class="fas fa-hourglass-start"></i>
+			</div>
+			<div class="col-10 pl-0 pr-0">
+				<a class="nav-link text-white" href="{% url 'bookings:bookings' %}">Bookings</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-block {% if url_name == 'services' or url_name == 'service_add' or url_name == 'service_update' %}active{% endif %}">
+		<div class="row pr-4 pl-3 pt-2 pb-2">
+			<div class="col-2 align-self-center pl-3 pr-0 text-center">
+				<i class="fas fa-star"></i>
+			</div>
+			<div class="col-10 pl-0 pr-0">
+				<a class="nav-link text-white" href="{% url 'services:services' %}">Services</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-block {% if url_name == 'equipment' or url_name == 'equipment_add' or url_name == 'equipment_update' %}active{% endif %}">
+		<div class="row pr-4 pl-3 pt-2 pb-2">
+			<div class="col-2 align-self-center pl-3 pr-0 text-center">
+				<i class="fas fa-dumbbell"></i>
+			</div>
+			<div class="col-10 pl-0 pr-0">
+				<a class="nav-link text-white" href="{% url 'equipment:equipment' %}">Equipment</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-block {% if url_name == 'customers' or url_name == 'customer_add' or url_name == 'customer_update' %}active{% endif %}">
+		<div class="row pr-4 pl-3 pt-2 pb-2">
+			<div class="col-2 align-self-center pl-3 pr-0 text-center">
+				<i class="fas fa-address-book"></i>
+			</div>
+			<div class="col-10 pl-0 pr-0">
+				<a class="nav-link text-white" href="{% url 'customers:customers' %}">Customers</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-block {% if url_name == 'staff' or url_name == 'staff_add' or url_name == 'staff_update' %}active{% endif %}">
+		<div class="row pr-4 pl-3 pt-2 pb-2">
+			<div class="col-2 align-self-center pl-3 pr-0 text-center">
+				<i class="fas fa-user"></i>
+			</div>
+			<div class="col-10 pl-0 pr-0">
+				<a class="nav-link text-white" href="{% url 'staff:staff' %}">Staff</a>
+			</div>
+		</div>
+	</div>
+	{% endwith %}
 </nav>
