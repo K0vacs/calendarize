@@ -6,6 +6,10 @@ nav i {
     color: #A5A4BF;
 }
 
+a, a:hover {
+    color: #A3A0FB;
+}
+
 .mh-100{
     min-height: 100vh;
 }
@@ -13,6 +17,12 @@ nav i {
 .navbar-brand {
     font-weight: 700;
     letter-spacing: 3px;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    padding: 0;
+    background-color: unset;
 }
 
 .hidden {

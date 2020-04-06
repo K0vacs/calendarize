@@ -1,11 +1,18 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
+{% load django_bootstrap_breadcrumbs %}
 
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
 
 {% block title %}Add New {{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  {% breadcrumb "Services" "services:services" %}
+  {% breadcrumb "Add" "services:service_add" %}
+{% endblock %}
 
 {% block content %}
 

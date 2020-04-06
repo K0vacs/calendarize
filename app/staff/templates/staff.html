@@ -1,8 +1,14 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
+{% load django_bootstrap_breadcrumbs %}
 {% load humanize %}
 
 {% block title %}{{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  {% breadcrumb "Staff" "staff:staff" %}
+{% endblock %}
 
 {% block content %}
 

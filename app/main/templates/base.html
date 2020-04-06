@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_bootstrap_breadcrumbs %}
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,12 @@
   <div class="row mh-100">
     {% include "components/nav.html" %}
     <main class="col-10">
+      
+      {% block breadcrumbs %}
+          {% clear_breadcrumbs %}
+          {% breadcrumb "Home" "schedule:schedule" %}
+      {% endblock %}
+              
       {% include "components/header.html" %}
       {% block content %}{% endblock %}
     </main>

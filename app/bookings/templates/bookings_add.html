@@ -1,5 +1,6 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
+{% load django_bootstrap_breadcrumbs %}
 {% load slashed_date %}
 
 {% load bootstrap4 %}
@@ -7,6 +8,12 @@
 {% bootstrap_javascript jquery='full' %} 
 
 {% block title %}Add New {{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  {% breadcrumb "Bookings" "bookings:bookings" %}
+  {% breadcrumb "Add" "bookings_add" %}
+{% endblock %}
 
 {% block content %}
 {{ form.errors.date }}
