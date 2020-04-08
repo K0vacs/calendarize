@@ -2,10 +2,6 @@ $(document).ready(function() {
 
 
   // EVENTS
-  $(".clickable-row").click(function() {
-    window.location = $(this).data("href");
-  });
-
   $('.chevron').on('click', function (event) {
       $(this).children('.fas').toggleClass('fa-chevron-down fa-chevron-up');
   })

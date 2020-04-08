@@ -1,6 +1,11 @@
 {% load static %}
 {% load django_bootstrap_breadcrumbs %}
 
+{% block breadcrumbs %}
+  {% clear_breadcrumbs %}
+  {% breadcrumb "Home" "schedule:schedule" %}
+{% endblock %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +23,11 @@
 <body class="container-fluid bg-light-purple mh-100">
   <div class="row mh-100">
     {% include "components/nav.html" %}
-    <main class="col-10">
-      
-      {% block breadcrumbs %}
-          {% clear_breadcrumbs %}
-          {% breadcrumb "Home" "schedule:schedule" %}
-      {% endblock %}
-              
+    <main class="col-10">              
       {% include "components/header.html" %}
-      {% block content %}{% endblock %}
+      <div class="mt-4">
+        {% block content %}{% endblock %}
+      </div>
     </main>
   </div>
   {% bootstrap_javascript jquery='full' %}

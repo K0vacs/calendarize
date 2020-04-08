@@ -79,3 +79,20 @@ a, a:hover {
 .active i {
     color: #A3A0FB;
 }
+
+.btn-group a {
+    border: 1px solid #A5A4BF;
+}
+
+.btn-group a:hover {
+    background-color: #35344a;
+}
+
+.input-group-append button:hover {
+    background-color: #35344a;
+}
+
+.table .thead-dark th {
+    background-color: #35344a;
+    border-color: #35344a;
+}

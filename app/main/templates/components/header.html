@@ -8,19 +8,19 @@
       </div>
       <div class="col-2 align-self-center text-right">
         {% if user.is_authenticated %}
-        <div class="row">
+          <div class="row">
             <div class="col-12 align-self-center mt-2 mb-2">
-                <div class="dropdown text-left">
-                    <button class="btn dropdown-toggle pt-0 pb-0 profile-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ user.username }}
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    </div>
-                    <img src="{{ MEDIA_PATH }}{{ user.image }}" alt="My image" width="40px" class="profile-img">
+              <div class="dropdown text-right">
+                <button class="btn dropdown-toggle pt-0 pb-0 profile-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ user.username }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
+                <img src="{{ MEDIA_PATH }}{{ user.image }}" alt="My image" width="40px" class="profile-img">
+              </div>
             </div>
-        </div>
+          </div>
         {% else %}
           <p>You are not logged in</p>
           <a href="{% url 'login' %}">login</a>
