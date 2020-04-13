@@ -1,9 +1,9 @@
 from django.db import models
 from django.urls import reverse
-from customers.models import *
-from services.models import *
-from equipment.models import *
-from staff.models import *
+from customers.models import Customers
+from services.models import Services
+from equipment.models import Equipment
+from staff.models import Staff
 from django.utils import timezone
 
 class Bookings(models.Model):

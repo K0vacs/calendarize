@@ -6,7 +6,7 @@ nav i {
     color: #A5A4BF;
 }
 
-a, a:hover {
+nav a, a:hover {
     color: #A3A0FB;
 }
 
@@ -95,4 +95,21 @@ a, a:hover {
 .table .thead-dark th {
     background-color: #35344a;
     border-color: #35344a;
+}
+
+.table .thead-light th {
+    background-color: #f5f6fa;
+    border-color: #f5f6fa;
+}
+
+.table a {
+    color: #43425D;
+}
+
+.table a:hover {
+    color: #A3A0FB;
+}
+
+.add-new .bg-purple:hover {
+    background-color: #35344a;
 }

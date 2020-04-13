@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load django_bootstrap_breadcrumbs %}
+{% load bootstrap4 %}
 {% load slashed_date %}
+{{ form.media }}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -30,9 +32,9 @@
               <form action="" method="post">
                 {% csrf_token %}
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="DD/MM/YYYY" aria-label="Search Date" aria-describedby="button-addon" name="search_date">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-purple text-white" type="submit" id="button-addon">
+                  {{ form }}
+                  <div class='input-group-append'>
+                    <button class='btn btn-outline-secondary bg-purple text-white' type='submit' id='button-addon'>
                       Search
                     </button>
                   </div>
@@ -86,7 +88,7 @@
                     {% endfor %}
                   {% else %}
                     <tr>
-                      <td colspan="3" class="text-center">You're free as a bird!</td>
+                      <td colspan="4" class="text-center">You're free as a bird!</td>
                     </tr>
                   {% endif %}
                 </tbody>

@@ -2,6 +2,12 @@ $(document).ready(function() {
 
 
   // EVENTS
+  $(function () {
+    $("#datetimepicker").datetimepicker({
+      format: 'DD/MM/YYYY',
+    });
+  });
+
   $('.chevron').on('click', function (event) {
       $(this).children('.fas').toggleClass('fa-chevron-down fa-chevron-up');
   })
