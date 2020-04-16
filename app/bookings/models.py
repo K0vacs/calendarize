@@ -4,12 +4,11 @@ from customers.models import Customers
 from services.models import Services
 from equipment.models import Equipment
 from staff.models import Staff
-from django.utils import timezone
 
 class Bookings(models.Model):
     date            = models.CharField(max_length=100, default=None, null=True)
-    start_time       = models.CharField(max_length=100, default=None, null=True)
-    end_time         = models.CharField(max_length=100, default=None, null=True)
+    start_time      = models.CharField(max_length=100, default=None, null=True)
+    end_time        = models.CharField(max_length=100, default=None, null=True)
     service         = models.ForeignKey(Services, on_delete=models.SET_NULL, null=True)
     equipment       = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True)
     staff           = models.ForeignKey(Staff, on_delete=models.SET_NULL, null=True)

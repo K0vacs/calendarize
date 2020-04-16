@@ -1,19 +1,14 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-# from django.contrib import messages
-from .models import *
-# from .utils import *
-from .forms import *
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from .forms import BookingsDateForm, BookingsStaticForm, CustomerStatusForm, customer_status_formset, bookings_date_formset
+from .models import Bookings, CustomerStatus
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.utils import timezone
-from django.core import serializers
 import numpy as np
 
-import logging
-import json
+
 
 class BookingsTable(ListView):
     # This class reads from the Customers database records and displays the returned data in a table.
@@ -21,16 +16,13 @@ class BookingsTable(ListView):
     model = Bookings
     template_name = 'bookings.html'
     context_object_name = 'pages'
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.model._meta.object_name
+        context['title'] = "Bookings"
         context['metas'] = self.model._meta.fields
         return context
-
-    def get_paginate_by(self, queryset):
-        items_per_page = self.request.GET.get('results') or 10
-        return items_per_page
 
     def get_queryset(self):
         return self.model.objects.all().values_list(
@@ -51,6 +43,8 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context                   = super().get_context_data(**kwargs)
+        context["action"] = "New"
+        context["title"] = "Booking"
         context['date_formset']   = bookings_date_formset(1)(
             queryset=Bookings.objects.none(), 
             prefix='bookings'
@@ -106,10 +100,13 @@ class BookingsUpdate(SuccessMessageMixin, UpdateView):
     form_class = BookingsStaticForm
     template_name = 'bookings_add.html'
     success_message = "Your booking was updated successfully"
-    # context_object_name = 'booking'
 
     def get_context_data(self, **kwargs):
         context             = super().get_context_data(**kwargs)
+        context["action"] = "Update"
+        context["title"] = "Booking"
+        context['field_status'] = 'disabled'
+        
         booking             = bookings_date_formset(0)(
                                 queryset=Bookings.objects.filter(
                                     pk=self.kwargs['pk']
@@ -124,7 +121,7 @@ class BookingsUpdate(SuccessMessageMixin, UpdateView):
                             )
         context['status_formset']  = customerstatus
         context['date_formset']  =  booking
-        context['field_status'] = 'disabled'
+        
         return context
 
     def get_queryset(self):
@@ -147,7 +144,6 @@ class BookingsUpdate(SuccessMessageMixin, UpdateView):
             booking = booking_form.save(commit=False)
             for form in date_formset.save(commit=False):
                 form.service    = booking.service
-                # form.equipment  = booking.equipment
                 form.staff      = booking.staff
                 form.save()
         else:

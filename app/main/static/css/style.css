@@ -113,3 +113,20 @@ nav a, a:hover {
 .add-new .bg-purple:hover {
     background-color: #35344a;
 }
+
+/* Pagination */
+
+.pagination a {
+    color: #495057;
+}
+
+.pagination a:hover {
+    background-color: #35344a;
+    color: #ffffff;
+}
+
+.pagination .current {
+    background-color: #35344a;
+    color: #ffffff;
+}
+

@@ -1,10 +1,9 @@
 from django import forms
 from django.forms import ModelForm
-from django.forms.models import modelformset_factory, inlineformset_factory
-from .models import *
-from .widgets import *
-from services.models import *
-from .validators import *
+from django.forms.models import modelformset_factory
+from .models import Bookings, Customers, Equipment, CustomerStatus, Staff
+from services.models import Services
+from .validators import date_validation, time_validation
 
 class BookingsDateForm(ModelForm):
     date = forms.CharField( 
@@ -92,15 +91,6 @@ def customer_status_formset(number):
         extra=number
     )
     return CustomerStatusModelFormset
-
-# def bookings_date_formset(number):
-# BookingsDateFormset = modelformset_factory(
-#     Bookings, 
-#     form=BookingsDateForm, 
-#     fields=('date', 'start_time', 'end_time'), 
-#     extra=1
-# )
-    # return BookingsDateFormset
 
 def bookings_date_formset(number):
     BookingsDateFormset = modelformset_factory(

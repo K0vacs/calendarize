@@ -15,9 +15,8 @@ $(document).ready(function() {
   $('#deleteModal').on('show.bs.modal', function (event) {
     var self  = $(this);
     var pk    = $(event.relatedTarget).data('id');
-    var href  = self.find('#delete a').attr('href').replace('0', pk);
-
-    self.find('#delete a').attr('href', href)
+    
+    self.find('#delete a').attr('href').replace('0', pk);
   })
 
   $('.formset').on('click', '.add-form, .remove-form', function(event) {
