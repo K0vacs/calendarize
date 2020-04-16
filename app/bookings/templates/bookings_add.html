@@ -13,17 +13,7 @@
 
 {% block content %}
 
-  <div class="row">
-    <div class="col-12">
-
-      {% if messages %}
-        {% for message in messages %}
-          {% bootstrap_alert message alert_type=message.tags %}
-        {% endfor %}
-      {% endif %}
-
-    </div>
-  </div>
+  {% include "components/message.html" with messages=messages %}
 
   {% include "components/heading.html" with title=title link="bookings:bookings_add" %}
 

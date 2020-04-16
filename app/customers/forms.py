@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.forms.models import modelformset_factory
-from .models import *
+from .models import Customers, CustomersPrice, Services
 
 class CustomersForm(ModelForm):
     class Meta:

@@ -1,18 +1,12 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, DeleteView
 from django.contrib import messages
-from .models import *
-from .utils import *
-from .forms import *
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from .models import Customers, CustomersPrice
+from .forms import CustomersForm, CustomersPriceForm
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-# from django.contrib.messages import constants as messages
-
-# MESSAGE_TAGS = {
-#     messages.INFO: 'danger',
-#     50: 'critical',
-# }
 
 class CustomerTable(ListView):
     # This class reads from the Customers database records and displays the returned data in a table.
@@ -23,7 +17,7 @@ class CustomerTable(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.model._meta.object_name
+        context['title'] = "Customers"
         context['metas'] = self.model._meta.fields
         context['form'] = CustomersForm(self.request.POST)
         return context
@@ -38,13 +32,15 @@ class CustomerTable(ListView):
 class CustomerCreate(SuccessMessageMixin, CreateView):
     # This class creates a Customers and CustomersPrice database record(s) when the form is submitted.
 
-    template_name = 'customers/add.html'
+    template_name = 'customer_add.html'
     form_class = CustomersPriceForm
     success_message = "%(name)s was created successfully"
 
     def get_context_data(self, **kwargs):
         context = super(CustomerCreate, self).get_context_data(**kwargs)
         customerprice = ServiceModelFormset(queryset=CustomersPrice.objects.none())
+        context['title'] = "Customer"
+        context['action'] = "New"
         context['formset'] = customerprice
         context['customer_form'] = CustomersForm()
         return context
@@ -88,7 +84,9 @@ def customerupdate(request, pk):
                 formset.save()
             
             return redirect('customers:customer_update', pk=pk)
-    return render(request, 'customers/add.html', {
+    return render(request, 'customer_add.html', {
+        'title': "Customer",
+        'action': "Update",
         'formset': formset,
         'customer_form': customerform,
         })
