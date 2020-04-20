@@ -1,8 +1,5 @@
-from django.shortcuts import render
 from .models import Services
-
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -14,7 +11,7 @@ class ServiceTable(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.model._meta.object_name
+        context['title'] = "Services"
         context['metas'] = self.model._meta.fields
         return context
 
@@ -28,23 +25,25 @@ class ServiceTable(ListView):
 class ServiceCreate(SuccessMessageMixin, CreateView):
     model = Services
     fields = '__all__'
-    template_name = 'add.html'
+    template_name = 'services_add.html'
     success_message = "%(name)s was created successfully"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.model._meta.object_name
+        context['action'] = "New"
+        context['title'] = "Services"
         return context
 
 class ServiceUpdate(SuccessMessageMixin, UpdateView):
     model = Services
     fields = '__all__'
-    template_name = 'add.html'
+    template_name = 'services_add.html'
     success_message = "%(name)s was updated successfully"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = self.model._meta.object_name
+        context['action'] = "Update"
+        context['title'] = "Services"
         return context
 
 class ServiceDelete(DeleteView):

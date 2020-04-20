@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block title %}Add New {{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  {% breadcrumb "Services" "services:services" %}
+  {% breadcrumb "Add" "services:service_add" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "components/message.html" with messages=messages %}
+
+  {% include "components/heading.html" with title=title link="services:service_add" %}
+
+  <div class="row">
+    <div class="col-12">
+
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-12">
+
+              <h3 class="mb-4">{{ action }} {{ title }}</h3>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+
+              <form action="" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary float-right pr-4 pl-4">Save</button>
+                {% endbuttons %}
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+{% endblock %}
