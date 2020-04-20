@@ -1,49 +1,70 @@
-<!-- templates/home.html-->
 {% extends 'base.html' %}
-{% load django_bootstrap_breadcrumbs %}
-
 {% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
+{% load django_bootstrap_breadcrumbs %}
 
 {% block title %}Add New {{ title }}{% endblock %}
 
 {% block breadcrumbs %}
   {{ block.super }}
-  {% breadcrumb "Services" "equipment:equipment" %}
+  {% breadcrumb "Equipment" "equipment:equipment" %}
   {% breadcrumb "Add" "equipment:equipment_add" %}
 {% endblock %}
 
 {% block content %}
 
-{% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-success" role="alert">
-        {{ message }}
-      </div>
-    {% endfor %}
-{% endif %}
+  {% include "components/message.html" with messages=messages %}
 
-<a class="btn btn-primary" href="{% url 'equipment:equipment_add' %}" role="button">Add New</a>
-
-<form action="" method="post" class="form" enctype="multipart/form-data">
-    {% csrf_token %}
-      {% bootstrap_field form.name %}
-      <div class="form-group row">
-          <div class="col-1">
-            {% if form.instance.icon %}
-              <img src="http://localhost:8000{{form.instance.icon.url}}" alt="" width="50px"> 
-            {% endif %}
-          </div>
-          <div class="col-11">
-              {{ form.icon }}
-          </div>
-      </div>
+  {% include "components/heading.html" with title=title link="equipment:equipment_add" %}
+  
+  <div class="row">
+    <div class="col-12">
       
-      {% bootstrap_field form.price %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">Save</button>
-    {% endbuttons %}
-</form>
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-12">
+
+              <h3 class="mb-4"> {{ action }} {{ title }}</h3>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+
+              <form method="post" class="form" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                  {% bootstrap_field form.name %}
+
+                  <div class="form-group row">
+                      <div class="col-1">
+                        {% if form.instance.icon %}
+                          <img src="http://localhost:8000/{{form.instance.icon.url}}" alt="" width="50px"> 
+                        {% endif %}
+                      </div>
+                      <div class="col-11">
+                          {{ form.icon }}
+                      </div>
+                  </div>
+                  
+                  {% bootstrap_field form.price %}
+
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary float-right pr-4 pl-4">Save</button>
+                {% endbuttons %}
+
+              </form>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 {% endblock %}
