@@ -4,6 +4,7 @@ from . import views
 app_name = 'schedule'
 
 urlpatterns = [
+    path('', views.ScheduleTable.as_view(), name='home'),
     path('schedule/', views.ScheduleTable.as_view(), name='schedule'),
     path('schedule/<date>', views.ScheduleTable.as_view(), name='schedule_date'),
 ]

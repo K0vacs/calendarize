@@ -8,31 +8,34 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
-  <link href="{% static "/fontawesome/css/all.css" %}" rel="stylesheet">
-	{% load bootstrap4 %}
-  {% bootstrap_css %}
-  <link href="{% static "/css/style.css" %}" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    <link href="{% static "/fontawesome/css/all.css" %}" rel="stylesheet">
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    <link href="{% static "/css/style.css" %}" rel="stylesheet">
+    
+  </head>
+
+  <body class="container-fluid bg-light-purple mh-100">
+    <div class="row mh-100">
+      {% include "components/nav.html" %}
+      <main class="col-10">              
+        {% include "components/header.html" %}
+        <div class="mt-4">
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+    </div>
+    {% bootstrap_javascript jquery='full' %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{% static "/js/main.js" %}"></script>
+  </body>
   
-</head>
-<body class="container-fluid bg-light-purple mh-100">
-  <div class="row mh-100">
-    {% include "components/nav.html" %}
-    <main class="col-10">              
-      {% include "components/header.html" %}
-      <div class="mt-4">
-        {% block content %}{% endblock %}
-      </div>
-    </main>
-  </div>
-  {% bootstrap_javascript jquery='full' %}
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-  <script src="{% static "/js/main.js" %}"></script>
-</body>
 </html>
