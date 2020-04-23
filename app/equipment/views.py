@@ -14,7 +14,6 @@ class EquipmentTable(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Equipment"
-        context['metas'] = self.model._meta.fields
         return context
 
     def get_paginate_by(self, queryset):
@@ -22,7 +21,7 @@ class EquipmentTable(ListView):
         return items_per_page
 
     def get_queryset(self):
-        return self.model.objects.all().values_list()
+        return self.model.objects.all().values_list('id','name', 'price')
 
 class EquipmentCreate(SuccessMessageMixin, CreateView):
     form_class = EquipmentForm
@@ -40,7 +39,7 @@ class EquipmentCreate(SuccessMessageMixin, CreateView):
         return reverse_lazy('equipment:equipment_update', kwargs = { 'pk': self.object.id })
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
+        form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
             return self.form_valid(form)

@@ -20,11 +20,8 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">#</th>
-            {% for item in metas %}
-              {% if item.name != 'id' %}
-                <th scope="col">{{item.name.upper}}</th>
-              {% endif %}
-            {% endfor %}
+            <th scope="col">NAME</th>
+            <th scope="col">PRICE</th>
             <th scope="col">EDIT</th>
             <th scope="col">DELETE</th>
     
