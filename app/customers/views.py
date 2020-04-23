@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView
 from django.contrib import messages
 from .models import Customers, CustomersPrice
-from .forms import CustomersForm, CustomersPriceForm
+from .forms import CustomersForm, CustomersPriceForm, ServiceModelFormset
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy

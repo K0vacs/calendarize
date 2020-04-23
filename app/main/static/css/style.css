@@ -130,3 +130,23 @@ nav a, a:hover {
     color: #ffffff;
 }
 
+.login-background {
+    background-size: cover;
+}
+
+.login-h1 {
+    font-weight: 600;
+    color: #43425D;
+}
+
+.login-h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #909090;
+}
+
+.login-form input {
+    border: 0px;
+    border-bottom: 2px solid rgba(0,0,0,.125);
+    border-radius: 0;
+}

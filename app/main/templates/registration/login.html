@@ -1,14 +1,56 @@
-<!-- templates/registration/login.html -->
+{% load static %}
 {% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 
-<h2>Login</h2>
-<form method="post" class="form">
-  {% csrf_token %}
-  {% bootstrap_form form %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
 
-  {% buttons %}
-      <button type="submit" class="btn btn-primary">Submit</button>
-  {% endbuttons %}
-</form>
+  {% bootstrap_css %}
+  <link href="{% static "/css/style.css" %}" rel="stylesheet">
+    
+</head>
+<body>
+  
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div 
+      class="d-none d-md-block col-md-6 login-background" 
+      style="background-image: url('{{ SITE_URL }}media/background.svg')"> 
+      </div>
+
+      <div class="col-12 col-md-6">
+  
+        <div class="row mh-100 d-flex justify-content-center align-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+            
+            <h1 class="login-h1 text-center text-uppercase">Calendarize</h1>
+            <h2 class="login-h2 text-center mb-5">Welcome back! Please login to your account.</h2>
+
+            <form method="post" class="form login-form text-center">
+              {% csrf_token %}
+              
+              {% bootstrap_field form.username show_label=False placeholder="Username" %}
+              {% bootstrap_field form.password show_label=False placeholder="Username" %}
+            
+              {% buttons %}
+                  <button type="submit" class="btn bg-dark-purple margin-auto text-white pl-4 pr-4 mt-4">Login</button>
+              {% endbuttons %}
+            </form>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BODY END -->
+  {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

@@ -15,8 +15,11 @@ $(document).ready(function() {
   $('#deleteModal').on('show.bs.modal', function (event) {
     var self  = $(this);
     var pk    = $(event.relatedTarget).data('id');
-    
-    self.find('#delete a').attr('href').replace('0', pk);
+    var href = self.find('#delete a').attr('href')
+    var splitHref = href.split("/")
+    var replace = self.find('#delete a').attr('href').replace(splitHref[3], pk);
+
+    self.find('#delete a').attr('href', replace);
   })
 
   $('.formset').on('click', '.add-form, .remove-form', function(event) {

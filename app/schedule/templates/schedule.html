@@ -71,12 +71,12 @@
             <div class="card-header">
               <img src="http://localhost:8000/media/{{person.image}}" alt="" width="40px" class="pr-2">
               {{ person.username }}
-              <button class="btn chevron float-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <button class="btn chevron float-right" type="button" data-toggle="collapse" data-target="#collapse{{ person.username }}" aria-expanded="false" aria-controls="collapseExample">
                 <i class="fas fa-chevron-down"></i>
               </button>
             </div>
           
-            <div class="collapse show" id="collapseExample">
+            <div class="collapse show" id="collapse{{ person.username }}">
               <div class="card-body">
 
                 <table class="table">
@@ -116,6 +116,8 @@
             </div>
 
           </div>
+
+        </div>
 
       {% endfor %}
 

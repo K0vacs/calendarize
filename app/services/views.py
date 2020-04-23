@@ -48,7 +48,7 @@ class ServiceUpdate(SuccessMessageMixin, UpdateView):
 
 class ServiceDelete(DeleteView):
     model = Services
-    success_url = reverse_lazy('services')
+    success_url = reverse_lazy('services:services')
 
     def get(self, request, **kwargs):
         return self.post(request, **kwargs)

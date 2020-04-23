@@ -140,8 +140,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 
 # URL redirected to when logged in
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'schedule:home'
+LOGOUT_REDIRECT_URL = 'login'
 
 # Folder uploads are saved
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
