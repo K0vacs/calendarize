@@ -5,12 +5,20 @@ from .models import Bookings, Customers, Equipment, CustomerStatus, Staff
 from services.models import Services
 from .validators import date_validation, time_validation
 
-class BookingsDateForm(ModelForm):
-    date = forms.CharField( 
-        widget=forms.TextInput(attrs={'placeholder': 'DD/MM/YYYY', 'required': 'required'}),
-        validators=[date_validation],
-        label='',
-        required=True
+class BookingsStaticForm(ModelForm):
+    date = forms.CharField(
+        label="",
+        required=True,
+        widget=forms.DateInput(
+            format="%d/%m/%Y",
+            attrs={
+            "id": "datetimepicker",
+            "class": "form-control datetimepicker-input",
+            "data-target": "#datetimepicker",
+            "data-toggle": "datetimepicker",
+            "pattern": "\d{1,2}/\d{1,2}/\d{4}",
+            "required": "true",
+        })
     )
 
     start_time = forms.CharField(
@@ -33,11 +41,6 @@ class BookingsDateForm(ModelForm):
         required=True
     )
 
-    class Meta:
-        model = Bookings
-        fields = ('date', 'start_time', 'end_time', 'equipment')
-
-class BookingsStaticForm(ModelForm):
     service = forms.ModelChoiceField(
         queryset=Services.objects.all(), 
         label='',
@@ -52,7 +55,7 @@ class BookingsStaticForm(ModelForm):
 
     class Meta:
         model = Bookings
-        fields = ('service', 'staff')
+        fields = ('date', 'start_time', 'end_time', 'equipment', 'service', 'staff')
 
 class CustomerStatusForm(ModelForm):
     CHOICES = [
@@ -92,11 +95,11 @@ def customer_status_formset(number):
     )
     return CustomerStatusModelFormset
 
-def bookings_date_formset(number):
-    BookingsDateFormset = modelformset_factory(
-        Bookings, 
-        form=BookingsDateForm, 
-        fields=('date', 'start_time', 'end_time', 'equipment'), 
-        extra=number
-    )
-    return BookingsDateFormset
+# def bookings_date_formset(number):
+#     BookingsDateFormset = modelformset_factory(
+#         Bookings, 
+#         form=BookingsDateForm, 
+#         fields=('date', 'start_time', 'end_time', 'equipment'), 
+#         extra=number
+#     )
+#     return BookingsDateFormset

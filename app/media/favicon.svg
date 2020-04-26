@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-Favicon">
+      <rect width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Favicon" clip-path="url(#clip-Favicon)">
+    <rect width="32" height="32" fill="rgba(237,240,245,0)"/>
+    <circle id="Ellipse_50" data-name="Ellipse 50" cx="15" cy="15" r="15" transform="translate(1 1)" fill="#fff"/>
+    <text id="C" transform="translate(23 26)" fill="#43425d" font-size="30" font-family="SourceSansPro-Bold, Source Sans Pro" font-weight="700"><tspan x="-17.49" y="0">C</tspan></text>
+  </g>
+</svg>

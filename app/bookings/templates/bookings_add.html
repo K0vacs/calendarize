@@ -37,31 +37,22 @@
               <form method="post" class="form">
                 {% csrf_token %}
 
-                <div class="formset">
-                  {{ date_formset.management_form }}
+                <div class="row">
 
-                  {% for form in date_formset %}
-                    <div class="row align-items-end formset-form">
-                      {% bootstrap_form form form_group_class='form-group col' %}
-                      <div class="form-group col">
-                        {% if form.instance.id is not None %}
-                          <a href="{% url 'bookings:bookings_delete' pk=form.instance.id %}" class="btn btn-danger remove-form" role="button">
-                            <i class="fas fa-trash"></i> Delete
-                          </a>
-                        {% else %}
-                          <a href="#" class="btn btn-danger remove-form" role="button">
-                              <i class="fas fa-trash"></i> Delete
-                          </a>
-                        {% endif %}
-                      </div>
+                  {% for field in form %}
+                    
+                    <div class="col-4">
+
+                      {% if field.date %}
+                        {% bootstrap_field field.value %}
+                        {# bootstrap_field field.value|slashed_date #}
+                      {% else %}
+                        {% bootstrap_field field %}
+                      {% endif %}
+
                     </div>
+
                   {% endfor %}
-
-                  <div class="row">
-                    <div class="form-group col-12">
-                      <button type="button" class="btn btn-success add-form" {{ field_status }}><i class="fas fa-plus"></i> Add</button>
-                    </div>
-                  </div>
 
                 </div>
       
@@ -69,37 +60,42 @@
                   {{ status_formset.management_form }}
 
                   {% for form in status_formset %}
+
                     <div class="row align-items-end formset-form">
-                      {% bootstrap_form form form_group_class='form-group col-3' %}
-                      <div class="form-group col-3">
+
+                      {% bootstrap_form form form_group_class='form-group col-4' %}
+
+                      <div class="form-group col-4">
+
                         {% if form.instance.id is not None %}
+
                             <a href="{% url 'bookings:customerstatus_delete' pk=form.instance.id %}" data-csrf="{{ csrf_token }}" class="btn btn-danger remove-form" role="button">
                               <i class="fas fa-trash"></i> Delete
                             </a>
+
                         {% else %}
+
                           <a href="#" class="btn btn-danger remove-form" role="button">
                               <i class="fas fa-trash"></i> Delete
                           </a>
+
                         {% endif %}
+
                       </div>
+
                     </div>
+
                   {% endfor %}
 
                   <div class="row">
+
                     <div class="form-group col-12">
-                      <button type="button" class="btn btn-success add-form"><i class="fas fa-plus"></i> Add</button>
+                      <button type="button" class="btn btn-success add-form"><i class="fas fa-plus"></i> Add Customer</button>
                     </div>
+
                   </div>
 
                 </div>
-      
-                {% for field in form %}
-                  {% if field.date %}
-                    {% bootstrap_field field.value|slashed_date %}
-                  {% else %}
-                    {% bootstrap_field field %}
-                  {% endif %}
-                {% endfor %}
               
                 {% buttons %}
                   <button id="submit" type="submit" class="btn btn-primary float-right pr-4 pl-4">Save</button>

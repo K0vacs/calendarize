@@ -1,11 +1,15 @@
 $(document).ready(function() {
 
-
   // EVENTS
   $(function () {
+    var date = $("[name='date']").val()
+    
     $("#datetimepicker").datetimepicker({
+      date: new Date(date),
       format: 'DD/MM/YYYY',
     });
+
+    $("[name='date']").val(date)
   });
 
   $('.chevron').on('click', function (event) {
