@@ -14,7 +14,7 @@ services:
   web:
     build: ./app
     container_name: web
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --username Ferenc --noinput --email 'mr.f.kovacs@gmail.com' && gunicorn main.wsgi -b 0.0.0.0:8000"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic && gunicorn main.wsgi -b 0.0.0.0:8000"
     restart: always
     expose:
       - "8000"

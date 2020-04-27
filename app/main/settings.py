@@ -151,7 +151,7 @@ MEDIA_URL = 'media/'
 AUTH_USER_MODEL = 'staff.Staff'
 
 # Sets the website base URL
-SITE_URL = 'http://localhost:8000/'
+SITE_URL = os.getenv('SITE_URL')
 
 BOOTSTRAP4 = {
     'include_jquery': True,
