@@ -27,14 +27,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '68.183.38.234', 'web']
 
 BREADCRUMBS_HOME_LABEL = 'Home'
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -47,10 +46,11 @@ INSTALLED_APPS = [
     'equipment',
     'bookings',
     'schedule',
-    'django.contrib.admin',
     'bootstrap_datepicker_plus',
     'django_bootstrap_breadcrumbs',
     'view_breadcrumbs',
+    'django.contrib.admin',
+    'django.contrib.auth',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +156,11 @@ SITE_URL = 'http://localhost:8000/'
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
+
+# SMTP settings
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'info@4kmedia.co.za'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'info@4kmedia.co.za'
