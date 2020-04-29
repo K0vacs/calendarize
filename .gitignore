@@ -1,5 +1,4 @@
 .env
 __pycache__
 migrations
-__init__.py
-/db/data
+/db/data/*
