@@ -14,21 +14,13 @@ services:
   web:
     build: ./app
     container_name: web
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic && gunicorn main.wsgi -b 0.0.0.0:8000"
     restart: always
     expose:
       - "8000"
+      - "587"
+    ports:
+      - "587:587"
     volumes:
       - ./app:/src
     depends_on:
       - db
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./app:/src
-      - ./nginx:/etc/nginx/conf.d
-    depends_on:
-      - web

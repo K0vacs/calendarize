@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'staff.apps.StaffConfig',
     'main',
     'bootstrap4',
@@ -152,15 +153,25 @@ AUTH_USER_MODEL = 'staff.Staff'
 
 # Sets the website base URL
 SITE_URL = os.getenv('SITE_URL')
+SITE_ID = 1
 
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
 
 # SMTP settings
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'info@4kmedia.co.za'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = os.getenv('EMAIL_HOST')
+# EMAIL_PORT = '465'
+# EMAIL_HOST_USER = 'info@4kmedia.co.za'
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = '4K Media <info@4kmedia.co.za>'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'mr.f.kovacs@gmail.com'
+EMAIL_HOST_PASSWORD = 'Voda32901!'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'info@4kmedia.co.za'
+DEFAULT_FROM_EMAIL = '4K Media <mr.f.kovacs@gmail.com>'
+DEFAULT_FROM_DOMAIN = os.getenv('DEFAULT_FROM_DOMAIN')
