@@ -7,7 +7,6 @@ from .validators import date_validation, time_validation
 
 class BookingsStaticForm(ModelForm):
     date = forms.CharField(
-        label="",
         required=True,
         widget=forms.DateInput(
             format="%d/%m/%Y",
@@ -17,6 +16,7 @@ class BookingsStaticForm(ModelForm):
             "data-target": "#datetimepicker",
             "data-toggle": "datetimepicker",
             "pattern": "\d{1,2}/\d{1,2}/\d{4}",
+            'placeholder': 'DD/MM/YYYY',
             "required": "true",
         })
     )
@@ -24,32 +24,27 @@ class BookingsStaticForm(ModelForm):
     start_time = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'HH:MM', 'required': 'required', 'class': 'start-time'}),
         validators=[time_validation],
-        label='',
         required=True
     )
 
     end_time = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'HH:MM', 'required': 'required'}),
         validators=[time_validation],
-        label='',
         required=True
     )
 
     equipment = forms.ModelChoiceField(
         queryset=Equipment.objects.all(), 
-        label='',
         required=True
     )
 
     service = forms.ModelChoiceField(
         queryset=Services.objects.all(), 
-        label='',
         required=True
     )
 
     staff = forms.ModelChoiceField(
         queryset=Staff.objects.all(), 
-        label='',
         required=True
     )
 
@@ -70,7 +65,6 @@ class CustomerStatusForm(ModelForm):
             'required': 'required',
             'placeholder': 'Customer',
         }),
-        label='',
         required=True)
 
     status = forms.ChoiceField(
@@ -79,7 +73,6 @@ class CustomerStatusForm(ModelForm):
             'required': 'required',
             'placeholder': 'Status',
         }),
-        label='',
         required=True)
 
     class Meta:
@@ -94,12 +87,3 @@ def customer_status_formset(number):
         extra=number
     )
     return CustomerStatusModelFormset
-
-# def bookings_date_formset(number):
-#     BookingsDateFormset = modelformset_factory(
-#         Bookings, 
-#         form=BookingsDateForm, 
-#         fields=('date', 'start_time', 'end_time', 'equipment'), 
-#         extra=number
-#     )
-#     return BookingsDateFormset
