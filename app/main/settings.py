@@ -161,17 +161,9 @@ BOOTSTRAP4 = {
 
 # SMTP settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = os.getenv('EMAIL_HOST')
-# EMAIL_PORT = '465'
-# EMAIL_HOST_USER = 'info@4kmedia.co.za'
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# EMAIL_USE_TLS = True
-# DEFAULT_FROM_EMAIL = '4K Media <info@4kmedia.co.za>'
-
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'mr.f.kovacs@gmail.com'
-EMAIL_HOST_PASSWORD = 'Voda32901!'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = '4K Media <mr.f.kovacs@gmail.com>'
-DEFAULT_FROM_DOMAIN = os.getenv('DEFAULT_FROM_DOMAIN')
+EMAIL_HOST_USER = 'info@4kmedia.co.za'
+EMAIL_HOST_PASSWORD = os.getenv('DJANGO_SUPERUSER_PASSWORD')
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'Calendarize <info@4kmedia.co.za>'
