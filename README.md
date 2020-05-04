@@ -72,19 +72,19 @@ The font used is a custom font from [Google Fonts](https://fonts.google.com/?que
 The project mockups are available below and in the [mockups directory](https://github.com/K0vacs/calendarize/tree/master/app/media/designs) in mobile, tablet and desktop views:
 
 #### Mobile
-![Mobile Login Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/iphone-login-page.png)
-![Mobile Schedule Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/iphone-schedule.png)
-![Mobile Bookings Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/iphone-bookings.png)
+![Mobile Login Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/iphone-login-page.png)
+![Mobile Schedule Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/iphone-schedule.png)
+![Mobile Bookings Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/iphone-bookings.png)
 
 #### Tablet
-![Tablet Login Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/ipad-login-page.png)
-![Tablet Schedule Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/ipad-schedule.png)
-![Tablet Bookings Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/ipad-bookings.png)
+![Tablet Login Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/ipad-login-page.png)
+![Tablet Schedule Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/ipad-schedule.png)
+![Tablet Bookings Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/ipad-bookings.png)
 
 #### Desktop
-![Desktop Login Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/desktop-login-page.png)
-![Desktop Schedule Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/desktop-schedule.png)
-![Desktop Bookings Mockup](https://github.com/K0vacs/calendarize/tree/master/app/media/designs/desktop-bookings.png)
+![Desktop Login Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-login-page.png)
+![Desktop Schedule Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-schedule.png)
+![Desktop Bookings Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-bookings.png)
 
 ## Features
  
