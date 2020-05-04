@@ -91,6 +91,7 @@
                   <tbody>
                     {% if pages %}
                       {% for items in pages %}
+                        {% if person.username in items %}
                         {% if person.username == items.6 %} 
                           <tr>
                             <td>{{ items.2 }} - {{ items.3 }}</td>
@@ -103,11 +104,16 @@
                             </td>
                           </tr>
                         {% endif %}
+                        {% else %}
+                        <tr>
+                          <td colspan="4" class="text-center">You're free as a bird!</td>
+                        </tr>
+                        {% endif %}
                       {% endfor %}
-                    {% else %}
-                      <tr>
-                        <td colspan="4" class="text-center">You're free as a bird!</td>
-                      </tr>
+                      {% else %}
+                          <tr>
+                            <td colspan="4" class="text-center">You're free as a bird!</td>
+                          </tr>
                     {% endif %}
                   </tbody>
                 </table>
