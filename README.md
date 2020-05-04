@@ -82,7 +82,7 @@ The project mockups are available below and in the [mockups directory](https://g
 #### Desktop
 ![Desktop Login Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-login-page.png)
 ![Desktop Schedule Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-schedule.png)
-![Desktop Bookings Mockup](hhttps://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-bookings.png)
+![Desktop Bookings Mockup](https://github.com/K0vacs/calendarize/blob/master/app/media/designs/desktop-bookings.png)
 
 ## Features
  
