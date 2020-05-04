@@ -91,15 +91,15 @@
                   <tbody>
 
                     {% if pages %}
-
+                    
                       {% for bookings in pages.0 %}
 
                         {% if person.username == bookings.staff_id__username %}
 
                           <tr>
                             <td>{{ bookings.start_time }} - {{ bookings.end_time }}</td>
-                            <td>{{ bookings.service_id_name }}</td>
-                            <td>{{ bookings.equipment_id_name }}</td>
+                            <td>{{ bookings.service_id__name }}</td>
+                            <td>{{ bookings.equipment_id__name }}</td>
                             <td class="text-center">
                               <a href="{% url 'bookings:bookings_update' pk=bookings.id %}">  
                                 <i class="fas fa-eye"></i>
