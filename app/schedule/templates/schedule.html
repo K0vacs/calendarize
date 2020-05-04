@@ -108,7 +108,7 @@
 
                         {% else %}
 
-                          {% if forloop.counter == 1 %}
+                          {% if forloop.counter == 1 and person.username not in items %}
                             <tr>
                               <td colspan="4" class="text-center">You're free as a bird!</td>
                             </tr>
