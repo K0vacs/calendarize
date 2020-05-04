@@ -8,13 +8,13 @@ This web application serves as a scheduling system for gyms and other health and
 
 ## HOW TO
 
-### LOGIN
+### Login
 * Visit the project url
 * Enter username, Chris
 * Enter password, 123Hello!
 * Click the Login button
 
-### VIEW BOOKINGS IN SCHEDULE VIEW
+### View bookings in schedule view 
 * Navigate the 30/04/2020
 
 ## UX
