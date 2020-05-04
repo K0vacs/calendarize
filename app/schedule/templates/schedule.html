@@ -89,29 +89,32 @@
                     </tr>
                   </thead>
                   <tbody>
+
                     {% if pages %}
 
-                      {% for items in pages %}
+                      {% for bookings in pages.0 %}
 
-                        {% if person.username == items.6 %}
+                        {% if person.username == bookings.staff_id__username %}
 
                           <tr>
-                            <td>{{ items.2 }} - {{ items.3 }}</td>
-                            <td>{{ items.4 }}</td>
-                            <td>{{ items.5 }}</td>
+                            <td>{{ bookings.start_time }} - {{ bookings.end_time }}</td>
+                            <td>{{ bookings.service_id_name }}</td>
+                            <td>{{ bookings.equipment_id_name }}</td>
                             <td class="text-center">
-                              <a href="{% url 'bookings:bookings_update' pk=items.0 %}">  
+                              <a href="{% url 'bookings:bookings_update' pk=bookings.id %}">  
                                 <i class="fas fa-eye"></i>
                               </a>
                             </td>
                           </tr>
 
                         {% else %}
-
-                          {% if forloop.counter == 1 and person.username not in items %}
+                          
+                          {% if forloop.counter == 1 and person.username not in pages.1  %}
+                
                             <tr>
                               <td colspan="4" class="text-center">You're free as a bird!</td>
                             </tr>
+
                           {% endif %}
 
                         {% endif %}
@@ -119,10 +122,13 @@
                       {% endfor %}
 
                     {% else %}
+
                       <tr>
                         <td colspan="4" class="text-center">You're free as a bird!</td>
                       </tr>
+
                     {% endif %}
+
                   </tbody>
                 </table>
 

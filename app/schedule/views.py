@@ -44,7 +44,7 @@ class ScheduleTable(ListView):
 
         db_date = datetime.datetime.strptime(pk_date, "%d-%m-%Y").strftime("%d/%m/%Y")
 
-        return self.model.objects.filter(date=db_date).values_list(
+        result =  self.model.objects.filter(date=db_date).values(
             'id',
             'date',
             'start_time',
@@ -53,6 +53,14 @@ class ScheduleTable(ListView):
             'equipment_id__name',
             'staff_id__username',
         )
+
+        staffWithBookings = []
+        result = list(result)
+
+        for item in result:
+            staffWithBookings.append(item['staff_id__username'])
+
+        return [result, staffWithBookings]
 
     def post(self, request, *args, **kwargs):
         
