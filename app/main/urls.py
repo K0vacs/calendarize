@@ -16,6 +16,8 @@ urlpatterns = [
     path('', include('equipment.urls')),
     path('', include('staff.urls')),
     path('', include('schedule.urls')),
+    path('', include('public.urls')),
+    path('', include('payments.urls')),
 ]
 
 # This enables static and media urls to resolve correctly

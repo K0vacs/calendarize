@@ -6,3 +6,4 @@ Pillow
 django-bootstrap-datepicker-plus
 gunicorn
 django-view-breadcrumbs
+stripe
