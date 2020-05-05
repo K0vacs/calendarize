@@ -11,14 +11,15 @@
 
 <!-- This begins the HTML for the page -->
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 
   <!-- This initializes the generic head for all the pages -->
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Calendarize{% endblock %}</title>
     <meta name="description" content="{% block description %}Make scheduling easy{% endblock %}">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="icon" href="{{ SITE_URL }}media/favicon.svg" type="image/gif" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
@@ -34,7 +35,7 @@
     <section class="row mh-100">
       {% include "components/nav.html" %}
       
-      <main class="col-11 col-lg-10">              
+      <main class="col-10">              
         {% include "components/header.html" %}
 
         <section class="mt-4">

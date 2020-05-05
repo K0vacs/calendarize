@@ -14,6 +14,7 @@ class searchForm(forms.Form):
             "data-target": "#datetimepicker",
             "data-toggle": "datetimepicker",
             "pattern": "\d{1,2}/\d{1,2}/\d{4}",
+            "aria-label": "Search Date Input",
             "required": "true",
         })
     )

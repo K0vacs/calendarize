@@ -47,12 +47,12 @@
               {% endfor %}
               <td>
                 <a href="{% url 'bookings:bookings_update' pk=items.0 %}">
-                  <i class="fas fa-pen"></i>
+                  <i class="fas fa-pen" aria-label="Edit item"></i>
                 </a>
               </td>
               <td>
                 <a href="" data-toggle="modal" data-target="#deleteModal" data-id="{{ items.0 }}">
-                  <i class="fas fa-trash"></i>
+                  <i class="fas fa-trash" aria-label="Delete item"></i>
                 </a>
               </td>
             </tr>

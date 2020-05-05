@@ -48,20 +48,10 @@
                 <div class="row">
 
                   {% for field in form %}
-                      
-                      {% if forloop.counter == 1 or forloop.counter == 6 %}
 
-                        <div class="col-12 col-lg-4">
-                          {% bootstrap_field field %}
-                        </div>
-
-                      {% else %}
-
-                        <div class="col-6 col-lg-4">
-                          {% bootstrap_field field %}
-                        </div>
-
-                      {% endif %}
+                    <div class="col-12 col-lg-4">
+                      {% bootstrap_field field %}
+                    </div>
 
                   {% endfor %}
 
@@ -74,9 +64,9 @@
 
                     <div class="row align-items-end formset-form">
 
-                      {% bootstrap_form form form_group_class='form-group col-5 col-lg-4' %}
+                      {% bootstrap_form form form_group_class='form-group col-12 col-md-4' %}
 
-                      <div class="form-group col-2 col-lg-4">
+                      <div class="form-group col-12 col-md-4">
 
                         {% if form.instance.id is not None %}
 
