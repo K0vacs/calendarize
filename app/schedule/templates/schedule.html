@@ -91,8 +91,8 @@
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">TIME</th>
-                      <th scope="col" class="d-none d-md-block">SERVICE</th>
-                      <th scope="col" class="d-none d-md-block">EQUIPMENT</th>
+                      <th scope="col" class="d-none d-md-table-cell">SERVICE</th>
+                      <th scope="col" class="d-none d-md-table-cell">EQUIPMENT</th>
                       <th scope="col" class="text-center">VIEW</th>
                     </tr>
                   </thead>
@@ -106,8 +106,8 @@
 
                           <tr>
                             <td>{{ bookings.start_time }} - {{ bookings.end_time }}</td>
-                            <td class="d-none d-md-block">{{ bookings.service_id__name }}</td>
-                            <td class="d-none d-md-block">{{ bookings.equipment_id__name }}</td>
+                            <td class="d-none d-md-table-cell">{{ bookings.service_id__name }}</td>
+                            <td class="d-none d-md-table-cell">{{ bookings.equipment_id__name }}</td>
                             <td class="text-center">
                               <a href="{% url 'bookings:bookings_update' pk=bookings.id %}">  
                                 <i class="fas fa-eye"></i>

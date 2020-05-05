@@ -189,13 +189,14 @@ nav a, a:hover {
 /* Small devices (mobiles, 768px and up) */
 @media (max-width: 576px) {
     
+    .breadcrumb {
+        font-size: 0.90rem;
+    }
+
     .profile-img {
         width: 30px;
     }
 
-    .breadcrumb {
-        font-size: 0.90rem;
-    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
