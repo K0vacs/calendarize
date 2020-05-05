@@ -9,10 +9,8 @@ from django.urls import reverse, reverse_lazy
 import datetime
 
 
-
+# This class reads from the Customers database records and displays the returned data in a table.
 class BookingsTable(ListView):
-    # This class reads from the Customers database records and displays the returned data in a table.
-
     model = Bookings
     template_name = 'bookings.html'
     context_object_name = 'pages'
@@ -35,8 +33,8 @@ class BookingsTable(ListView):
             'staff_id__username',
         )
 
+# This class creates new BD record(s) when the form is submitted
 class BookingsCreate(SuccessMessageMixin, CreateView):
-
     form_class = BookingsStaticForm
     template_name = 'bookings_add.html'
     success_message = "%(id)s was created successfully"
@@ -77,7 +75,7 @@ class BookingsCreate(SuccessMessageMixin, CreateView):
 
         return render(self.request, self.template_name, context)
 
-
+# This class updates existing BD record(s) when the form is submitted
 class BookingsUpdate(SuccessMessageMixin, UpdateView):
     form_class = BookingsStaticForm
     template_name = 'bookings_add.html'
@@ -128,9 +126,8 @@ class BookingsUpdate(SuccessMessageMixin, UpdateView):
 
         return render(self.request, self.template_name, context)
 
+# Delete individual DB record(s) in a modal
 class BookingsDelete(DeleteView):
-    # Delete individual Booking records in a modal
-
     model = Bookings
 
     def get(self, request, **kwargs):
@@ -139,9 +136,8 @@ class BookingsDelete(DeleteView):
     def get_success_url(self):
         return reverse_lazy('bookings:bookings')
 
+# Delete individual Customer Status record(s) through an Ajax request
 class CustomerStatusDelete(DeleteView):
-    # Delete individual Customer Status records through an Ajax request
-
     model = CustomerStatus
 
     def get(self, request, **kwargs):

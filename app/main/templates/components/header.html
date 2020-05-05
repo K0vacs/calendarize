@@ -1,15 +1,22 @@
+<!-- This loads the Bootstrap breadcrumbs library -->
 {% load django_bootstrap_breadcrumbs %}
 
+<!-- The header displays at the top of the page and houses the breadcrumb and profile section -->
 <header class="row navbar-light bg-white">
-  <div class="col-12">
+
+  <section class="col-12">
     <div class="row">
+
       <div class="col-9 col-lg-9 col-xl-10 align-self-center">
         {% render_breadcrumbs %}
       </div>
+
       <div class="col-3 col-lg-3 col-xl-2 align-self-center text-right">
         {% if user.is_authenticated %}
+
           <div class="row">
             <div class="col-12 align-self-center mt-2 mb-2">
+
               <div class="dropdown text-right">
                 <button class="btn dropdown-toggle pt-0 pb-0 profile-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{ user.username }}
@@ -19,13 +26,20 @@
                 </div>
                 <img src="{{ MEDIA_PATH }}{{ user.image }}" alt="My image" width="40px" class="profile-img">
               </div>
+
             </div>
           </div>
+
         {% else %}
+
           <p>You are not logged in</p>
           <a href="{% url 'login' %}">login</a>
+
         {% endif %}
+
       </div>
+
     </div>
-  </div>
+  </section>
+
 </header>

@@ -5,6 +5,7 @@ from .models import Bookings, Customers, Equipment, CustomerStatus, Staff
 from services.models import Services
 from .validators import date_validation, time_validation
 
+# Adding a static bookings form
 class BookingsStaticForm(ModelForm):
     date = forms.CharField(
         required=True,
@@ -52,6 +53,7 @@ class BookingsStaticForm(ModelForm):
         model = Bookings
         fields = ('date', 'start_time', 'end_time', 'equipment', 'service', 'staff')
 
+# Adding a static customer status form
 class CustomerStatusForm(ModelForm):
     CHOICES = [
         ('1', 'Confirmed'),
@@ -79,6 +81,7 @@ class CustomerStatusForm(ModelForm):
         model = CustomerStatus
         fields = ('customer', 'status')
 
+# Modifying the customer status form to a dynamic formset
 def customer_status_formset(number):
     CustomerStatusModelFormset = modelformset_factory(
         CustomerStatus, 

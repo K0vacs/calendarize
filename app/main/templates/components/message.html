@@ -1,13 +1,15 @@
+<!-- This loads the Bootstrap template tags -->
 {% load bootstrap4 %}
 
-<div class="row">
-    <div class="col-12">
+<!-- This section displays success and error messages -->
+<section class="row">
+  <div class="col-12">
 
-      {% if messages %}
-        {% for message in messages %}
-          {% bootstrap_alert message alert_type=message.tags %}
-        {% endfor %}
-      {% endif %}
+    {% if messages %}
+      {% for message in messages %}
+        {% bootstrap_alert message alert_type=message.tags %}
+      {% endfor %}
+    {% endif %}
 
-    </div>
   </div>
+</section>

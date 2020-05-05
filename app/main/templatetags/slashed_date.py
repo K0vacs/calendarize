@@ -4,17 +4,6 @@ import datetime
 register = template.Library()
 
 @register.filter
-def slashed_date(value):
-    """Converts dates with YYYY-MM-DD to DD/MM/YYYY"""
-
-    try: 
-        date = datetime.datetime.strptime(value, "%Y-%m-%d").strftime("%d/%m/%Y")
-    except:    
-        date = datetime.date.today().strftime("%d/%m/%Y")
-
-    return date
-
-@register.filter
 def dashed_date(value):
     """Converts dates with YYYY-MM-DD to DD/MM/YYYY"""
 

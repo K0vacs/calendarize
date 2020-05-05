@@ -5,6 +5,7 @@ from services.models import Services
 from equipment.models import Equipment
 from staff.models import Staff
 
+# Creating a Bookings model
 class Bookings(models.Model):
     date            = models.CharField(max_length=100, default=None, null=True)
     start_time      = models.CharField(max_length=100, default=None, null=True)
@@ -19,6 +20,7 @@ class Bookings(models.Model):
     def get_absolute_url(self):
         return reverse('bookings:bookings_update', kwargs={'pk': self.pk})
 
+# Creating a CustomerStatus model
 class CustomerStatus(models.Model):
     booking  = models.ForeignKey(Bookings, on_delete=models.SET_NULL, null=True)
     customer = models.ForeignKey(Customers, on_delete=models.SET_NULL, null=True)

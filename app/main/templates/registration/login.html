@@ -1,18 +1,22 @@
+<!-- This loads the relevant libraries and extends a base file -->
 {% extends 'registration/password_reset_base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 
+<!-- This sets the page specific title -->
 {% block title %}
   Login  
 {% endblock %}
 
+<!-- This sets the page specific description -->
 {% block description %}
   Login to Calendarize
 {% endblock %}
- 
+
+<!-- This sets the content for this specific page -->
 {% block content %}
 
-  <div class="container-fluid">
+  <section class="container-fluid">
             
     <h1 class="login-h1 text-center text-uppercase">Calendarize</h1>
     <h2 class="login-h2 text-center mb-5">Welcome back! Please login to your account.</h2>
@@ -32,6 +36,6 @@
 
     </form>
 
-  </div>
+  </section>
 
 {% endblock %}
