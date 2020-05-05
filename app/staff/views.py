@@ -7,9 +7,8 @@ from .forms import StaffForm, StaffUpdateForm
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 
+# This class reads from the Staff database records and displays the returned data in a table.
 class StaffTable(ListView):
-    # This class reads from the Customers database records and displays the returned data in a table.
-
     model = Staff
     template_name = 'staff.html'
     context_object_name = 'pages'
@@ -44,6 +43,7 @@ class StaffTable(ListView):
             'cell'
             )
 
+# This class creates new BD record(s) when the form is submitted
 class StaffCreate(SuccessMessageMixin, CreateView):
     form_class = StaffForm
     template_name = 'staff_add.html'
@@ -66,6 +66,7 @@ class StaffCreate(SuccessMessageMixin, CreateView):
         context['title'] = "Staff"
         return context
 
+# This class updates existing BD record(s) when the form is submitted
 class StaffUpdate(SuccessMessageMixin, UpdateView):
     form_class = StaffUpdateForm
     template_name = 'staff_add.html'
@@ -90,6 +91,7 @@ class StaffUpdate(SuccessMessageMixin, UpdateView):
         context['title'] = "Staff"
         return context
 
+# Delete individual DB record(s) in a modal
 class StaffDelete(DeleteView):
     model = Staff
     success_url = reverse_lazy('staff:staff')

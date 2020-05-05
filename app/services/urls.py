@@ -2,8 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path
 from . import views
 
+# Naming the module urls
 app_name = 'services'
 
+# Defining the urls in the module
 urlpatterns = [
     path('services/', login_required(views.ServiceTable.as_view()), name='services'),
     path('services/add/', login_required(views.ServiceCreate.as_view()), name='service_add'),

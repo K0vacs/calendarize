@@ -8,9 +8,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
+# This class reads from the Customers database records and displays the returned data in a table.
 class CustomerTable(ListView):
-    # This class reads from the Customers database records and displays the returned data in a table.
-
     model = Customers
     template_name = 'customers.html'
     context_object_name = 'pages'
@@ -29,9 +28,8 @@ class CustomerTable(ListView):
     def get_queryset(self):
         return self.model.objects.all().values_list()
 
+# This class creates a Customers and CustomersPrice database record(s) when the form is submitted.
 class CustomerCreate(SuccessMessageMixin, CreateView):
-    # This class creates a Customers and CustomersPrice database record(s) when the form is submitted.
-
     template_name = 'customer_add.html'
     form_class = CustomersPriceForm
     success_message = "%(name)s was created successfully"
@@ -58,8 +56,8 @@ class CustomerCreate(SuccessMessageMixin, CreateView):
             item.save()
         return HttpResponseRedirect(reverse('customers:customer_update', kwargs={'pk': response.pk}))
 
+# Read and Update individual Customer records in a form
 def customerupdate(request, pk):
-    # Read and Update individual Customer records in a form
 
     if request.method == 'GET':
         customerform = CustomersForm(instance=Customers.objects.get(pk=pk))
@@ -91,9 +89,8 @@ def customerupdate(request, pk):
         'customer_form': customerform,
         })
 
+# Delete individual Customer records in a modal
 class CustomerDelete(DeleteView):
-    # Delete individual Customer records in a modal
-
     model = Customers
 
     def get(self, request, **kwargs):
@@ -103,9 +100,8 @@ class CustomerDelete(DeleteView):
         CustomersPrice.objects.filter(customer_id=self.object.pk).delete()
         return reverse_lazy('customers:customers')
 
+# Delete individual Customer Price records in the repeater field
 class CustomerPriceDelete(DeleteView):
-    # Delete individual Customer Price records in the repeater field
-
     model = CustomersPrice
 
     def get(self, request, **kwargs):

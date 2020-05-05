@@ -8,9 +8,8 @@ from staff.models import Staff
 from equipment.models import Equipment
 from .forms import searchForm
 
+# This class extends the ListView class and displays the schedule data to the user.
 class ScheduleTable(ListView):
-    # This class extends the ListView class and displays the schedule data to the user.
-
     model = Bookings
     template_name = 'schedule.html'
     context_object_name = 'pages'

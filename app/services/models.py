@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+# Creating a Services model
 class Services(models.Model):
     name        = models.CharField(max_length=100)
     capacity    = models.IntegerField()

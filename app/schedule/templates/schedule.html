@@ -1,22 +1,30 @@
+<!-- This loads the relevant libraries and extends a base file -->
 {% extends 'base.html' %}
 {% load django_bootstrap_breadcrumbs %}
 {% load bootstrap4 %}
 {% load slashed_date %}
 {{ form.media }}
 
+<!-- This sets the page specific title -->
 {% block title %}{{ title }}{% endblock %}
 
+<!-- This sets the page specific description -->
+{% block description %}
+  View your daily Schedule
+{% endblock %}
+
+<!-- This sets the content for this specific page -->
 {% block content %}
 
-  <div class="row">
+  <section class="row">
     <div class="col-12">
 
       <h2>Schedule</h2>
 
     </div>
-  </div>
+  </section>
 
-  <div class="row mb-4">
+  <section class="row mb-4">
     <div class="col-12">
 
       <div class="card">
@@ -56,11 +64,11 @@
       </div>
 
     </div>
-  </div>
+  </section>
 
   {% if staff %}
 
-    <div class="row">
+    <section class="row">
 
       {% for person in staff %}
 
@@ -141,11 +149,11 @@
 
       {% endfor %}
 
-    </div>
+      </section>
 
   {% else %}
 
-    <div class="row">
+    <section class="row">
       <div class="col-12">
 
         <div class="card text-center">
@@ -153,7 +161,7 @@
         </div>
         
       </div>
-    </div>
+    </section>
 
   {% endif %}
 

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+# Creating a Equipment model
 class Equipment(models.Model):
     name        = models.CharField(max_length=100)
     icon        = models.ImageField(upload_to='media/')

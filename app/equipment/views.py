@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import EquipmentForm
 
+# This class reads from the Equipment database records and displays the returned data in a table.
 class EquipmentTable(ListView):
     model = Equipment
     template_name = 'equipment.html'
@@ -23,6 +24,7 @@ class EquipmentTable(ListView):
     def get_queryset(self):
         return self.model.objects.all().values_list('id','name', 'price')
 
+# This class creates new BD record(s) when the form is submitted
 class EquipmentCreate(SuccessMessageMixin, CreateView):
     form_class = EquipmentForm
     template_name = 'equipment_add.html'
@@ -46,6 +48,7 @@ class EquipmentCreate(SuccessMessageMixin, CreateView):
         else:
             return render(request, self.template_name, {'form': form})
 
+# This class updates existing BD record(s) when the form is submitted
 class EquipmentUpdate(SuccessMessageMixin, UpdateView):
     form_class = EquipmentForm
     template_name = 'equipment_add.html'
@@ -61,6 +64,7 @@ class EquipmentUpdate(SuccessMessageMixin, UpdateView):
         query = Equipment.objects.filter(pk=self.kwargs['pk'])
         return query
 
+# Delete individual DB record(s) in a modal
 class EquipmentDelete(DeleteView):
     model = Equipment
     success_url = reverse_lazy('equipment:equipment')

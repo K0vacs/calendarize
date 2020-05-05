@@ -1,22 +1,31 @@
+<!-- This loads the relevant libraries and extends a base file -->
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load django_bootstrap_breadcrumbs %}
 
+<!-- This sets the page specific title -->
 {% block title %}Add New {{ title }}{% endblock %}
 
+<!-- This sets the page specific description -->
+{% block description %}
+  Add or update your {{ title }}
+{% endblock %}
+
+<!-- This sets the page specific breadcrumb -->
 {% block breadcrumbs %}
   {{ block.super }}
   {% breadcrumb "Customers" "customers:customers" %}
   {% breadcrumb "Add" "customer:customer_add" %}
 {% endblock %}
 
+<!-- This sets the content for this specific page -->
 {% block content %}
     
   {% include "components/message.html" with messages=messages %}
 
   {% include "components/heading.html" with title=title link="customers:customer_add" %}
 
-  <div class="row">
+  <section class="row">
     <div class="col-12">
 
       <div class="card">
@@ -80,6 +89,6 @@
       </div>
 
     </div>
-  </div>
+  </section>
 
 {% endblock %}

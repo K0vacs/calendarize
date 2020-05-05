@@ -2,6 +2,7 @@ from django import forms
 from bootstrap_datepicker_plus import DatePickerInput
 from bookings.validators import date_validation
 
+# Adding a static search form
 class searchForm(forms.Form):
 
     search_date = forms.DateField(

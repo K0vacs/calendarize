@@ -9,7 +9,7 @@ from django.urls import reverse, reverse_lazy
 import datetime
 
 
-# This class reads from the Customers database records and displays the returned data in a table.
+# This class reads from the Bookings database records and displays the returned data in a table.
 class BookingsTable(ListView):
     model = Bookings
     template_name = 'bookings.html'

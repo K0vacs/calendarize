@@ -1,3 +1,5 @@
+# This is a Docker configuration file that is called by the Docker Compose web Image
+
 FROM python:3
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /src

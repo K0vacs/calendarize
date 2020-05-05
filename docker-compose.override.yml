@@ -1,3 +1,6 @@
+# This Docker Compose file adds/overrides some elements of the docker-compose.yml file
+# This file is run using docker-compose up, this is to run a development version
+
 version: '3.2'
 
 services:
