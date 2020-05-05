@@ -1,68 +1,81 @@
-<nav class="col-2 bg-purple pl-0 pr-0 mh-100">
+<nav class="col-1 col-lg-2 bg-purple pl-0 pr-0 mh-100">
 	<div class="row brand-block">
 		<div class="col-12">
-			<div class="align-self-center text-white bg-dark-purple pr-3 pl-3">
-				<h1 class="navbar-brand text-uppercase mt-2 mb-2">Calendarize</h1>
+			<div class="brand-item text-white bg-dark-purple text-center">
+				<h1 class="d-none d-lg-block navbar-brand text-uppercase mb-0 mr-0">Calendarize</h1>
+				  <i class="d-lg-none fa fa-bars m-auto mt-3 mb-3" aria-hidden="true"></i>
 			</div>
 		</div>
 	</div>
 	{% with url_name=request.resolver_match.url_name %}
 		<div class="nav-block {% if url_name == 'schedule' or url_name == 'schedule_date' or url_name == 'home' %}active{% endif %}">
 			<div class="row pr-4 pl-3 pt-2 pb-2">
-				<div class="col-2 align-self-center pl-3 pr-0 text-center">
-					<i class="far fa-calendar-alt"></i>
+				<div class="col-12 col-lg-2 align-self-center pl-0 pl-lg-3 pr-0 text-center">
+					<a href="{% url 'schedule:schedule' %}">
+						<i class="far fa-calendar-alt" data-toggle="tooltip" data-placement="right" title="Schedule"></i>
+					</a>
 				</div>
-				<div class="col-10 pl-0 pr-0">
+				<div class="d-none d-sm-none d-lg-block col-md-10 pl-0 pr-0">
 					<a class="nav-link text-white" href="{% url 'schedule:schedule' %}">Schedule</a>
 				</div>
 			</div>
 		</div>
 		<div class="nav-block {% if url_name == 'bookings' or url_name == 'bookings_add' or url_name == 'bookings_update' %}active{% endif %}">
 			<div class="row pr-4 pl-3 pt-2 pb-2">
-				<div class="col-2 align-self-center pl-3 pr-0 text-center">
-					<i class="fas fa-hourglass-start"></i>
+				<div class="col-12 col-lg-2 align-self-center pl-0 pl-lg-3 pr-0 text-center">
+					<a href="{% url 'bookings:bookings' %}">
+						<i class="fas fa-hourglass-start" data-toggle="tooltip" data-placement="right" title="Bookings"></i>
+					</a>
 				</div>
-				<div class="col-10 pl-0 pr-0">
+				<div class="d-none d-sm-none d-lg-block col-md-10 pl-0 pr-0">
 					<a class="nav-link text-white" href="{% url 'bookings:bookings' %}">Bookings</a>
 				</div>
 			</div>
 		</div>
 		<div class="nav-block {% if url_name == 'services' or url_name == 'service_add' or url_name == 'service_update' %}active{% endif %}">
 			<div class="row pr-4 pl-3 pt-2 pb-2">
-				<div class="col-2 align-self-center pl-3 pr-0 text-center">
-					<i class="fas fa-star"></i>
+				<div class="col-12 col-lg-2 align-self-center pl-0 pl-lg-3 pr-0 text-center">
+					<a href="{% url 'services:services' %}">
+						<i class="fas fa-star" data-toggle="tooltip" data-placement="right" title="Services"></i>
+					</a>
 				</div>
-				<div class="col-10 pl-0 pr-0">
+				<div class="d-none d-sm-none d-lg-block col-md-10 pl-0 pr-0">
 					<a class="nav-link text-white" href="{% url 'services:services' %}">Services</a>
 				</div>
 			</div>
 		</div>
 		<div class="nav-block {% if url_name == 'equipment' or url_name == 'equipment_add' or url_name == 'equipment_update' %}active{% endif %}">
 			<div class="row pr-4 pl-3 pt-2 pb-2">
-				<div class="col-2 align-self-center pl-3 pr-0 text-center">
-					<i class="fas fa-dumbbell"></i>
+				<div class="col-12 col-lg-2 align-self-center pl-0 pl-lg-3 pr-0 text-center">
+					<a href="{% url 'equipment:equipment' %}">
+						<i class="fas fa-dumbbell" data-toggle="tooltip" data-placement="right" title="Equipment"></i>
+					</a>
 				</div>
-				<div class="col-10 pl-0 pr-0">
+				<div class="d-none d-sm-none d-lg-block col-md-10 pl-0 pr-0">
 					<a class="nav-link text-white" href="{% url 'equipment:equipment' %}">Equipment</a>
 				</div>
 			</div>
 		</div>
 		<div class="nav-block {% if url_name == 'customers' or url_name == 'customer_add' or url_name == 'customer_update' %}active{% endif %}">
 			<div class="row pr-4 pl-3 pt-2 pb-2">
-				<div class="col-2 align-self-center pl-3 pr-0 text-center">
-					<i class="fas fa-address-book"></i>
+				<div class="col-12 col-lg-2 align-self-center pl-0 pl-lg-3 pr-0 text-center">
+					<a href="{% url 'customers:customers' %}">
+						<i class="fas fa-address-book" data-toggle="tooltip" data-placement="right" title="Customers"></i>
+					</a>
 				</div>
-				<div class="col-10 pl-0 pr-0">
+				<div class="d-none d-sm-none d-lg-block col-md-10 pl-0 pr-0">
 					<a class="nav-link text-white" href="{% url 'customers:customers' %}">Customers</a>
 				</div>
 			</div>
 		</div>
 		<div class="nav-block {% if url_name == 'staff' or url_name == 'staff_add' or url_name == 'staff_update' %}active{% endif %}">
 			<div class="row pr-4 pl-3 pt-2 pb-2">
-				<div class="col-2 align-self-center pl-3 pr-0 text-center">
-					<i class="fas fa-user"></i>
+				<div class="col-12 col-lg-2 align-self-center pl-0 pl-lg-3 pr-0 text-center">
+					<a href="{% url 'staff:staff' %}">
+						<i class="fas fa-user" data-toggle="tooltip" data-placement="right" title="Staff"></i>
+					</a>
 				</div>
-				<div class="col-10 pl-0 pr-0">
+				<div class="d-none d-sm-none d-lg-block col-md-10 pl-0 pr-0">
 					<a class="nav-link text-white" href="{% url 'staff:staff' %}">Staff</a>
 				</div>
 			</div>

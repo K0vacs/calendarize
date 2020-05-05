@@ -2,6 +2,10 @@ $(document).ready(function() {
 
   // EVENTS
   $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  
+  $(function () {
     var date = $("[name='date']").val()
     
     $("#datetimepicker").datetimepicker({

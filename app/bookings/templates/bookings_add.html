@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load django_bootstrap_breadcrumbs %}
-{% load slashed_date %}
 
 {% block title %}Add New {{ title }}{% endblock %}
 
@@ -40,17 +39,20 @@
                 <div class="row">
 
                   {% for field in form %}
-                    
-                    <div class="col-4">
+                      
+                      {% if forloop.counter == 1 or forloop.counter == 6 %}
 
-                      {% if field.date %}
-                        {% bootstrap_field field.value %}
-                        {# bootstrap_field field.value|slashed_date #}
+                        <div class="col-12 col-lg-4">
+                          {% bootstrap_field field %}
+                        </div>
+
                       {% else %}
-                        {% bootstrap_field field %}
-                      {% endif %}
 
-                    </div>
+                        <div class="col-6 col-lg-4">
+                          {% bootstrap_field field %}
+                        </div>
+
+                      {% endif %}
 
                   {% endfor %}
 
@@ -63,9 +65,9 @@
 
                     <div class="row align-items-end formset-form">
 
-                      {% bootstrap_form form form_group_class='form-group col-4' %}
+                      {% bootstrap_form form form_group_class='form-group col-5 col-lg-4' %}
 
-                      <div class="form-group col-4">
+                      <div class="form-group col-2 col-lg-4">
 
                         {% if form.instance.id is not None %}
 

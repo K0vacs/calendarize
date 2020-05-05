@@ -1,69 +1,18 @@
+/* DEFAULT STYLING */
+
 body, h1, h2, h3, h4, h5, h6, p, a, span, button {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-nav i {
-    color: #A5A4BF;
-}
 
-nav a, a:hover {
-    color: #A3A0FB;
-}
+/* HELPER STYLING */
 
 .mh-100{
     min-height: 100vh;
 }
 
-.navbar-brand {
-    font-weight: 700;
-    letter-spacing: 3px;
-}
-
-.breadcrumb {
-    margin-bottom: 0;
-    padding: 0;
-    background-color: unset;
-}
-
 .hidden {
     display: none;
-}
-
-.bg-purple {
-    background-color: #43425D;
-}
-
-.bg-dark-purple {
-    background-color: #35344a;
-}
-
-.bg-med-purple {
- background-color: #A5A4BF;
-}
-
-.bg-light-purple {
-    background-color: #F0F0F7;
-}
-
-.bg-bright-purple {
-    background-color: #A3A0FB;
-}
-
-.nav-block {
-    border-left: 5px solid #43425D;
-}
-
-.brand-block {
-    border-bottom: 5px solid rgb(0,0,0,0);
-}
-
-.profile-btn {
-    border-left: 1px solid #4D4F5C;
-    border-radius: 0px;
-}
-
-.profile-img {
-    border-radius: 500px;
 }
 
 .btn:focus {
@@ -92,6 +41,105 @@ nav a, a:hover {
     background-color: #35344a;
 }
 
+
+/* BACKGROUND STYLING */
+
+.bg-purple {
+    background-color: #43425D;
+}
+
+.bg-dark-purple {
+    background-color: #35344a;
+}
+
+.bg-med-purple {
+ background-color: #A5A4BF;
+}
+
+.bg-light-purple {
+    background-color: #F0F0F7;
+}
+
+.bg-bright-purple {
+    background-color: #A3A0FB;
+}
+
+
+/* LOGIN STYLING */
+
+.login-background {
+    background-size: cover;
+}
+
+.login-h1 {
+    font-weight: 600;
+    color: #43425D;
+}
+
+.login-h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #909090;
+}
+
+.login-form input {
+    border: 0px;
+    border-bottom: 2px solid rgba(0,0,0,.125);
+    border-radius: 0;
+}
+
+
+/* NAVIGATION STYLING */
+
+nav i {
+    color: #A5A4BF;
+}
+
+nav a, a:hover {
+    color: #A3A0FB;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.nav-block {
+    border-left: 5px solid #43425D;
+}
+
+.brand-block {
+    height: 56px;
+}
+
+.brand-item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 16px;
+}
+
+
+/* HEADER STYLING */
+
+.breadcrumb {
+    margin-bottom: 0;
+    padding: 0;
+    background-color: unset;
+}
+
+.profile-btn {
+    border-left: 1px solid #4D4F5C;
+    border-radius: 0px;
+}
+
+.profile-img {
+    border-radius: 500px;
+}
+
+
+/* TABLE STYLING */
+
 .table .thead-dark th {
     background-color: #35344a;
     border-color: #35344a;
@@ -114,7 +162,8 @@ nav a, a:hover {
     background-color: #35344a;
 }
 
-/* Pagination */
+
+/* TABLE PAGINATION */
 
 .pagination a {
     color: #495057;
@@ -130,23 +179,14 @@ nav a, a:hover {
     color: #ffffff;
 }
 
-.login-background {
-    background-size: cover;
-}
 
-.login-h1 {
-    font-weight: 600;
-    color: #43425D;
-}
+/* MEDIA QUERIES */
 
-.login-h2 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #909090;
-}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
 
-.login-form input {
-    border: 0px;
-    border-bottom: 2px solid rgba(0,0,0,.125);
-    border-radius: 0;
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
 }
