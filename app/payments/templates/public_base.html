@@ -1,13 +1,6 @@
 <!-- This loads the relevant libraries for the page -->
 {% load static %}
 {% load bootstrap4 %}
-{% load django_bootstrap_breadcrumbs %}
-
-<!-- This initializes the breadcrumbs block -->
-{% block breadcrumbs %}
-  {% clear_breadcrumbs %}
-  {% breadcrumb "Home" "schedule:schedule" %}
-{% endblock %}
 
 <!-- This begins the HTML for the page -->
 <!DOCTYPE html>
@@ -15,7 +8,7 @@
 
   <!-- This initializes the generic head for all the pages -->
   <head>
-    
+
     <meta charset="utf-8">
     <title>{% block title %}Calendarize{% endblock %}</title>
     <meta name="description" content="{% block description %}Make scheduling easy{% endblock %}">
@@ -23,25 +16,20 @@
     
     <link rel="icon" href="{{ SITE_URL }}media/favicon.svg" type="image/gif" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
     <link href="{% static "/fontawesome/css/all.css" %}" rel="stylesheet">
     {% bootstrap_css %}
     <link href="{% static "/css/style.css" %}" rel="stylesheet">
-    
+
   </head>
 
   <!-- This initializes the body for all the pages -->
   <body class="container-fluid bg-light-purple mh-100">
 
     <section class="row mh-100">
-      {% include "components/nav.html" %}
       
-      <main class="col-10">              
-        {% include "components/header.html" %}
+      <main class="col-12">              
 
-        <section class="mt-4">
-          {% block content %}{% endblock %}
-        </section>
+        {% block content %}{% endblock %}
 
       </main>
 
@@ -51,9 +39,10 @@
     
     <!-- This loads the JS scripts for all pages -->
     {% bootstrap_javascript jquery='full' %}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="{% static "/js/main.js" %}"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    {% block scripts %}{% endblock %}
+    <script src="{% static '/js/stripe.js' %}"></script>
+
   </body>
   
 </html>

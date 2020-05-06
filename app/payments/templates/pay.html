@@ -1,1 +1,33 @@
-<h1>Hi!</h1>
+{% extends 'public_base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <form action="{% url 'charge' %}" method="post" id="payment-form">
+        {% csrf_token %}
+
+        {{ staff }}
+
+        <div class="form-row">
+            <label for="card-element">
+            Credit or debit card
+            </label>
+            <div id="card-element" class="w-100">
+            <!-- A Stripe Element will be inserted here. -->
+            </div>
+
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+
+    <button>Submit Payment</button>
+    </form>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        // Creates a Stripe client.
+        const stripe = Stripe('{{ key }}');
+    </script>
+{% endblock %}

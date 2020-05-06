@@ -169,3 +169,7 @@ EMAIL_HOST_USER = 'info@4kmedia.co.za'
 EMAIL_HOST_PASSWORD = os.getenv('DJANGO_SUPERUSER_PASSWORD')
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'Calendarize <info@4kmedia.co.za>'
+
+# Stripe settings
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
