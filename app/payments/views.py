@@ -3,6 +3,16 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from staff.forms import StaffForm
+from .forms import ContactForm
+from django.core.mail import send_mail
+
+# send_mail(
+#     'Subject here',
+#     'Here is the message.',
+#     'from@example.com',
+#     ['to@example.com'],
+#     fail_silently=False,
+# )
 
 import logging
 logger = logging.getLogger(__name__)
@@ -15,6 +25,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        context['contactForm'] = ContactForm()
         context['staff'] = StaffForm()
         return context
 
@@ -30,7 +41,13 @@ def charge(request):
         )
 
         if(charge.paid == True):
-            logger.warning("Save Staff")
+            staff = StaffForm(request.POST)
+
+            if staff.is_valid():
+                staff.save()
+                logger.warning("Save Staff")
+
+                return render(request, 'charge.html')
         else:
             logger.warning("Failed try again page")
 

@@ -23,17 +23,58 @@
   </head>
 
   <!-- This initializes the body for all the pages -->
-  <body class="container-fluid bg-light-purple mh-100">
+  <body class="home bg-light-purple mh-100">
 
-    <section class="row mh-100">
+    <nav class="container navbar navbar-expand-lg navbar-light bg-trans">
+      <a class="navbar-brand text-uppercase text-white" href="#">Calendarize</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
+        
+        <a href="" class="btn text-white">Log In</a>
+        <a href="" class="btn btn-primary">Sign Up</a>
+
+      </div>
+
+    </nav>
+
+    <header class="" style="background-image:url('http://localhost:8000/media/hero.png');">
+      <div class="hero">
+
+        <div class="container h-100">
+          <div class="row h-100">
+
+            <div class="col-12 align-self-end">
+
+              <h1 class="text-white text-center mb-5">Start scheduling today</h1>
+              <p class="d-block mb-5 text-center">
+                <a href="" class="btn bg-pink pt-3 pr-4 pb-3 pl-4">
+                  <span class="mr-2 text-white">Buy Calendarize</span>
+                  <span class="cart">
+                    <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
+                  </span>
+                  
+                </a>
+              </p>
+              <img class="d-block m-auto" src="http://localhost:8000/media/hero.png" alt="" width="60%">
+
+            </div>
+
+          </div>
+        </div>
+        
+        
+      </div>
+    </header>
       
-      <main class="col-12">              
+    <main>              
 
-        {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
 
-      </main>
-
-    </section>
+    </main>
 
     <!-- BODY END -->
     

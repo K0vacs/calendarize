@@ -64,6 +64,24 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button {
     background-color: #A3A0FB;
 }
 
+.bg-pink {
+    background-color: #FF165E;
+}
+
+.bg-blue {
+    background-image: radial-gradient(#1E273B, #192030, #192030);
+}
+
+
+/* TEXT STYLING */
+
+.text-pink {
+    color: #FF165E;
+}
+
+.text-light-blue {
+    color: #D0E5FF;
+}
 
 /* LOGIN STYLING */
 
@@ -183,6 +201,56 @@ nav a, a:hover {
     color: #ffffff;
 }
 
+/* MEDIA QUERIES */
+
+.home nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.home header {
+    
+}
+
+.home .hero {
+    height: 700px;
+    background-color: rgba(10,13,19,.8);
+}
+
+.home .btn {
+    border-radius: 500px;
+}
+
+.home .cart {
+    background-color: rgba(0,0,0,.25);
+    border-radius: 50%;
+}
+
+.home .fa-shopping-cart {
+    width: 22px;
+    font-size: .6rem;
+}
+
+.home .border-red:before {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    border-bottom: 4px solid #FF165E;
+    border-radius: 500px;
+}
+
+.border-grey {
+    border-top: 4px solid #F2F2F2;
+}
+
+.home .card-img-overlay {
+    background-color: rgba(0,0,0,.8);
+}
+
+
 
 /* MEDIA QUERIES */
 
@@ -205,4 +273,12 @@ nav a, a:hover {
         font-size: 1rem;
     }
 
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+    .home nav .navbar-collapse .btn {
+        display: block;
+    }
 }

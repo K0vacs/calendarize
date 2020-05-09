@@ -3,10 +3,158 @@
 
 {% block content %}
 
+    <section class="bg-white">
+        <div class="container pt-5 pb-5">
+            <div class="row pt-5 pb-5">
+
+                <div class="col-12 col-lg-6 align-self-center">
+                    <div class="row">
+                        <div class="col-12 col-lg-9">
+                            <h2>Our simple story</h2>
+                            <p>We built Calendarize because we got tired of carrying a big book that we would use to manage our schedules, needless to say those are days of the past.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 col-lg-10">
+                            <img class="d-block" src="http://localhost:8000/media/hero.png" alt="" width="100%">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row pb-4">
+
+                <div class="col-12 col-md-6 col-lg-3 border-red">
+                    <h3 class="mt-4">Schedule Bookings</h3>
+                    <p>Make bookings for yourself and your staff, private, semi-private or group classes are easy to create.</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 border-grey">
+                    <h3 class="mt-4">View Team Schedule</h3>
+                    <p>See your teams schedule at a glance to quickly discover double bookings and resource constraints.</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 border-grey">
+                    <h3 class="mt-4">Client Specific Pricing</h3>
+                    <p>Set prices on services, equipment or customers to enable a generic or tailored offering.</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 border-grey">
+                    <h3 class="mt-4">Host Calendarize</h3>
+                    <p>Host your own version of Calendarize and make it your own. Expand and customise the application or love it the way it is.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container pt-5 pb-5">
+        <div class="row pt-5 pb-5">
+
+            <di class="col-12">
+                <h2 class="text-center mb-5">Products</h2>
+            </di>
+
+            <div class="col-12 col-md-6">
+                <div class="card bg-dark text-white">
+                    <img src="http://localhost:8000/media/hero.png" class="card-img" alt="...">
+                    <div class="card-img-overlay d-flex flex-column justify-content-center">
+                        <p class="text-center">
+                            <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
+                        </p>
+                        <h3 class="card-title text-center">Calendarized Shared</h3>
+                        <p class="card-text text-center">
+                            <ul class="list-unstyled text-light-blue text-center">
+                                <li>Use Calendarize forever with a once-off payment</li>
+                                <li>Share usage with other users and companies</li>
+                                <li>Use all features with no limits</li>
+                            </ul>
+                        </p>
+                        <p class="card-text text-center">€5.00</p>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card bg-dark text-white">
+                    <img src="http://localhost:8000/media/hero.png" class="card-img" alt="...">
+                    <div class="card-img-overlay d-flex flex-column justify-content-center">
+                        <p class="text-center">
+                            <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
+                        </p>
+                        <h3 class="card-title text-center">Calendarized Hosted</h3>
+                        <p class="card-text text-center">
+                            <ul class="list-unstyled text-light-blue text-center">
+                                <li>Use Calendarize forever with a once-off payment</li>
+                                <li>Get private usage for only you and your staff</li>
+                                <li>Extend and customise the application</li>
+                            </ul>
+                        </p>
+                        <p class="card-text text-center">€5.00</p>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-blue">
+        <div class="container pt-5 pb-5">
+            <div class="row justify-content-center pt-3 pb-3">
+
+                <div class="col-12 col-md-8 col-lg-6">
+                    <h2 class="text-center text-white mb-4">Choose the best scheduling software for your business</h2>
+                    <p class="d-block text-center mb-0">
+                        <a href="" class="btn btn-primary pt-3 pr-4 pb-3 pl-4">
+                          <span class="mr-2 text-white">Buy Calendarize today</span>
+                          <span class="cart">
+                            <i class="fa fa-shopping-cart text-primary" aria-hidden="true"></i>
+                          </span>
+                          
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6 align-self-center">
+                <div class="row">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <i class="fa fa-shopping-cart text-primary" aria-hidden="true"></i>
+                        <h2>Boost productivity</h2>
+                        <p>Time is money. Make sure you make the most of yours with Calendarize and start making bookings today!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <img src="http://localhost:8000/media/hero.png" alt="" width="100%">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-white">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+                    {% bootstrap_form contactForm %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <form action="{% url 'charge' %}" method="post" id="payment-form">
         {% csrf_token %}
 
-        {{ staff }}
+        {% bootstrap_form staff %}
 
         <div class="form-row">
             <label for="card-element">
