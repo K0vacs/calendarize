@@ -105,7 +105,7 @@
                 <div class="col-12 col-md-8 col-lg-6">
                     <h2 class="text-center text-white mb-4">Choose the best scheduling software for your business</h2>
                     <p class="d-block text-center mb-0">
-                        <a href="" class="btn btn-primary pt-3 pr-4 pb-3 pl-4">
+                        <a href="" class="btn btn-primary pt-3 pr-4 pb-3 pl-4" data-toggle="modal" data-target="#staticBackdrop">
                           <span class="mr-2 text-white">Buy Calendarize today</span>
                           <span class="cart">
                             <i class="fa fa-shopping-cart text-primary" aria-hidden="true"></i>
@@ -140,36 +140,76 @@
     </section>
 
     <section class="bg-white">
-        <div class="container">
-            <div class="row">
+        <div class="container pt-5 pb-5">
+            <div class="row justify-content-center pt-5 pb-5">
 
-                <div class="col-12">
-                    {% bootstrap_form contactForm %}
+                <div class="col-12 col-md-10 col-lg-8">
+                    <form method="post" class="mb-5">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                {% bootstrap_field contactForm.full_name placeholder='Full Name' %}
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                {% bootstrap_field contactForm.email %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {% bootstrap_field contactForm.message %}
+                            </div>
+                        </div>
+                    
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary bg-pink btn-block pr-4 pl-4">Contact Now</button>
+                        {% endbuttons %}
+                    </form>
+                    <p class="text-center">Or just email on</p>
+                    <p class="text-center">hello@example.com</p>
                 </div>
 
             </div>
         </div>
     </section>
-
-    <form action="{% url 'charge' %}" method="post" id="payment-form">
-        {% csrf_token %}
-
-        {% bootstrap_form staff %}
-
-        <div class="form-row">
-            <label for="card-element">
-            Credit or debit card
-            </label>
-            <div id="card-element" class="w-100">
-            <!-- A Stripe Element will be inserted here. -->
+    
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
             </div>
-
-            <!-- Used to display form errors. -->
-            <div id="card-errors" role="alert"></div>
+            <div class="modal-body">
+                <form action="{% url 'charge' %}" method="post" id="payment-form">
+                    {% csrf_token %}
+            
+                    {% bootstrap_form staff %}
+            
+                    <div class="form-row">
+                        <label for="card-element">
+                        Credit or debit card
+                        </label>
+                        <div id="card-element" class="w-100">
+                        <!-- A Stripe Element will be inserted here. -->
+                        </div>
+            
+                        <!-- Used to display form errors. -->
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+            
+                <button>Submit Payment</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+            </div>
         </div>
-
-    <button>Submit Payment</button>
-    </form>
+        </div>
+    </div>
 
 {% endblock %}
 

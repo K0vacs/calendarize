@@ -4,6 +4,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+h1 {
+    font-size: 2.5rem;
+}
 
 /* HELPER STYLING */
 
@@ -66,10 +69,21 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button {
 
 .bg-pink {
     background-color: #FF165E;
+    border-color: #FF165E;
+}
+
+.bg-light-blue {
+    background-color: #1E3850;
 }
 
 .bg-blue {
     background-image: radial-gradient(#1E273B, #192030, #192030);
+}
+
+.home input {
+    border: 0;
+    border-bottom: 1px solid rgb(0,0,0,.1);
+    border-radius: 0;
 }
 
 
@@ -81,6 +95,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, button {
 
 .text-light-blue {
     color: #D0E5FF;
+}
+
+.text-light-grey {
+    background-color: rgb(172,197,255,.2);
 }
 
 /* LOGIN STYLING */
@@ -122,6 +140,14 @@ nav a, a:hover {
     letter-spacing: 3px;
 }
 
+.navbar-toggler {
+    border: 0;
+}
+
+.navbar-toggler i {
+    color: #ffffff
+}
+
 .nav-block {
     border-left: 5px solid #43425D;
 }
@@ -137,6 +163,14 @@ nav a, a:hover {
     padding: 0 16px;
 }
 
+.icon {
+    height: 28px;
+    padding-bottom: 3px;
+}
+
+button:focus {
+    outline: unset;
+}
 
 /* HEADER STYLING */
 
@@ -153,6 +187,10 @@ nav a, a:hover {
 
 .profile-img {
     border-radius: 500px;
+}
+
+.macbook {
+    width: 90%;
 }
 
 
@@ -201,21 +239,16 @@ nav a, a:hover {
     color: #ffffff;
 }
 
-/* MEDIA QUERIES */
+/* HEADER  STYLING */
 
-.home nav {
+.home .navbar {
     position: absolute;
     left: 0;
     right: 0;
     z-index: 10;
 }
 
-.home header {
-    
-}
-
 .home .hero {
-    height: 700px;
     background-color: rgba(10,13,19,.8);
 }
 
@@ -250,7 +283,11 @@ nav a, a:hover {
     background-color: rgba(0,0,0,.8);
 }
 
+/* FOOTER STYLING */
 
+footer i {
+    font-size: 20px;
+}
 
 /* MEDIA QUERIES */
 
@@ -269,16 +306,29 @@ nav a, a:hover {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
+    h1 {
+        font-size: 3.5rem;
+    }
+
     .navbar-brand {
         font-size: 1rem;
+    }
+
+    .macbook {
+        width: 80%;
     }
 
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (max-width: 992px) {
+@media (min-width: 992px) {
 
     .home nav .navbar-collapse .btn {
         display: block;
     }
+
+    .macbook {
+        width: 55%;
+    }
+
 }

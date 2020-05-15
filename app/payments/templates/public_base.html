@@ -16,9 +16,9 @@
     
     <link rel="icon" href="{{ SITE_URL }}media/favicon.svg" type="image/gif" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="{% static "/fontawesome/css/all.css" %}" rel="stylesheet">
+    <link href="{% static '/fontawesome/css/all.css' %}" rel="stylesheet">
     {% bootstrap_css %}
-    <link href="{% static "/css/style.css" %}" rel="stylesheet">
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
 
   </head>
 
@@ -26,32 +26,37 @@
   <body class="home bg-light-purple mh-100">
 
     <nav class="container navbar navbar-expand-lg navbar-light bg-trans">
-      <a class="navbar-brand text-uppercase text-white" href="#">Calendarize</a>
+      <div class="align-self-center">
+        <a class="navbar-brand text-uppercase text-white" href="#">
+          <img class="icon mr-2" src="{{ SITE_URL }}media/favicon.svg" alt="Calnedarize Icon">
+          Calendarize
+        </a>
+      </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
-        
-        <a href="" class="btn text-white">Log In</a>
-        <a href="" class="btn btn-primary">Sign Up</a>
-
+        <div class="d-flex justify-content-end">
+          <a href="" class="btn text-white">Log In</a>
+          <a href="" class="btn btn-primary">Sign Up</a>
+        </div>
       </div>
 
     </nav>
 
-    <header class="" style="background-image:url('http://localhost:8000/media/hero.png');">
-      <div class="hero">
+    <header style="background-image:url('{{ SITE_URL }}media/header-background.jpg');">
+      <div class="hero pt-5">
 
-        <div class="container h-100">
-          <div class="row h-100">
+        <div class="container h-100 pt-5">
+          <div class="row h-100 pt-5">
 
             <div class="col-12 align-self-end">
 
-              <h1 class="text-white text-center mb-5">Start scheduling today</h1>
+              <h1 class="text-white text-center mb-5 pb-4 pl-2 pr-2">Start scheduling today</h1>
               <p class="d-block mb-5 text-center">
-                <a href="" class="btn bg-pink pt-3 pr-4 pb-3 pl-4">
+                <a href="" class="btn bg-pink pt-3 pr-4 pb-3 pl-4" data-toggle="modal" data-target="#staticBackdrop">
                   <span class="mr-2 text-white">Buy Calendarize</span>
                   <span class="cart">
                     <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
@@ -59,7 +64,7 @@
                   
                 </a>
               </p>
-              <img class="d-block m-auto" src="http://localhost:8000/media/hero.png" alt="" width="60%">
+              <img class="macbook d-block m-auto" src="http://localhost:8000/media/macbook.png" alt="">
 
             </div>
 
@@ -75,6 +80,44 @@
       {% block content %}{% endblock %}
 
     </main>
+
+    <footer class="bg-light-blue pt-5 pb-4">
+        <div class="container">
+
+          <div class="row pt-4 pb-5">
+            <div class="text-light-blue col-10 col-md-8 col-lg-6 offset-1 offset-md-2 offset-lg-3">
+              <h4 class="text-center">Productivity is being able to do things that you were never able to do before.</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <hr class="text-light-grey">
+
+              <nav class="row d-flex justify-content-between pt-2">
+                <div class="col align-self-center">
+                  <img class="icon mr-2" src="{{ SITE_URL }}media/favicon.svg" alt="Calnedarize Icon">
+                  <a class="navbar-brand text-uppercase text-white d-none d-md-inline" href="#">Calendarize</a>
+                </div>
+                
+                <div class="col-6 align-self-center text-center d-none d-lg-inline">
+                  <a href="" class="btn text-white">Log In</a>
+                  <a href="" class="btn btn-primary">Sign Up</a>
+                </div>
+
+                <div class="col align-self-center text-right socials">  
+                  <i class="fab fa-linkedin-in mr-3"></i>
+                  <i class="fab fa-github-alt mr-3"></i>
+                  <i class="fas fa-globe-africa"></i>
+                </div>
+          
+              </nav>
+
+            </div>
+          </div>
+
+        </div>
+    </footer>
 
     <!-- BODY END -->
     

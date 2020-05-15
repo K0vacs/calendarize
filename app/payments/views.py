@@ -6,13 +6,7 @@ from staff.forms import StaffForm
 from .forms import ContactForm
 from django.core.mail import send_mail
 
-# send_mail(
-#     'Subject here',
-#     'Here is the message.',
-#     'from@example.com',
-#     ['to@example.com'],
-#     fail_silently=False,
-# )
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -28,6 +22,26 @@ class HomePageView(TemplateView):
         context['contactForm'] = ContactForm()
         context['staff'] = StaffForm()
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            send_mail(
+                'Calendarize Enquiry',
+                form.cleaned_data['message'],
+                'Calendarize <info@4kmedia.co.za>',
+                [form.cleaned_data['email']],
+                fail_silently=False,
+            )
+
+            return render(request, self.template_name, {
+                'key': settings.STRIPE_PUBLISHABLE_KEY,
+                'contactForm': ContactForm(),
+                'staff': StaffForm(),
+                })
+
+
 
 
 def charge(request):
