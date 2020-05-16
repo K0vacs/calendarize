@@ -8,6 +8,13 @@ h1 {
     font-size: 2.5rem;
 }
 
+h2 {
+    font-size: 2.25rem;
+}
+li {
+    font-size: .8rem;
+}
+
 /* HELPER STYLING */
 
 .mh-100{
@@ -44,6 +51,13 @@ h1 {
     background-color: #35344a;
 }
 
+.card {
+    border: 0;
+}
+
+.overlay {
+    border-radius: .25em;
+}
 
 /* BACKGROUND STYLING */
 
@@ -72,6 +86,11 @@ h1 {
     border-color: #FF165E;
 }
 
+.bg-pink:hover {
+    background-color: #E20046;
+    border-color: #E20046;
+}
+
 .bg-light-blue {
     background-color: #1E3850;
 }
@@ -80,17 +99,18 @@ h1 {
     background-image: radial-gradient(#1E273B, #192030, #192030);
 }
 
-.home input {
-    border: 0;
-    border-bottom: 1px solid rgb(0,0,0,.1);
-    border-radius: 0;
+.bg-trans-dark {
+    background-color: rgb(25,32,48,.9);
 }
-
 
 /* TEXT STYLING */
 
 .text-pink {
     color: #FF165E;
+}
+
+.text-pink:hover {
+    color: #E20046;
 }
 
 .text-light-blue {
@@ -288,6 +308,38 @@ button:focus {
     background-color: rgba(0,0,0,.8);
 }
 
+/* PRODUCT STYLING */
+
+.center-img {
+    background-position: center;
+}
+
+.plus-link:hover {
+    opacity: .7;
+}
+
+.iphone {
+    width: 90%;
+}
+
+/* CONTACT FORM STYLING */
+
+.home input {
+    border: 0;
+    border-bottom: 1px solid rgb(0,0,0,.1);
+    border-radius: 0;
+}
+
+/* CONTACT FORM STYLING */
+
+.price {
+    font-size: 2rem;
+}
+
+.home .btn-block {
+    border-radius: .25em;
+}
+
 /* FOOTER STYLING */
 
 footer i {
@@ -297,8 +349,12 @@ footer i {
 /* MEDIA QUERIES */
 
 /* Small devices (mobiles, 768px and up) */
-@media (max-width: 576px) {
+@media (min-width: 576px) {
     
+    li {
+        font-size: 1rem;
+    }
+
     .breadcrumb {
         font-size: 0.90rem;
     }
@@ -315,6 +371,10 @@ footer i {
         font-size: 3.5rem;
     }
 
+    h2 {
+        font-size: 3rem;
+    }
+
     .navbar-brand {
         font-size: 1rem;
     }
@@ -329,6 +389,10 @@ footer i {
 
     .home .border-grey {
         border-top: 4px solid #F2F2F2;
+    }
+
+    .iphone {
+        width: 90%;
     }
 
 }

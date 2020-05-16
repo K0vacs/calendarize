@@ -48,51 +48,57 @@
         </div>
     </section>
 
-    <section class="container pt-5 pb-5">
+    <section id="products" class="container pt-5 pb-5">
         <div class="row pt-5 pb-5">
 
             <di class="col-12">
                 <h2 class="text-center mb-5">Products</h2>
             </di>
 
-            <div class="col-12 col-md-6">
-                <div class="card bg-dark text-white">
-                    <img src="http://localhost:8000/media/hero.png" class="card-img" alt="...">
-                    <div class="card-img-overlay d-flex flex-column justify-content-center">
-                        <p class="text-center">
-                            <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
-                        </p>
-                        <h3 class="card-title text-center">Calendarized Shared</h3>
-                        <p class="card-text text-center">
-                            <ul class="list-unstyled text-light-blue text-center">
-                                <li>Use Calendarize forever with a once-off payment</li>
-                                <li>Share usage with other users and companies</li>
-                                <li>Use all features with no limits</li>
-                            </ul>
-                        </p>
-                        <p class="card-text text-center">€5.00</p>
+            <div class="col-12 col-lg-6">
+                <div class="card text-white mb-5 center-img" style="background-image: url('{{ SITE_URL }}media/shared-product.jpg');">
+                    <div class="overlay bg-trans-dark pt-5 pb-5">
+                        <div class="card-body">
+                            <div class="text-center pb-5">
+                                <a data-toggle="modal" data-target="#paymentmodalshared">
+                                    <img class="plus-link" src="{{ SITE_URL }}media/plus-icon.svg" alt="Plus Icon" width="60px">
+                                </a>
+                            </div>
+                            <h3 class="card-title text-center">Calendarized Shared</h3>
+                            <p class="card-text text-center">
+                                <ul class="list-unstyled text-light-blue text-center">
+                                    <li>Use Calendarize forever with a once-off payment</li>
+                                    <li>Share usage with other users and companies</li>
+                                    <li>Use all features with no limits</li>
+                                </ul>
+                            </p>
+                            <p class="price card-text text-center">€5.00</p>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
 
-            <div class="col-12 col-md-6">
-                <div class="card bg-dark text-white">
-                    <img src="http://localhost:8000/media/hero.png" class="card-img" alt="...">
-                    <div class="card-img-overlay d-flex flex-column justify-content-center">
-                        <p class="text-center">
-                            <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
-                        </p>
-                        <h3 class="card-title text-center">Calendarized Hosted</h3>
-                        <p class="card-text text-center">
-                            <ul class="list-unstyled text-light-blue text-center">
-                                <li>Use Calendarize forever with a once-off payment</li>
-                                <li>Get private usage for only you and your staff</li>
-                                <li>Extend and customise the application</li>
-                            </ul>
-                        </p>
-                        <p class="card-text text-center">€5.00</p>
+            <div class="col-12 col-lg-6">
+                <div class="card text-white center-img" style="background-image: url('{{ SITE_URL }}media/hosted-product.jpg');">
+                    <div class="overlay bg-trans-dark pt-5 pb-5">
+                        <div class="card-body">
+                            <div class="text-center pb-5">
+                                <a data-toggle="modal" data-target="#paymentmodalhosted">
+                                    <img class="plus-link" src="{{ SITE_URL }}media/plus-icon.svg" alt="Plus Icon" width="60px">
+                                </a>
+                            </div>
+                            <h3 class="card-title text-center">Calendarized Hosted</h3>
+                            <p class="card-text text-center">
+                                <ul class="list-unstyled text-light-blue text-center">
+                                    <li>Use Calendarize forever with a once-off payment</li>
+                                    <li>Get private usage for only you and your staff</li>
+                                    <li>Extend and customise the application</li>
+                                </ul>
+                            </p>
+                            <p class="price card-text text-center">€50.00</p>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
 
         </div>
@@ -102,10 +108,11 @@
         <div class="container pt-5 pb-5">
             <div class="row justify-content-center pt-3 pb-3">
 
-                <div class="col-12 col-md-8 col-lg-6">
+                <div class="col-12 col-md-10 col-lg-8">
                     <h2 class="text-center text-white mb-4">Choose the best scheduling software for your business</h2>
                     <p class="d-block text-center mb-0">
-                        <a href="" class="btn btn-primary pt-3 pr-4 pb-3 pl-4" data-toggle="modal" data-target="#staticBackdrop">
+                        <a href="#products" class="btn btn-primary pt-3 pr-4 pb-3 pl-4">
+
                           <span class="mr-2 text-white">Buy Calendarize today</span>
                           <span class="cart">
                             <i class="fa fa-shopping-cart text-primary" aria-hidden="true"></i>
@@ -122,18 +129,18 @@
     <section class="container">
         <div class="row">
 
-            <div class="col-12 col-md-6 align-self-center">
+            <div class="col-12 col-md-6 align-self-center pt-5 mt-5">
                 <div class="row">
-                    <div class="col-12 col-md-10 col-lg-8">
-                        <i class="fa fa-shopping-cart text-primary" aria-hidden="true"></i>
-                        <h2>Boost productivity</h2>
+                    <div class="col-12 col-md-12 col-lg-10 offset-lg-1">
+                        <img src="{{ SITE_URL }}media/globe.svg" alt="" width="60px">
+                        <h2 class="pt-4 pb-2">Boost productivity</h2>
                         <p>Time is money. Make sure you make the most of yours with Calendarize and start making bookings today!</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6">
-                <img src="http://localhost:8000/media/hero.png" alt="" width="100%">
+            <div class="col-12 col-md-6 pt-5 pt-md-5 mt-md-5 text-center">
+                <img class="iphone" src="{{ SITE_URL }}media/iphone.png" alt="Iphone Icon">
             </div>
 
         </div>
@@ -144,36 +151,80 @@
             <div class="row justify-content-center pt-5 pb-5">
 
                 <div class="col-12 col-md-10 col-lg-8">
+                    <h2 class="text-center pb-5">Contact Us</h2>
+
                     <form method="post" class="mb-5">
                         {% csrf_token %}
 
                         <div class="row">
-                            <div class="col-12 col-lg-6">
+                            <div class="col-12 col-lg-6 pb-3">
                                 {% bootstrap_field contactForm.full_name placeholder='Full Name' %}
                             </div>
-                            <div class="col-12 col-lg-6">
+                            <div class="col-12 col-lg-6 pb-3">
                                 {% bootstrap_field contactForm.email %}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col pb-3">
                                 {% bootstrap_field contactForm.message %}
                             </div>
                         </div>
-                    
+                        
+                        
                         {% buttons %}
-                            <button type="submit" class="btn btn-primary bg-pink btn-block pr-4 pl-4">Contact Now</button>
+                            <button type="submit" class="btn text-white bg-pink btn-block pr-4 pl-4">Contact Now</button>
                         {% endbuttons %}
                     </form>
+
                     <p class="text-center">Or just email on</p>
-                    <p class="text-center">hello@example.com</p>
+                    <p class="text-center">
+                        <a href="mailto:hello@example.com" class="text-pink">hello@example.com</a>
+                    </p>
                 </div>
 
             </div>
         </div>
     </section>
     
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="paymentmodalshared" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'charge' %}" method="post" id="payment-form">
+                    {% csrf_token %}
+            
+                    {% bootstrap_form staff %}
+            
+                    <div class="form-row">
+                        <label for="card-element">
+                        Credit or debit card
+                        </label>
+                        <div id="card-element" class="w-100">
+                        <!-- A Stripe Element will be inserted here. -->
+                        </div>
+            
+                        <!-- Used to display form errors. -->
+                        <div id="card-errors" role="alert"></div>
+                    </div>
+            
+                <button>Submit Payment</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentmodalhosted" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
