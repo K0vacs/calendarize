@@ -3,6 +3,35 @@
 
 {% block content %}
 
+    <header style="background-image:url('{{ SITE_URL }}media/header-background.jpg');">
+        <div class="hero pt-5">
+
+        <div class="container h-100 pt-5">
+            <div class="row h-100 pt-5">
+
+            <div class="col-12 align-self-end">
+
+                <h1 class="text-white text-center mb-5 pb-4 pl-2 pr-2">Start scheduling today</h1>
+                <p class="d-block mb-5 text-center">
+                <a href="#products" class="btn bg-pink pt-3 pr-4 pb-3 pl-4">
+                    <span class="mr-2 text-white">Buy Calendarize</span>
+                    <span class="cart">
+                    <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
+                    </span>
+                    
+                </a>
+                </p>
+                <img class="macbook d-block m-auto" src="{{ SITE_URL }}media/macbook.png" alt="">
+
+            </div>
+
+            </div>
+        </div>
+        
+        
+        </div>
+    </header>
+
     <section class="bg-white">
         <div class="container pt-5 pb-5">
             <div class="row pt-5 pb-5">
@@ -146,7 +175,7 @@
         </div>
     </section>
 
-    <section class="bg-white">
+    <section id="contact" class="bg-white">
         <div class="container pt-5 pb-5">
             <div class="row justify-content-center pt-5 pb-5">
 
@@ -265,8 +294,11 @@
 {% endblock %}
 
 {% block scripts %}
+    {% bootstrap_javascript jquery='full' %}
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
         // Creates a Stripe client.
         const stripe = Stripe('{{ key }}');
     </script>
+    <script src="{% static '/js/stripe.js' %}"></script>
 {% endblock %}

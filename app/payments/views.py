@@ -5,6 +5,8 @@ from django.shortcuts import render
 from staff.forms import StaffForm
 from .forms import ContactForm
 from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 
@@ -27,21 +29,29 @@ class HomePageView(TemplateView):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            send_mail(
-                'Calendarize Enquiry',
-                form.cleaned_data['message'],
-                'Calendarize <info@4kmedia.co.za>',
-                [form.cleaned_data['email']],
-                fail_silently=False,
-            )
 
-            return render(request, self.template_name, {
-                'key': settings.STRIPE_PUBLISHABLE_KEY,
-                'contactForm': ContactForm(),
-                'staff': StaffForm(),
-                })
+            try:
+                dadad
+                send_mail(
+                    'Calendarize Enquiry',
+                    form.cleaned_data['message'],
+                    'Calendarize <info@4kmedia.co.za>',
+                    [form.cleaned_data['email']],
+                    fail_silently=False,
+                )
+
+                message = 'success'
+
+            except:
+
+                message = 'failed'
+                logger.warning("Contact form submission failed")
+
+            return HttpResponseRedirect(reverse('contact', kwargs = { 'message': message }))
 
 
+class FormSuccess(TemplateView):
+    template_name = 'form-submission.html'
 
 
 def charge(request):
