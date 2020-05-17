@@ -210,6 +210,10 @@ button:focus {
     border-radius: 500px;
 }
 
+.b-radius {
+    border-radius: 500px;
+}
+
 .macbook {
     width: 90%;
 }
