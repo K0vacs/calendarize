@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'equipment',
     'bookings',
     'schedule',
-    'public',
-    'payments.apps.PaymentsConfig',
     'bootstrap_datepicker_plus',
     'django_bootstrap_breadcrumbs',
     'view_breadcrumbs',
@@ -143,7 +141,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 
 # URL redirected to when logged in
-LOGIN_REDIRECT_URL = 'schedule:home'
+LOGIN_REDIRECT_URL = 'schedule:schedule'
 LOGOUT_REDIRECT_URL = 'login'
 
 # Folder uploads are saved

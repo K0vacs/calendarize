@@ -1,4 +1,4 @@
-{% extends 'public_base.html' %}
+{% extends 'public/public_base.html' %}
 {% load bootstrap4 %}
 
 {% block content %}
@@ -37,11 +37,11 @@
         <section id="message" class="container">
             <div class="row">
                 <div class="col pt-5 mt-5 pb-5 mb-5">
-                    <h2 class="text-center">Payment successful!</h2>
-                    <h3 class="text-center mt-5">Please proceed to login.</h3>
+                    <h2 class="text-center">Contact form submission successful!</h2>
+                    <h3 class="text-center mt-5">We will be in contact shortly . . .</h3>
                     <p class="text-center mt-5">
-                        <a href="{% url 'login' %}" class="btn btn-primary pt-2 pr-4 pb-2 pl-4">
-                            Login
+                        <a href="{{ SITE_URL }}" class="btn btn-primary pt-3 pr-4 pb-3 pl-4">
+                            Go to home
                         </a>
                     </p>
                 </div>
@@ -53,9 +53,10 @@
         <section id="message" class="container">
             <div class="row">
                 <div class="col pt-5 mt-5 pb-5 mb-5">
-                    <h2 class="text-center">Payment failed!</h2>
+                    <h2 class="text-center">Contact form submission failed!</h2>
                     <h3 class="text-center mt-5">
-                        Please try again.
+                        Please contact us directly at,         
+                        <a href="mailto:hello@example.com" class="text-pink">hello@example.com.</a>
                     </h3>
                     <p class="text-center mt-5">
                         <a href="{{ SITE_URL }}" class="btn btn-primary pt-3 pr-4 pb-3 pl-4">

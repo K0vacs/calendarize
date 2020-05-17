@@ -12,8 +12,8 @@ import logging
 logger = logging.getLogger(__name__)
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-class HomePageView(TemplateView):
-    template_name = 'pay.html'
+class HomePage(TemplateView):
+    template_name = 'public/home.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -48,11 +48,11 @@ class HomePageView(TemplateView):
 
 
 class FormSubmission(TemplateView):
-    template_name = 'form-submission.html'
+    template_name = 'public/form-submission.html'
 
 
 class PaymentSubmission(TemplateView):
-    template_name = 'charge.html'
+    template_name = 'public/payment.html'
 
     def post(self, request, *args, **kwargs):
 
@@ -78,4 +78,4 @@ class PaymentSubmission(TemplateView):
             logger.warning("Failed to process payment")
             message = "failed"
 
-        return HttpResponseRedirect(reverse('charge', kwargs = { 'message': message }))
+        return HttpResponseRedirect(reverse('payment', kwargs = { 'message': message }))

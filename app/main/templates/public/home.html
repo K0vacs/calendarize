@@ -1,4 +1,4 @@
-{% extends 'public_base.html' %}
+{% extends 'public/public_base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 
@@ -220,7 +220,7 @@
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
 
-            <form action="{% url 'charge' message='placeholder' %}" method="post" id="payment-form">
+            <form action="{% url 'payment' message='placeholder' %}" method="post" id="payment-form">
                 {% csrf_token %}
 
                 <div class="modal-header">
