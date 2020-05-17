@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '68.183.38.234', 'web']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '178.62.77.191', 'web']
 
 BREADCRUMBS_HOME_LABEL = 'Home'
 
