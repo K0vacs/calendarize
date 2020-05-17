@@ -324,13 +324,11 @@ button:focus {
 
 /* CONTACT FORM STYLING */
 
-.home input {
+#contact input {
     border: 0;
     border-bottom: 1px solid rgb(0,0,0,.1);
     border-radius: 0;
 }
-
-/* CONTACT FORM STYLING */
 
 .price {
     font-size: 2rem;
@@ -340,10 +338,26 @@ button:focus {
     border-radius: .25em;
 }
 
+/* PAYMENT FORM STYLING */
+
+#card-element {
+    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25em;
+}
+
 /* FOOTER STYLING */
 
 footer i {
     font-size: 20px;
+}
+
+footer i:hover {
+    color: #007bff;
+}
+
+footer a:hover {
+    text-decoration: none;
 }
 
 /* MEDIA QUERIES */

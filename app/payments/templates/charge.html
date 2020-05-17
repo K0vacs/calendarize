@@ -1,1 +1,71 @@
-<h2>Thanks, you paid <strong>€5.00</strong>!</h2>
+{% extends 'public_base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <header style="background-image:url('{{ SITE_URL }}media/header-background.jpg');">
+        <div class="hero pt-5">
+
+        <div class="container h-100 pt-5">
+            <div class="row h-100 pt-5">
+
+            <div class="col-12 align-self-end">
+
+                <h1 class="text-white text-center mb-5 pb-4 pl-2 pr-2">Start scheduling today</h1>
+                <p class="d-block mb-5 text-center">
+                <a href="{{ SITE_URL }}#products" class="btn bg-pink pt-3 pr-4 pb-3 pl-4">
+                    <span class="mr-2 text-white">Buy Calendarize</span>
+                    <span class="cart">
+                    <i class="fa fa-shopping-cart text-pink" aria-hidden="true"></i>
+                    </span>
+                    
+                </a>
+                </p>
+                <img class="macbook d-block m-auto" src="{{ SITE_URL }}media/macbook.png" alt="">
+
+            </div>
+
+            </div>
+        </div>
+        
+        
+        </div>
+    </header>
+
+    {% if message == 'success' %}
+
+        <section id="message" class="container">
+            <div class="row">
+                <div class="col pt-5 mt-5 pb-5 mb-5">
+                    <h2 class="text-center">Payment successful!</h2>
+                    <h3 class="text-center mt-5">Please proceed to login.</h3>
+                    <p class="text-center mt-5">
+                        <a href="{% url 'login' %}" class="btn btn-primary pt-2 pr-4 pb-2 pl-4">
+                            Login
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    {% else %}
+
+        <section id="message" class="container">
+            <div class="row">
+                <div class="col pt-5 mt-5 pb-5 mb-5">
+                    <h2 class="text-center">Payment failed!</h2>
+                    <h3 class="text-center mt-5">
+                        Please try again.
+                    </h3>
+                    <p class="text-center mt-5">
+                        <a href="{{ SITE_URL }}" class="btn btn-primary pt-3 pr-4 pb-3 pl-4">
+                            Go to home
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    {% endif %}
+
+{% endblock %}

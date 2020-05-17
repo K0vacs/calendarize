@@ -7,12 +7,9 @@ from .forms import ContactForm
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
-
-
 import logging
-logger = logging.getLogger(__name__)
 
+logger = logging.getLogger(__name__)
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class HomePageView(TemplateView):
@@ -31,7 +28,7 @@ class HomePageView(TemplateView):
         if form.is_valid():
 
             try:
-                dadad
+                
                 send_mail(
                     'Calendarize Enquiry',
                     form.cleaned_data['message'],
@@ -50,29 +47,35 @@ class HomePageView(TemplateView):
             return HttpResponseRedirect(reverse('contact', kwargs = { 'message': message }))
 
 
-class FormSuccess(TemplateView):
+class FormSubmission(TemplateView):
     template_name = 'form-submission.html'
 
 
-def charge(request):
-    if request.method == 'POST':
+class PaymentSubmission(TemplateView):
+    template_name = 'charge.html'
 
-        charge = stripe.Charge.create(
-            amount=500,
-            currency='eur',
-            description='A Django charge',
-            source=request.POST['stripeToken']
-        )
+    def post(self, request, *args, **kwargs):
 
-        if(charge.paid == True):
-            staff = StaffForm(request.POST)
+        try:
+
+            charge = stripe.Charge.create(
+                amount=500,
+                currency='eur',
+                description='Calendarize Shared',
+                source=request.POST['stripeToken']
+            )
+
+            if(charge.paid == True):
+                staff = StaffForm(request.POST)
 
             if staff.is_valid():
                 staff.save()
-                logger.warning("Save Staff")
 
-                return render(request, 'charge.html')
-        else:
-            logger.warning("Failed try again page")
+            message = "success"
 
-        return render(request, 'charge.html')
+        except:
+
+            logger.warning("Failed to process payment")
+            message = "failed"
+
+        return HttpResponseRedirect(reverse('charge', kwargs = { 'message': message }))

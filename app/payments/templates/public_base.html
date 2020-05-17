@@ -27,8 +27,8 @@
 
     <nav class="container navbar navbar-expand-lg navbar-light bg-trans">
       <div class="align-self-center">
-        <a class="navbar-brand text-uppercase text-white" href="#">
-          <img class="icon mr-2" src="{{ SITE_URL }}media/favicon.svg" alt="Calnedarize Icon">
+        <a class="navbar-brand text-uppercase text-white" href="{{ SITE_URL }}">
+          <img class="icon mr-2" src="{{ SITE_URL }}media/favicon.svg" alt="Calendarize Icon">
           Calendarize
         </a>
       </div>
@@ -39,8 +39,8 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
         <div class="d-flex justify-content-end">
-          <a href="" class="btn text-white">Log In</a>
-          <a href="" class="btn btn-primary">Sign Up</a>
+          <a  href="{% url 'login' %}" class="btn text-white">Log In</a>
+          <a href="#products" class="btn btn-primary">Sign Up</a>
         </div>
       </div>
 
@@ -68,18 +68,26 @@
               <nav class="row d-flex justify-content-between pt-2">
                 <div class="col align-self-center">
                   <img class="icon mr-2" src="{{ SITE_URL }}media/favicon.svg" alt="Calnedarize Icon">
-                  <a class="navbar-brand text-uppercase text-white d-none d-md-inline" href="#">Calendarize</a>
+                  <a class="navbar-brand text-uppercase text-white d-none d-md-inline" href="{{ SITE_URL }}">Calendarize</a>
                 </div>
                 
                 <div class="col-6 align-self-center text-center d-none d-lg-inline">
-                  <a href="" class="btn text-white">Log In</a>
-                  <a href="" class="btn btn-primary">Sign Up</a>
+                  <a href="{% url 'login' %}" class="btn text-white">Log In</a>
+                  <a href="#products" class="btn btn-primary">Sign Up</a>
                 </div>
 
-                <div class="col align-self-center text-right socials">  
-                  <i class="fab fa-linkedin-in mr-3"></i>
-                  <i class="fab fa-github-alt mr-3"></i>
-                  <i class="fas fa-globe-africa"></i>
+                <div class="col align-self-center text-right socials">
+
+                  <a href="https://www.linkedin.com/in/ferenc-kovacs-06190671/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in mr-3"></i>
+                  </a>
+                  <a href="https://github.com/K0vacs" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github-alt mr-3"></i>
+                  </a>
+                  <a href="https://k0vacs.github.io/Ferenc-Kovacs-Resume/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-globe-africa"></i>
+                  </a>
+                  
                 </div>
           
               </nav>
