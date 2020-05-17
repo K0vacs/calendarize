@@ -11,7 +11,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.HomePage.as_view(), name='home'),
     path('payment/<message>', views.PaymentSubmission.as_view(), name='payment'),
-    path('form-submission/<message>', views.FormSubmission.as_view(), name='contact'),
+    path('contact/<message>', views.FormSubmission.as_view(), name='contact'),
 
     # These urls are included from other modules
     path('', include('bookings.urls')),

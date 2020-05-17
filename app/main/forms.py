@@ -10,7 +10,7 @@ class ContactForm(forms.Form):
             }
         )
     )
-    email = forms.EmailField(
+    email_address = forms.EmailField(
         required=True, 
         label="",
         widget=forms.TextInput(

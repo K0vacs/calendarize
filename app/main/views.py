@@ -33,7 +33,7 @@ class HomePage(TemplateView):
                     'Calendarize Enquiry',
                     form.cleaned_data['message'],
                     'Calendarize <info@4kmedia.co.za>',
-                    [form.cleaned_data['email']],
+                    [form.cleaned_data['email_address']],
                     fail_silently=False,
                 )
 
