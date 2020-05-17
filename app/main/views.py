@@ -9,9 +9,11 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import logging
 
+# Registering the logger and saving the Stripe API Key
 logger = logging.getLogger(__name__)
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+# This class builds the home page context and handles contact form submissions
 class HomePage(TemplateView):
     template_name = 'public/home.html'
 
@@ -46,11 +48,11 @@ class HomePage(TemplateView):
 
             return HttpResponseRedirect(reverse('contact', kwargs = { 'message': message }))
 
-
+# This class displays the form success / failure page on submission
 class FormSubmission(TemplateView):
     template_name = 'public/form-submission.html'
 
-
+# This class charges the card and then creates the user
 class PaymentSubmission(TemplateView):
     template_name = 'public/payment.html'
 

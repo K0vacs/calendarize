@@ -20,7 +20,7 @@ This web application serves as a scheduling system for gyms and other health and
 ## UX
 
 ### Function
-This project is for gyms and health wellness businesses that would like to better schedule their time. The application allows for multiple users or "Staff" to manage their schedule. In the schedule view the staff are able to see their daily to do's. This view displays the entire teams schedule which includes the functionality to search previous dates and future dates. The additional functionality included, is to support the execution of the above core feature. Such as the ability to add customers, equipment, services and bookings. These features where identified as the minimum viable product for these business to schedule their time. Some similar applications do exist but all require paid subscriptions. Calendarize is free and easy to use and easy to set up as defined in the deployment section.
+This project is for gyms and health wellness businesses that would like to better schedule their time. The application allows for multiple users or "Staff" to manage their schedule. In the schedule view the staff are able to see their daily to do's. This view displays the entire teams schedule which includes the functionality to search previous dates and future dates. The additional functionality included, is to support the execution of the above core feature. Such as the ability to add customers, equipment, services and bookings. These features where identified as the minimum viable product for these business to schedule their time. Some similar applications do exist but all require monthly subscriptions. Calendarize is a once-off payment which is easy to use and easy to set up as defined in the deployment section.
 
 ### Styling
 This application was built using the front-end framework called [Bootstrap](https://getbootstrap.com/) with minor adjustments to the default Bootstrap theme to improve responsiveness, custom look and feel. This theme was designed with a dark purple primary base with subtle bright purple accents to create a clean and focused look to the application. The bright purple accents used, draw the attention of the users thereby allowing the application owner to control what the users pay attention to on the application.
@@ -38,45 +38,74 @@ The font used is a custom font from [Google Fonts](https://fonts.google.com/?que
 - As a small business owner, I want to use a tool that is free, so I can reduce my expenses.
 - As a staff member, I want to better manage my clients, so I can maximize my earning potential.
 - As a staff member, I want to see what equipment my colleagues are using, so I don't double book the same equipment.
-- As a Code Institue Marker, I want to determine the student has achieved the learning outcomes so that I can score the level of achievement (out of 5).
+- As a Code Institute Marker, I want to determine the student has achieved the learning outcomes so that I can score the level of achievement (out of 5).
 - As a recruiter, I want to determine the prospects capabilities, so that I can place successful candidates.
 
 ### Page Sections
 
-#### Navbar
+#### Public
+
+##### Navbar
+> The public sit consists of a very simple navbar that is transparent with the icon and brand name left aligned and the sign in / sign up buttons right aligned. The buttons hide when in mobile and tablet and are replaced by a burger menu which allows the user to toggle the view of the buttons.
+
+##### Header
+> The public header consists of large section of the view which consists of a background image with an overlay to darken the image. Placed in front of these are a heading, button and Macbook image which act as a call to action.
+
+##### Body
+> The public body consists of 5 sections namely, features, products, call to action, extra information and contact.
+
+> The features section displays the features of Calendarize with two rows. Row one explains why Calendarize was made and row two explains the features of the application.
+
+> The products section displays in a simple card with a background image and a dark overlay. The details of the card have the product name, features in that version and price.
+
+> The call to action section displays a simple heading message and button in order to direct users to make a purchase.
+
+> The extra information section gives the user more information on why they should use Calendarize with an iPhone image to showcase mobile responsiveness on the dashboard.
+
+> The contact section displays a contact form for users to contact Calendarize which requires a full name, email address and message.
+
+##### Footer
+> The public footer section consists of two rows. Row one displays the heading message about productivity. Row two displays the icon, brand name, sign up and sign in buttons as well three social media buttons which are right aligned. 
+
+##### Modals
+> This page has two modals. Each is attached to a product. If you select Calendarized Shared, the modal to create a user and process payment will appear. If you select Calendarized Hosted, the modal with information to contact Calendarize will appear.
+
+#### Dashboard
+
+##### Navbar
 > This section consists of a full height sidebar that collapses on mobile view. The sidebar consists of the name and the navigation links stacked below one another. The navigation links are pre-pended with Font Awesome icons for ease of identification. When the link is active the block and icon will highlight to indicate you your location in the application.
 
-#### Header
+##### Header
 > This section consists of a small full-width bar across the top of the application. This section consists to two major elements. The first element, is the breadcrumb which indicates where you are in relation to the home page. The second element, is the account section which displays your username with a dropdown to logout and your saved profile image.
 
-#### Schedule View
+##### Schedule View
 > This section makes up the main content of the display. This section consists of two major elements. The first element, is the filter bar that allows to user to search by date, previous day, next day or today. The second element, is the schedule view of each staff member in a collapse with a nested table to display the relevant bookings for the day.
 
-#### Module List Views (Schedule module excluded)
+##### Module List Views (Schedule module excluded)
 > This section makes up the main content of the display. This section consists of two major elements. The first element, is the heading with an add new button to add a new record to the module. the second element, is the table which displays a table of records saved in that module. This table has links to edit and delete existing records as well as pagination which is limited to 10 records per view.
 
-#### Module Add / Update Views
+##### Module Add / Update Views
 > This section makes up the main content of the display. This section consists of one major element. This element is the form(s) related to the module. This form(s) is used for both the create and update view, the only difference being the update view loads pre-populated. In the case where formsets have been used, the element will also include the ability to delete formset forms.
 
-#### Module Delete View / Modal
+##### Module Delete View / Modal
 > This section displays in a modal which is triggered when the user clicks the trash icon in the Module List View. The modal has two options. Firstly, a cancel option to close the modal and keep the record and secondly, a delete option to delete the record from the database.
 
-#### Login Page
+##### Login Page
 > This section makes up the main content of the display with no sidebar or header. The view consists of two major elements. The first element, is a full size image which displays on 50% of the screen (left-hand-side). The second element, is a centered form that requires the users login details (username and password).
 
-#### Password Reset Form
+##### Password Reset Form
 > This section makes up the main content of the display with no sidebar or header. The view consists of two major elements. The first element, is a full size image which displays on 50% of the screen (left-hand-side). The second element, is a centered form that requires the users email address in order to email the password reset link.
 
-#### Password Reset Done
+##### Password Reset Done
 > This section makes up the main content of the display with no sidebar or header. The view consists of two major elements. The first element, is a full size image which displays on 50% of the screen (left-hand-side). The second element, is centered text that notifies the user of the incoming email with password reset link.
 
-#### Password Reset Confirm
+##### Password Reset Confirm
 > This section makes up the main content of the display with no sidebar or header. The view consists of two major elements. The first element, is a full size image which displays on 50% of the screen (left-hand-side). The second element, is a centered form that requires the user to reset their password (New password and confirm password).
 
-#### Password Reset Complete
+##### Password Reset Complete
 > This section makes up the main content of the display with no sidebar or header. The view consists of two major elements. The first element, is a full size image which displays on 50% of the screen (left-hand-side). The second element, is centered text that notifies the user of the successful password reset with a link to login. 
 
-#### Footer
+##### Footer
 > This application does not utilize a footer as the application functions as a dashboard with no need for a footer.
 
 ### Mockups
@@ -98,6 +127,8 @@ The project mockups are available below and in the [mockups directory](https://g
 ## Features
  
 ### Existing Features
+- Payment - the application allows you to pay for Calendarize online and if successful you will be able to login to the application
+- User creation - On successful payment your user will automatically be created allowing you to login to the application
 - Responsiveness - allows the application to render in a user-friendly format on any device (mobile, tablet and desktop)
 - Modal - acts as a confirmation message to users when the delete icon is selected
 - Sidebar - hides the workout name and metadata on the exercises view to allow for an unobstructed view of exercises on mobile devices

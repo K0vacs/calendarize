@@ -1,7 +1,9 @@
+<!-- This loads the relevant libraries and extends a base file -->
 {% extends 'public/public_base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 
+<!-- This sets the content for this specific page -->
 {% block content %}
 
     <header style="background-image:url('{{ SITE_URL }}media/header-background.jpg');">
@@ -280,6 +282,7 @@
 
 {% endblock %}
 
+<!-- This loads the necessary scripts for the page -->
 {% block scripts %}
     {% bootstrap_javascript jquery='full' %}
     <script src="https://js.stripe.com/v3/"></script>

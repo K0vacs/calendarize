@@ -1,5 +1,6 @@
 from django import forms
 
+# Adding a static contact form
 class ContactForm(forms.Form):
     full_name = forms.CharField(       
         required=True, 
