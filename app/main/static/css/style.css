@@ -206,6 +206,7 @@ button:focus {
 }
 
 .profile-img {
+    width: 30px;
     border-radius: 500px;
 }
 
@@ -374,7 +375,7 @@ footer a:hover {
     }
 
     .profile-img {
-        width: 30px;
+        width: 50px;
     }
 
 }
