@@ -218,6 +218,9 @@ button:focus {
     width: 90%;
 }
 
+.bg-cover {
+    background-size: cover;
+}
 
 /* TABLE STYLING */
 
